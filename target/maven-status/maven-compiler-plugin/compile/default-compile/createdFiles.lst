@@ -1,0 +1,8 @@
+com\NoCountry\c1686ftjavaParking\Controller\ClientController.class
+com\NoCountry\c1686ftjavaParking\Service\ClientService.class
+com\NoCountry\c1686ftjavaParking\Entitie\TicketEntitie.class
+com\NoCountry\c1686ftjavaParking\Entitie\UserEntitie.class
+com\NoCountry\c1686ftjavaParking\Repository\ClientRepository.class
+com\NoCountry\c1686ftjavaParking\C1686FtJavaParkingApplication.class
+com\NoCountry\c1686ftjavaParking\Entitie\ClientEntitie.class
+com\NoCountry\c1686ftjavaParking\Entitie\ParkingEntitie.class
