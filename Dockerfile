@@ -1,5 +1,5 @@
 # Utiliza una imagen base de OpenJDK
-FROM openjdk:17-jre-slim
+FROM openjdk:17-oracle
 
 # Copia el archivo JAR de tu aplicación al contenedor
 COPY target/c16-86-ft-java-Parking-0.0.1-SNAPSHOT /app.jar
