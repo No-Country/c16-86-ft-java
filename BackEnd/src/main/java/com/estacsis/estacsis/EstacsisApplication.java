@@ -10,7 +10,6 @@ public class EstacsisApplication {
 
 		SpringApplication.run(EstacsisApplication.class, args);
 
-
 	}
 
 }
