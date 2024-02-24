@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/BackEnd/c16-86-ft-java-Parking.iml" filepath="$PROJECT_DIR$/BackEnd/c16-86-ft-java-Parking.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/estacsis.iml" filepath="$PROJECT_DIR$/.idea/estacsis.iml" />
     </modules>
   </component>
