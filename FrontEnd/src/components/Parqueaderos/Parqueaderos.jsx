@@ -35,7 +35,7 @@ function Parqueaderos() {
             <div className="w-full grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-5 xl:grid-cols-3">
               {
                 menu?.map(item=>{
-                  return <Link to={`/dashboard/parqueaderos/${item.id}`}><TarjetaOpcion text={item.text}/></Link>
+                  return <Link to={`/dashboard/parqueaderos/${item.id}`}><TarjetaOpcion type="parqueadero" text={item.text}/></Link>
                 })
               }
             </div>

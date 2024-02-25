@@ -34,7 +34,7 @@ function Parkers(){
       <div className="w-full grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-5 xl:grid-cols-3">
         {
           parkers?.map(item => {
-            return <TarjetaOpcion key={item.id} text={item.name}/>
+            return <TarjetaOpcion key={item.id} type="parker" text={item.name}/>
           })
         }
       </div>

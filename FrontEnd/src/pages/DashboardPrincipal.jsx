@@ -3,7 +3,7 @@ import TarjetaOpcion from "../components/Tarjetas/TarjetaOpcion"
 
 function DashboardPrincipal(){
   return (
-    <div className="w-full h-screen bg-slate-50 sm:px-40 px-5 pt-8 sm:pt-32">
+    <div className="w-full h-screen bg-[#fbfbff] sm:px-40 px-5 pt-8 sm:pt-32">
 
         <div className="flex flex-col gap-5 sm:gap-10">
             
@@ -13,7 +13,7 @@ function DashboardPrincipal(){
                     to={'/dashboard/parqueaderos'}
                 >
                     <TarjetaOpcion
-                        text={'Parqueadero'}
+                        type="parqueadero"
                     />
                 </Link>
                 <Link
@@ -21,7 +21,7 @@ function DashboardPrincipal(){
                     to={'/dashboard/parqueaderos'}
                 >
                     <TarjetaOpcion
-                        text={'Parqueadero'}
+                        type="parqueadero"
                     />
                 </Link>
                 <Link
@@ -29,7 +29,7 @@ function DashboardPrincipal(){
                     to={'/dashboard/parqueaderos'}
                 >
                     <TarjetaOpcion
-                        text={'Parqueadero'}
+                        type="parqueadero"
                     />
                 </Link>
             </div>
@@ -41,7 +41,7 @@ function DashboardPrincipal(){
                     to={'/dashboard/parkers'}
                 >
                     <TarjetaOpcion
-                        text={'Parkers'}
+                        type="parker"
                     />
                 </Link>
 
@@ -50,7 +50,7 @@ function DashboardPrincipal(){
                     to={'/dashboard/usuarios'}
                 >
                     <TarjetaOpcion
-                        text={'Usuarios'}
+                        type="usuario"
                     />
                 </Link>
 
