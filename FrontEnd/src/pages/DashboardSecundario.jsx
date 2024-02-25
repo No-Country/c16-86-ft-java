@@ -5,7 +5,7 @@ import { Outlet } from "react-router";
 function DashboardSecundario() {
     
     return (
-        <div className="w-full flex flex-col px-5 py-8 gap-10 sm:flex-row sm:gap-0 sm:px-0 sm:py-0">
+        <div className="w-full flex flex-col sm:flex-row sm:gap-5 sm:px-5 sm:py-5 bg-slate-50">
             
             <div className="w-full sm:hidden">
                 <NavBar/>
@@ -15,8 +15,8 @@ function DashboardSecundario() {
                 <SideBar/>
             </div>
 
-            <div className="w-full sm:w-8/12 xl:w-9/12">
-                <div className="w-full hidden sm:block text-center pt-5">
+            <div className="w-full sm:w-8/12 xl:w-9/12 bg-white rounded-lg shadow-2xl px-5 pt-5">
+                <div className="w-full hidden sm:block text-center">
                     <h1 className="text-3xl xl:text-4xl font-bold">ParkingOut Ectasis</h1>
                 </div>
                 <Outlet/>

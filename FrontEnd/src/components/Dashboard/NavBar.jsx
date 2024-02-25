@@ -9,9 +9,9 @@ import TarjetaMenu from '../Tarjetas/TarjetaMenu'
 import { Link,useNavigate } from "react-router-dom"
 
 const menu = [
-  {'text':'parqueaderos','link':'/dashboard/parqueaderos'},
-  {'text':'parkers','link':'/dashboard/parkers'},
-  {'text':'clientes','link':'/dashboard/usuarios'},
+  {'text':'parqueaderos','link':'/dashboard/parqueaderos','type':'parqueadero'},
+  {'text':'parkers','link':'/dashboard/parkers','type':'parker'},
+  {'text':'clientes','link':'/dashboard/usuarios','type':'usuario'},
 ]
 
 function NavBar() {
@@ -23,12 +23,11 @@ function NavBar() {
   }
 
   return (
-    <div className="flex flex-col">
+    <div className="px-5 py-5">
 
       <div className="relative w-full flex flex-row justify-between">
 
         <button
-          className="cursor-pointer"
           onClick={()=>setOpen(true)}
         >
           <FontAwesomeIcon icon={faBars}  size="2xl"/>
@@ -48,7 +47,7 @@ function NavBar() {
       >
         {
           menu?.map( item => {
-            return <Link to={item.link} onClick={()=>setOpen(false)}><TarjetaMenu text={item.text}/></Link> 
+            return <Link to={item.link} onClick={()=>setOpen(false)}><TarjetaMenu type={item.type} text={item.text}/></Link> 
           })
         }
       </PopUp>
