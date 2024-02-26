@@ -20,7 +20,7 @@ function TarjetaMenu({type,text}) {
     }
   }
   return (
-    <div className={`w-full flex flex-row items-center gap-5 justify-start max-w-sm bg-white rounded-lg px-5 py-3 text-center border-gray-400 border-2`}>
+    <div className={`w-full flex flex-row items-center gap-2 justify-start max-w-sm bg-white rounded-lg px-2 py-2 text-center border-gray-400 border-2`}>
       <FontAwesomeIcon 
           icon={typeCard[type].icon} 
           size="xl"

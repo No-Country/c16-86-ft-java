@@ -3,7 +3,7 @@ import { useState } from "react"
 import { faBars,faLeftLong } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 //componentes
-import PopUp from '../PopUp/PopUp'
+import PopUpMenuHamburguesa from "../PopUp/PopUpMenuHamburguesa"
 import TarjetaMenu from '../Tarjetas/TarjetaMenu'
 
 import { Link,useNavigate } from "react-router-dom"
@@ -41,7 +41,7 @@ function NavBar() {
 
       </div>
 
-      <PopUp
+      <PopUpMenuHamburguesa
         open={open}
         isOpen={()=>setOpen(false)}
       >
@@ -50,7 +50,7 @@ function NavBar() {
             return <Link to={item.link} onClick={()=>setOpen(false)}><TarjetaMenu type={item.type} text={item.text}/></Link> 
           })
         }
-      </PopUp>
+      </PopUpMenuHamburguesa>
       
     </div>
   )
