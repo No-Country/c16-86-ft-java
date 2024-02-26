@@ -20,7 +20,7 @@ function TarjetaOpcion({type,children}) {
     }
   }
   return (
-    <div className='w-full flex flex-col max-w-sm sm:min-h-28 xl:min-h-32 bg-white border shadow hover:shadow-lg cursor-pointer text-center
+    <div className='w-full flex flex-col max-w-sm sm:min-h-28 xl:min-h-32 bg-white border shadow hover:shadow-xl cursor-pointer text-center
       rounded-lg'
       >
         <div className={`w-full flex flex-row items-center gap-5 justify-start px-5 py-1 rounded-t-lg ${typeCard[type].color}`}>
