@@ -3,11 +3,17 @@ package com.estacsis.Entitie;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.sql.Date;
 import java.time.LocalDate;
 
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 @Entity
 @Table(name = "client")
 public class ClientEntitie {
@@ -32,8 +38,7 @@ public class ClientEntitie {
     @Temporal(TemporalType.DATE)
     public LocalDate high;
 
-    public ClientEntitie() {
-    }
+
 
     public ClientEntitie(String dni, String firstname, String secondname, String phone, LocalDate date) {
         this.dni = dni;
