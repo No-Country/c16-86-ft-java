@@ -5,6 +5,8 @@ import { Outlet ,useLocation} from "react-router-dom";
 
 import TarjetaOpcion from "../Tarjetas/TarjetaOpcion";
 import BotonAgregarDashboard from "../Botones/BotonAgregarDashboard";
+import PopUp from "../PopUp/PopUp"
+import ModalParqueadero from "../Modales/Modal Crear Parqueadero/ModalParqueadero"
 
 const menu = [
   {'text':'parqueadero la 33','id':'sdas8ad2casdd342'},
@@ -17,6 +19,7 @@ function Parqueaderos() {
   let location = useLocation();
 
   const [path,setPath]=useState('/dashboard/cotizaciones');
+  const [open,setOpen]=useState(false)
 
   useEffect(()=>{
       setPath(location.pathname)
@@ -30,7 +33,16 @@ function Parqueaderos() {
         <div className="flex flex-col gap-5">
             <div className="flex flex-row justify-between items-center">
               <h1 className="font-bold italic text-xl sm:text-2xl">Parqueaderos</h1>
-              <BotonAgregarDashboard/>
+              <BotonAgregarDashboard
+                callback={()=>setOpen(true)}
+              />
+              <PopUp
+                open={open}
+              >
+                <ModalParqueadero
+                  isOpen={()=>setOpen(false)}
+                />
+              </PopUp>
             </div>
             <div className="w-full grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-5 xl:grid-cols-3">
               {
