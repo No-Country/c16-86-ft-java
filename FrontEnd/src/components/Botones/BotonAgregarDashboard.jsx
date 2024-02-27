@@ -2,10 +2,13 @@
 import { faPlus} from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
-function BotonAgregarDashboard() {
+function BotonAgregarDashboard({callback}) {
   return (
-    <div className="px-5 py-1 sm:px-6 sm:py-2 self-end border shadow-sm text-center">
-        <button className="flex gap-2 items-center font-semibold text-md sm:text-lg">
+    <div className="px-5 py-1 sm:px-6 self-end border shadow text-center rounded-lg">
+        <button
+          onClick={callback} 
+          className="flex gap-2 items-center font-semibold text-md sm:text-lg"
+        >
             Agregar
             <FontAwesomeIcon icon={faPlus} />
         </button>

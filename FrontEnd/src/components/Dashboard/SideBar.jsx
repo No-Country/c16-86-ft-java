@@ -10,10 +10,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 
 const menu = [
-    {'text':'parqueaderos','link':'/dashboard/parqueaderos'},
-    {'text':'parkers','link':'/dashboard/parkers'},
-    {'text':'clientes','link':'/dashboard/usuarios'},
-  ]
+    {'text':'parqueaderos','link':'/dashboard/parqueaderos','type':'parqueadero'},
+    {'text':'parkers','link':'/dashboard/parkers','type':'parker'},
+    {'text':'clientes','link':'/dashboard/usuarios','type':'usuario'},
+]
 
 function SideBar() {
 
@@ -24,7 +24,7 @@ function SideBar() {
     }
 
     return (
-        <div className="w-full h-screen border gap-5 px-5 flex flex-col py-10">
+        <div className="w-full border gap-5 px-5 flex flex-col py-10 rounded-lg shadow-2xl bg-black">
 
             <div
                 className="flex-end"
@@ -38,7 +38,7 @@ function SideBar() {
 
             {
                 menu?.map( item => {
-                    return <Link to={item.link}><TarjetaMenu text={item.text}/></Link> 
+                    return <Link to={item.link}><TarjetaMenu type={item.type} text={item.text}/></Link> 
                 })
             }
 

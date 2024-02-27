@@ -6,7 +6,7 @@ function CardMoto({estado}) {
 
     const disponible = estado !== undefined ? estado : true;
     return (
-        <div className={`${disponible === true ? 'border-green-600 bg-green-300':'border-red-600 bg-red-300'} w-full flex flex-col items-stretch  border shadow-sm text-center py-1 px-1 xl:py-2 xl:px-2`}>
+        <div className={`${disponible === true ? 'border-green-600 bg-green-300':'border-red-600 bg-red-300'} w-full flex flex-col items-stretch  border shadow-sm text-center py-1 px-1 xl:py-2 xl:px-2 rounded-md`}>
             <div className="self-start">
                 <FontAwesomeIcon icon={faMotorcycle} />
             </div>
