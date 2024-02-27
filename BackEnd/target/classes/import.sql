@@ -3,4 +3,3 @@ INSERT INTO client (high, dni, firstname, phone, secondname) VALUES ('2001-06-06
 
 
 
-
