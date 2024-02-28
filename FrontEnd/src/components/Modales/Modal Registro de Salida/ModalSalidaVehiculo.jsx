@@ -28,26 +28,19 @@ function ModalSalidaVehiculo({isOpen}){
 
     const[next,setNext]=useState(false)
 
-    const handleSubtmit =(e)=>{
-        e.preventDefault()
-        console.log({
-            nombres
-        })
-    }
 
     return (
         <form
-            onSubmit={handleSubtmit} 
-            className="max-w-2xl bg-white flex flex-col gap-5 border shadow md:px-10 px-5 md:py-10 py-5 rounded-md sm:mx-auto mx-2 mt-5"
+            className="max-w-2xl bg-white flex flex-col gap-5 border shadow md:px-10 px-5 md:py-10 py-5 rounded-md sm:mx-auto mt-5"
         >
             {
                 !next ?
                 <>
                     <div className="flex flex-row justify-between">
-                        <h2 className="text-2xl font-bold italic tracking-wider">¿Registrar salidad de vehiculo?</h2>
+                        <h2 className="text-xl text-center sm:text-2xl font-bold italic tracking-wider">¿Registrar salidad de vehiculo?</h2>
                     </div>
 
-                    <div className="w-full flex flex-col sm:flex-row sm:gap-2">
+                    <div className="w-full flex flex-col sm:flex-row gap-4 sm:gap-2">
                         <button
                             onClick={isOpen}
                             type="submit"
@@ -56,7 +49,6 @@ function ModalSalidaVehiculo({isOpen}){
                             Cancelar
                         </button>
                         <button
-                            type="submit"
                             onClick={()=>setNext(true)}
                             className='w-full text-black text-lg tracking-wide font-semibold rounded-md  bg-green-400 border border-green-600'
                         >
