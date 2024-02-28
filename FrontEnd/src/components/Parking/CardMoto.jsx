@@ -1,20 +1,45 @@
+import { useState } from "react";
+
 // font awesome
 import { faMotorcycle} from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
-function CardMoto({estado}) {
+import ModalRegistroVehiculo from "../Modales/Modal Registro de Vehiculo/ModalRegistroVehiculo";
+import ModalSalidaVehiculo from "../Modales/Modal Registro de Salida/ModalSalidaVehiculo";
+import PopUp from "../PopUp/PopUp";
 
+function CardMoto({estado}) {
+    const [open,setOpen]=useState(false)
     const disponible = estado !== undefined ? estado : true;
+    
     return (
-        <div className={`${disponible === true ? 'border-green-600 bg-green-300':'border-red-600 bg-red-300'} w-full flex flex-col items-stretch  border shadow-sm text-center py-1 px-1 xl:py-2 xl:px-2 rounded-md`}>
-            <div className="self-start">
-                <FontAwesomeIcon icon={faMotorcycle} />
+        <>
+            <div 
+                onClick={()=>setOpen(true)} 
+                className={`${disponible === true ? 'border-green-600 bg-green-300':'border-red-600 bg-red-300'} w-full flex flex-col items-stretch  border shadow-sm text-center py-1 px-1 xl:py-2 xl:px-2 rounded-md cursor-pointer`}
+            >
+                <div className="self-start">
+                    <FontAwesomeIcon icon={faMotorcycle} />
+                </div>
+                <div className="w-full flex flex-row justify-between">
+                    <p className="font-semibold self-end">Moto</p>
+                    <p className="font-semibold self-end">MZ-2</p>
+                </div>
             </div>
-            <div className="w-full flex flex-row justify-between">
-                <p className="font-semibold self-end">Moto</p>
-                <p className="font-semibold self-end">MZ-2</p>
-            </div>
-        </div>
+            <PopUp
+                open={open}
+              >
+                {
+                    disponible === true ?
+                    <ModalRegistroVehiculo
+                      isOpen={()=>setOpen(false)}
+                    />:
+                    <ModalSalidaVehiculo
+                        isOpen={()=>setOpen(false)}
+                    />
+                }
+            </PopUp>
+        </>
     )
 }
 
