@@ -7,6 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 
 
+@ComponentScan(basePackages = {"com.estacsis.service", "com.estacsis.repository", "com.estacsis.controller", "com.estacsis.entitie"})
 public class EstacsisApplication {
 
 	public static void main(String[] args) {
