@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 public class TicketEntitie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long idTicket;
 
     @ManyToOne
     @JoinColumn(name = "clientId")

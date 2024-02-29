@@ -23,8 +23,8 @@ public class TicketController {
 
     //Endpoint traer ticket por Id
     @GetMapping(path = "/{id}")
-    public Optional<TicketEntitie> getById(@PathVariable("id") Integer id) {
-        return ticketService.getTicketById(id);
+    public Optional<TicketEntitie> getById(@PathVariable("id") Long idTicket) {
+        return ticketService.getTicketById(idTicket);
     }
 
     //Endopoint para insertar un ticket
@@ -33,14 +33,22 @@ public class TicketController {
         ticketService.addTicket(ticket);
         return ticket;
     }
+
     //Endpoint para eliminar un ticket
     @DeleteMapping(path = "/{id}")
-    public void deleleteById(@PathVariable("id") Integer id) {
-        ticketService.deleteById(id);
+    public void deleleteById(@PathVariable("id") Long idTicket) {
+        ticketService.deleteById(idTicket);
 
     }
 
     
+    @PutMapping(path = "/{id}")
+    public void updateTicket(
+            @PathVariable("id") Long idTicket,
+            @RequestParam(required = false) String carLicense) {
+        ticketService.updateTicket(idTicket, carLicense);
+    }
+
 
 }
 
