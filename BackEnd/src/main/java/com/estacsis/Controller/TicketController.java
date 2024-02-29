@@ -40,7 +40,7 @@ public class TicketController {
 
     }
 
-    //Endpoint para actualizar un ticket
+    
 
 }
 
