@@ -57,7 +57,7 @@ function TicketSalidad({isOpen}) {
         </div>
 
         <button
-            className="w-full bg-gray-300 rounded-md border-gray-500 border shadow-sm font-semibold text-lg mt-2" 
+            className="w-full  rounded-md  shadow-sm font-semibold text-lg mt-2 bg-white border-2 border-amber-500" 
             onClick={isOpen}
         >
             Cerrar

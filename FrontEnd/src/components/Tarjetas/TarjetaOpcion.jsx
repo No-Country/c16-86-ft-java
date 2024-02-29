@@ -4,26 +4,27 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 function TarjetaOpcion({type,children}) {
   const typeCard = {
     'parqueadero':{
-      'color':'bg-olivine',
+      'color':'dark-cyan',
       'text':'parqueadero',
       'icon':faSquareParking
     },
     'parker':{
-      'color':'bg-lavender',
+      'color':'dark-spring-green',
       'text':'parker',
       'icon':faUser
     },
     'usuario':{
-      'color':'bg-red-engineer',
+      'color':'caribean-current',
       'text':'usuario',
       'icon':faAddressCard
     }
   }
+  
   return (
     <div className='w-full flex flex-col max-w-sm sm:min-h-28 xl:min-h-32 bg-white border shadow hover:shadow-xl cursor-pointer text-center
       rounded-lg'
       >
-        <div className={`w-full flex flex-row items-center gap-5 justify-start px-5 py-1 rounded-t-lg ${typeCard[type].color}`}>
+        <div className={`w-full flex flex-row items-center gap-5 justify-start px-5 py-1 rounded-t-lg bg-${typeCard[type].color}`}>
           <FontAwesomeIcon 
             icon={typeCard[type].icon} 
             size="xl"

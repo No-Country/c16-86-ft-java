@@ -10,7 +10,7 @@ function PopUpMenuHamburguesa({children,open,isOpen}) {
                     onClick={isOpen} 
                     className="fixed w-screen h-screen left-0 top-0"
                 >
-                    <div className="w-2/3 flex flex-col bg-black h-screen py-20 px-2">
+                    <div className="w-2/3 flex flex-col bg-azul-argentina h-screen py-20 px-2">
                         <div className="flex flex-col gap-3">
                             {children}
                         </div>

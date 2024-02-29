@@ -24,7 +24,7 @@ function SideBar() {
     }
 
     return (
-        <div className="w-full border gap-5 px-5 flex flex-col py-10 rounded-lg shadow-2xl bg-black">
+        <div className="w-full gap-5 px-5 flex flex-col py-10 rounded-lg shadow-2xl bg-azul-argentina border-2 border-blue-400">
 
             <div
                 className="flex-end"
