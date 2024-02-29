@@ -88,7 +88,7 @@ function ModalParker({isOpen}) {
 
             <button
                 type="submit"
-                className=' text-black text-lg tracking-wide font-semibold rounded-md  bg-green-400 border border-green-600'
+                className=' text-black text-lg tracking-wide font-semibold rounded-md  bg-white border-2 border-amber-500'
             >
                 Crear parker
             </button>

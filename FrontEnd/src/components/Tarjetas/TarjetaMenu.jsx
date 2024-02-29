@@ -4,23 +4,23 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 function TarjetaMenu({type,text}) {
   const typeCard = {
     'parqueadero':{
-      'color':'#9fe96e',
+      'color':'dark-cyan',
       'text':'parqueadero',
       'icon':faSquareParking
     },
     'parker':{
-      'color':'#a3a8f6',
+      'color':'dark-spring-green',
       'text':'parker',
       'icon':faUser
     },
     'usuario':{
-      'color':'#f22150',
+      'color':'caribean-current',
       'text':'usuario',
       'icon':faAddressCard
     }
   }
   return (
-    <div className={`w-full flex flex-row items-center gap-2 justify-start max-w-sm bg-white rounded-lg px-2 py-2 text-center border-gray-400 border-2`}>
+    <div className={`w-full flex flex-row items-center gap-2 justify-start max-w-sm bg-white rounded-lg px-2 py-2 text-center border-r-8 shadow-sm border-${typeCard[type].color}`}>
       <FontAwesomeIcon 
           icon={typeCard[type].icon} 
           size="xl"

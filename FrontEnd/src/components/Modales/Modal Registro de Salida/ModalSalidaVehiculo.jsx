@@ -44,13 +44,13 @@ function ModalSalidaVehiculo({isOpen}){
                         <button
                             onClick={isOpen}
                             type="submit"
-                            className='w-full text-black text-lg tracking-wide font-semibold rounded-md  bg-green-400 border border-green-600'
+                            className='w-full text-black text-lg tracking-wide font-semibold rounded-md  bg-white border-2 border-gray-400'
                         >
                             Cancelar
                         </button>
                         <button
                             onClick={()=>setNext(true)}
-                            className='w-full text-black text-lg tracking-wide font-semibold rounded-md  bg-green-400 border border-green-600'
+                            className='w-full text-black text-lg tracking-wide font-semibold rounded-md  bg-white border-2 border-amber-500'
                         >
                             Registrar salida
                         </button>
