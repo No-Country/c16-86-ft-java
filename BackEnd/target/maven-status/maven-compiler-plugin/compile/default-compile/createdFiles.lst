@@ -1,0 +1,14 @@
+com\estacsis\EstacsisApplication.class
+com\estacsis\Entitie\ParkerEntitie.class
+com\estacsis\Service\TicketService.class
+com\estacsis\Entitie\ClientEntitie.class
+com\estacsis\Repository\ParkerRepository.class
+com\estacsis\Controller\ParkerController.class
+com\estacsis\Entitie\ParkingEntitie.class
+com\estacsis\Entitie\TicketEntitie.class
+com\estacsis\Repository\ClientRepository.class
+com\estacsis\Controller\ClientController.class
+com\estacsis\Service\ClientService.class
+com\estacsis\Service\ParkerService.class
+com\estacsis\Controller\TicketController.class
+com\estacsis\Repository\TicketRepository.class
