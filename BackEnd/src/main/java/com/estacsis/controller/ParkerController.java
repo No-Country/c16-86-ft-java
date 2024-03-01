@@ -1,7 +1,7 @@
-package com.estacsis.Controller;
+package com.estacsis.controller;
 
-import com.estacsis.Entitie.ParkerEntitie;
-import com.estacsis.Service.ParkerService;
+import com.estacsis.entitie.ParkerEntitie;
+import com.estacsis.service.ParkerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

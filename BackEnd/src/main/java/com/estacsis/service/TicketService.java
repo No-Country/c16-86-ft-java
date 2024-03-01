@@ -1,7 +1,7 @@
-package com.estacsis.Service;
+package com.estacsis.service;
 
-import com.estacsis.Entitie.TicketEntitie;
-import com.estacsis.Repository.TicketRepository;
+import com.estacsis.entitie.TicketEntitie;
+import com.estacsis.repository.TicketRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

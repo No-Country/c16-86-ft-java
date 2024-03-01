@@ -1,7 +1,7 @@
-package com.estacsis.Controller;
+package com.estacsis.controller;
 
-import com.estacsis.Entitie.ClientEntitie;
-import com.estacsis.Service.ClientService;
+import com.estacsis.entitie.ClientEntitie;
+import com.estacsis.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -9,15 +9,16 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-//http://localhost:3000/api/v1/agregarusuario
+
+@RequestMapping("/api/v1")
 @RestController
-@RequestMapping("/api/v1/client")
+
 public class ClientController {
 
     @Autowired
     private ClientService clientService;
 
-    @GetMapping("/welcome")
+    @GetMapping("/")
     public String welcome(){
         return "pagina principal";
     }

@@ -1,6 +1,6 @@
-package com.estacsis.Repository;
+package com.estacsis.repository;
 
-import com.estacsis.Entitie.ClientEntitie;
+import com.estacsis.entitie.ClientEntitie;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;

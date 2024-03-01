@@ -1,7 +1,7 @@
-package com.estacsis.Service;
+package com.estacsis.service;
 
-import com.estacsis.Entitie.ParkerEntitie;
-import com.estacsis.Repository.ParkerRepository;
+import com.estacsis.entitie.ParkerEntitie;
+import com.estacsis.repository.ParkerRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;

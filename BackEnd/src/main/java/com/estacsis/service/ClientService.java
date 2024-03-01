@@ -1,8 +1,8 @@
-package com.estacsis.Service;
+package com.estacsis.service;
 
 
-import com.estacsis.Entitie.ClientEntitie;
-import com.estacsis.Repository.ClientRepository;
+import com.estacsis.entitie.ClientEntitie;
+import com.estacsis.repository.ClientRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;

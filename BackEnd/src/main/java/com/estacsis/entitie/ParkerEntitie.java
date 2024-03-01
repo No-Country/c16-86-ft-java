@@ -1,4 +1,4 @@
-package com.estacsis.Entitie;
+package com.estacsis.entitie;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

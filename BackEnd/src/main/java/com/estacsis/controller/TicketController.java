@@ -1,7 +1,7 @@
-package com.estacsis.Controller;
+package com.estacsis.controller;
 
-import com.estacsis.Entitie.TicketEntitie;
-import com.estacsis.Service.TicketService;
+import com.estacsis.entitie.TicketEntitie;
+import com.estacsis.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
