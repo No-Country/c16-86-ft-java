@@ -72,24 +72,24 @@
 |[![](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white 'Github Link')](https://github.com/msgiorgini77) | [![](https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white 'LinkedIn Link')](https://www.linkedin.com/in/matias-giorgini/)
 :------- | :-------
 
-**Patricio Echeverria**
+👨‍💻**Patricio Echeverria**
 
 |[![](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white 'Github Link')](https://github.com/PatEche) | [![](https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white 'LinkedIn Link')](https://www.linkedin.com/in/patricio-luis-echeverria/)
 :------- | :-------
 
-**Mariana Cuba**
+👩‍💻**Mariana Cuba**
 
 |[![](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white 'Github Link')](https://github.com/MarianaCuba) | [![](https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white 'LinkedIn Link')](https://www.linkedin.com/in/mariana-cuba-72a901258/)
 :------- | :-------
 
-**Luciana Mazur**
+👩‍💻**Luciana Mazur**
 
 |[![](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white 'Github Link')](https://github.com/LucianaMazur) | [![](https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white 'LinkedIn Link')](https://www.linkedin.com/in/lucianamazur/)
 :------- | :-------
 
 *QA Tester*
 
-**Fer A. Ramirez**
+👨‍💻**Fer A. Ramirez**
 
 |[![](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white 'Github Link')](https://github.com/Fwer00) | [![](https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white 'LinkedIn Link')](https://www.linkedin.com/in/fer-a-ramirez/)
 :------- | :-------
