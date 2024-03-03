@@ -3,6 +3,7 @@ import {createBrowserRouter} from 'react-router-dom'
 //dashboard
 import DashboardPrincipal from '../pages/DashboardPrincipal';
 import DashboardSecundario from '../pages/DashboardSecundario';
+import LandingPage from '../pages/LandingPage'
 //pages
 import Parqueaderos from '../components/Parqueaderos/Parqueaderos';
 import Parkers from '../components/Parkers/Parkers';
@@ -12,8 +13,11 @@ import DashboardParking from '../components/Parking/DashboardParking';
 const router = createBrowserRouter([
     {
         path:'/',
-        element:<DashboardPrincipal/>,
-        index:true
+        element:<LandingPage/>
+    },
+    {
+        path:'/main',
+        element:<DashboardPrincipal/>
     },
     {
         path:'/dashboard',
