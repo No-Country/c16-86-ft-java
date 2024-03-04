@@ -8,6 +8,7 @@ com\estacsis\controller\ClientController.class
 com\estacsis\repository\ClientRepository.class
 com\estacsis\entitie\ParkingEntitie.class
 com\estacsis\entitie\TicketEntitie.class
+com\estacsis\controller\IndexController.class
 com\estacsis\controller\TicketController.class
 com\estacsis\repository\TicketRepository.class
 com\estacsis\service\ClientService.class
