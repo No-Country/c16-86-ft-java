@@ -1,6 +1,6 @@
 package com.estacsis.controller;
 
-import com.estacsis.entitie.TicketEntitie;
+import com.estacsis.entity.TicketEntity;
 import com.estacsis.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,19 +17,19 @@ public class TicketController {
 
     //Endpoint Traer todos los tickets
     @GetMapping(path = {"/all"})
-    public List<TicketEntitie> getAll() {
+    public List<TicketEntity> getAll() {
         return ticketService.getAllTickets();
     }
 
     //Endpoint traer ticket por Id
     @GetMapping(path = "/{id}")
-    public Optional<TicketEntitie> getById(@PathVariable("id") Integer id) {
+    public Optional<TicketEntity> getById(@PathVariable("id") Integer id) {
         return ticketService.getTicketById(id);
     }
 
     //Endopoint para insertar un ticket
     @PostMapping(path = "/{add}")
-    public TicketEntitie addTicket(@RequestBody TicketEntitie ticket) {
+    public TicketEntity addTicket(@RequestBody TicketEntity ticket) {
         ticketService.addTicket(ticket);
         return ticket;
     }

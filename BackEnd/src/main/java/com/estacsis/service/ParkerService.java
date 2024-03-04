@@ -1,6 +1,6 @@
 package com.estacsis.service;
 
-import com.estacsis.entitie.ParkerEntitie;
+import com.estacsis.entity.ParkerEntity;
 import com.estacsis.repository.ParkerRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +18,11 @@ public class ParkerService {
     @Autowired
     private ParkerRepository parkerRepository;
 
-    public List<ParkerEntitie> getParkers(){
+    public List<ParkerEntity> getParkers(){
         return parkerRepository.findAll();
     }
 
-    public ResponseEntity<Object> createNewParker(@Valid @RequestBody ParkerEntitie newParker){
+    public ResponseEntity<Object> createNewParker(@Valid @RequestBody ParkerEntity newParker){
         try{
             parkerRepository.save(newParker);
             return ResponseEntity.ok("new parker is create");
@@ -31,24 +31,24 @@ public class ParkerService {
         }
     }
 
-    public ParkerEntitie updateParker(Long idParker, ParkerEntitie parkerEntitie ){
-        Optional<ParkerEntitie> parker = parkerRepository.findById(idParker);
+    public ParkerEntity updateParker(Long idParker, ParkerEntity parkerEntity){
+        Optional<ParkerEntity> parker = parkerRepository.findById(idParker);
         if (parker.isPresent()){
-            ParkerEntitie parkerToUpdate = parker.get();
-            if (parkerEntitie.getName() != null){
-                parkerToUpdate.setName(parkerEntitie.getName());
+            ParkerEntity parkerToUpdate = parker.get();
+            if (parkerEntity.getName() != null){
+                parkerToUpdate.setName(parkerEntity.getName());
             }
-            if (parkerEntitie.getLastName() != null){
-                parkerToUpdate.setLastName(parkerEntitie.getLastName());
+            if (parkerEntity.getLastName() != null){
+                parkerToUpdate.setLastName(parkerEntity.getLastName());
             }
-            if (parkerEntitie.getDni() != null){
-                parkerToUpdate.setDni(parkerEntitie.getDni());
+            if (parkerEntity.getDni() != null){
+                parkerToUpdate.setDni(parkerEntity.getDni());
             }
-            if (parkerEntitie.getUserParker() != null){
-                parkerToUpdate.setUserParker(parkerEntitie.getUserParker());
+            if (parkerEntity.getUserParker() != null){
+                parkerToUpdate.setUserParker(parkerEntity.getUserParker());
             }
-            if (parkerEntitie.getPasswordParker()!=null){
-                parkerToUpdate.setPasswordParker(parkerEntitie.getPasswordParker());
+            if (parkerEntity.getPasswordParker()!=null){
+                parkerToUpdate.setPasswordParker(parkerEntity.getPasswordParker());
             }
             return parkerRepository.save(parkerToUpdate);
         }else {

@@ -1,6 +1,6 @@
 package com.estacsis.controller;
 
-import com.estacsis.entitie.ParkerEntitie;
+import com.estacsis.entity.ParkerEntity;
 import com.estacsis.service.ParkerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,23 +10,23 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/v1")
 public class ParkerController {
     @Autowired
     private ParkerService parkerService;
 
 
     @GetMapping("/parkers")
-    public List<ParkerEntitie> getListParkers(){
+    public List<ParkerEntity> getListParkers(){
         return parkerService.getParkers();
     }
     @PostMapping("/newparker")
-    public ResponseEntity createParker(@RequestBody ParkerEntitie parker ){
+    public ResponseEntity createParker(@RequestBody ParkerEntity parker ){
         return parkerService.createNewParker(parker);
     }
     @PutMapping("/updateparker/{idParker}")
-    public ResponseEntity<ParkerEntitie> updateParker(@PathVariable Long idParker, @RequestBody ParkerEntitie updateParker){
-        ParkerEntitie parker = parkerService.updateParker(idParker,updateParker);
+    public ResponseEntity<ParkerEntity> updateParker(@PathVariable Long idParker, @RequestBody ParkerEntity updateParker){
+        ParkerEntity parker = parkerService.updateParker(idParker,updateParker);
         if (parker !=null){
             return ResponseEntity.status(HttpStatus.OK).body(parker);
         }
