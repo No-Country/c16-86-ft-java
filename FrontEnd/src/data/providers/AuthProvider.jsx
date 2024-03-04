@@ -5,7 +5,11 @@ import { createContext } from "react";
 const AuthContext = createContext()
 
 function AuthProvider({children}) {
-    const [auth,setAuth]=useState('')
+    const [estacionamiento,setEstacionamiento]=useState([])
+    const [colaboradores,setColaboradores]=useState([])
+    const [registros,setRegistros]=useState([])
+
+    
 
     useEffect(()=>{
         const authUser= async ()=>{
@@ -32,7 +36,12 @@ function AuthProvider({children}) {
     return (
         <AuthContext.Provider
             value={{
-                auth
+                estacionamiento,
+                setEstacionamiento,
+                colaboradores,
+                setColaboradores,
+                registros,
+                setRegistros
             }}
         >
             {children}

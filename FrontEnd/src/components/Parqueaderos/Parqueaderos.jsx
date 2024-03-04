@@ -8,13 +8,19 @@ import BotonAgregarDashboard from "../Botones/BotonAgregarDashboard";
 import PopUp from "../PopUp/PopUp"
 import ModalParqueadero from "../Modales/Modal Crear Parqueadero/ModalParqueadero"
 
-const menu = [
-  {'text':'parqueadero la 33','id':'sdas8ad2casdd342'},
-  {'text':'parqueadero Buenos Aires','id':'sads8ad2cvcf33342'},
-  {'text':'parqueadero esquina dura','id':'adsad7339434hjkaf'},
-]
+import useAuth from "../../data/hooks/useAuth";
+import useEstacionamientos from '../../data/hooks/useEstacionamientos'
+
 
 function Parqueaderos() {
+
+  const {
+    estacionamiento
+  }=useAuth()
+
+  const {
+    crearEstacionamientos
+  }=useEstacionamientos()
 
   let location = useLocation();
 
@@ -40,13 +46,14 @@ function Parqueaderos() {
                 open={open}
               >
                 <ModalParqueadero
+                  callback={crearEstacionamientos}
                   isOpen={()=>setOpen(false)}
                 />
               </PopUp>
             </div>
             <div className="w-full grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-5 xl:grid-cols-3">
               {
-                menu?.map(item=>{
+                estacionamiento?.map(item=>{
                   return <Link to={`/dashboard/parqueaderos/${item.id}`}><TarjetaOpcion type="parqueadero" text={item.text}/></Link>
                 })
               }

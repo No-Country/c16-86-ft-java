@@ -1,51 +1,26 @@
 import { useState } from "react";
-
 import { createContext } from "react";
+
+import useAuth from '../hooks/useAuth'
 
 const EstacionamientoContext = createContext()
 
 function EstacionamientoProvider({children}) {
-    const URL_ESTACIONAMIENTOS=''
-    const [estacionamientos,setEstacionamientos]=useState('')
-
-    const obtenerEstacionamientos = async ()=>{
-
-
-        const configuracion = {
-            headers:{
-                'Content-Type':'application/json'
-            }
-        }
-
-        try {
-            const {data} = await axios(URL_ESTACIONAMIENTOS,configuracion)
-            setEstacionamientos(data)
-        }catch(error) {
-            console.log(error)
-        }
-    }
+    const {
+        estacionamiento,
+        setEstacionamiento
+    }=useAuth()
 
     const crearEstacionamientos = async ({dataEstacionamiento})=>{
+        const newData= dataEstacionamiento;
 
-
-        const configuracion = {
-            headers:{
-                'Content-Type':'application/json'
-            }
-        }
-
-        try {
-            const {data} = await axios.post(URL_ESTACIONAMIENTOS,dataEstacionamiento,configuracion)
-        }catch(error) {
-            console.log(error)
-        }
+        const newState = [newData,...estacionamiento]
+        setEstacionamiento(newState)
     }
     return (
         <EstacionamientoContext.Provider
             value={{
-                crearEstacionamientos,
-                obtenerEstacionamientos,
-                estacionamientos
+                crearEstacionamientos
             }}
         >
             {children}

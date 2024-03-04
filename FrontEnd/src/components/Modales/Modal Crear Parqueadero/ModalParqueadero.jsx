@@ -29,11 +29,6 @@ function ModalParqueadero({isOpen}){
 
     const handleSubtmit =(e)=>{
         e.preventDefault()
-        console.log({
-            nombre,
-            motos,
-            carros
-        })
     }
 
     return (
