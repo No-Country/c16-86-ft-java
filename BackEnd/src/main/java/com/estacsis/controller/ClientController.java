@@ -18,10 +18,6 @@ public class ClientController {
     @Autowired
     private ClientService clientService;
 
-    @GetMapping("/")
-    public String welcome(){
-        return "pagina principal";
-    }
 
     @GetMapping("/findbyid")
     public ResponseEntity<Optional<ClientEntitie>> createClient(@RequestParam Long idClient){
