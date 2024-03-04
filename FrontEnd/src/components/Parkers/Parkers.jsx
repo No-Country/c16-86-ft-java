@@ -1,10 +1,13 @@
-import { useState } from "react"
+import { useState, useEffect} from "react"
 
 import TarjetaOpcion from "../Tarjetas/TarjetaOpcion"
 import BotonAgregarDashboard from '../Botones/BotonAgregarDashboard'
 
 import PopUp from "../PopUp/PopUp"
 import ModalParker from "../Modales/Modal Crear Parker/ModalParker"
+
+
+import useColaboradores from '../../data/hooks/useColaboradores'
 
 const parkers = [
   {
@@ -32,6 +35,24 @@ const parkers = [
 function Parkers(){
   const [open,setOpen]=useState(false)
 
+  const {
+    crearColaborador,
+    obtenerColaboradores,
+    colaboradores
+  }=useColaboradores()
+
+    /* useEffect(()=>{
+      const obtenerColaboradores = async ()=>{
+        try {
+          const response = await obtenerColaboradores()
+          console.log(response)
+        } catch (error) {
+          console.log(error)
+        }
+      }  
+      obtenerColaboradores()
+  },[]) */
+
   return (
     <div className="flex flex-col gap-5">
         <div className="flex flex-row justify-between items-center">
@@ -43,13 +64,14 @@ function Parkers(){
             open={open}
           >
             <ModalParker
+              crearColaborador={crearColaborador}
               isOpen={()=>setOpen(false)}
             />
           </PopUp>
         </div>
       <div className="w-full grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-5 xl:grid-cols-3">
         {
-          parkers?.map(item => {
+          colaboradores?.map(item => {
             return <TarjetaOpcion key={item.id} type="parker" text={item.name}/>
           })
         }

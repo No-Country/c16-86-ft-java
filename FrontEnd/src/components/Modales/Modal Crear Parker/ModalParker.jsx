@@ -22,20 +22,32 @@ const parqueaderos = [
     }
 ]
 
-function ModalParker({isOpen}) {
-    const [nombres,setNombres]=useState()
-    const [apellidos,setApellidos]=useState()
-    const [identificacion,setIdentificacion]=useState()
-    const [parqueadero,setParqueadero]=useState()
+function ModalParker({isOpen,crearColaborador}) {
+    const [nombres,setNombres]=useState('')
+    const [apellidos,setApellidos]=useState('')
+    const [identificacion,setIdentificacion]=useState('')
+    const [parqueadero,setParqueadero]=useState('')
 
-    const handleSubtmit =(e)=>{
+    const handleSubtmit = async (e)=>{
         e.preventDefault()
-        console.log({
-            nombres,
-            apellidos,
-            identificacion,
-            parqueadero
-        })
+
+        if([nombres,apellidos,identificacion,parqueadero].includes('')){
+            console.log('llena todos los campos')
+            return
+        }
+
+        const data = {
+
+        }
+
+        try {
+            await crearColaborador(data)
+            console.log('exito creando parqueadero')
+            isOpen()
+        } catch (error) {
+            console.log('error creando parqueadero')
+            console.log(error)
+        }
     }
 
     return (
@@ -75,7 +87,7 @@ function ModalParker({isOpen}) {
                     callback={setIdentificacion}
                     placeholderInput='Identificacion'
                     label='Identificacion'
-                    typeInput='number'
+                    typeInput='text'
                 />
                 <InputTypeSelect
                     value={parqueadero}

@@ -1,3 +1,5 @@
+import axios from "axios";
+
 import { useState } from "react";
 
 import { createContext } from "react";
@@ -6,7 +8,7 @@ const ColaboradorContext = createContext()
 
 function ColaboradorProvider({children}) {
     const URL_COLABORADORES=''
-    const [colaboradores,setColaboradores]=useState('')
+    const [colaboradores,setColaboradores]=useState([])
 
     const obtenerColaboradores = async ()=>{
 
@@ -18,8 +20,8 @@ function ColaboradorProvider({children}) {
         }
 
         try {
-            const {data} = await axios(URL_COLABORADORES,configuracion)
-            setColaboradores(data)
+            const rta = await axios(URL_COLABORADORES,configuracion)
+            setColaboradores(rta)
         }catch(error) {
             console.log(error)
         }
@@ -35,8 +37,10 @@ function ColaboradorProvider({children}) {
         }
 
         try {
-            const {data} = await axios.post(URL_COLABORADORES,dataColaborador,configuracion)
+            const rta = await axios.post(URL_COLABORADORES,dataColaborador,configuracion)
+            setColaboradores([rta,...colaboradores])
         }catch(error) {
+            console.log('aqui,error')
             console.log(error)
         }
     }
