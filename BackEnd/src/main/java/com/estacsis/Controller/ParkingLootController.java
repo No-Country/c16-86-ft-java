@@ -69,8 +69,8 @@ public class ParkingLootController {
 
     @PostMapping("/create")
     public ResponseEntity<ParkingLootEntity> createParkingLoot(@RequestBody ParkingLootEntity parkingLoot) {
-        ParkingLootEntity newParkingLoot = parkingLootService.createParkingLoot(parkingLoot);
-        return new ResponseEntity<>(newParkingLoot, HttpStatus.CREATED);
+        parkingLootService.createParkingLoot(parkingLoot);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @DeleteMapping("/delete/{id}")

@@ -1,6 +1,6 @@
 package com.estacsis.Service;
 
-import com.estacsis.Entitie.TicketEntitie;
+import com.estacsis.Entitie.TicketEntity;
 import com.estacsis.Repository.TicketRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,16 +13,16 @@ public class TicketService {
     @Autowired
     TicketRepository ticketRepository;
 
-    public List<TicketEntitie> getAllTickets() {
+    public List<TicketEntity> getAllTickets() {
         return ticketRepository.findAll();
     }
 
-    public Optional<TicketEntitie> getTicketById(int id) {
+    public Optional<TicketEntity> getTicketById(int id) {
         return ticketRepository.findById(id);
 
     }
-    public void addTicket(TicketEntitie ticketEntitie) {
-        ticketRepository.save(ticketEntitie);
+    public void addTicket(TicketEntity ticketEntity) {
+        ticketRepository.save(ticketEntity);
     }
 
     public void deleteById(Integer id) {

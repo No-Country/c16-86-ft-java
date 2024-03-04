@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -16,26 +18,26 @@ public class ParkingLootEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idParkingLoot;
-    @NotBlank
+    @OneToMany(mappedBy = "Parkingloot", fetch = FetchType.EAGER)
+    private List<ParkerEntity> parker;
     @Column(length = 45)
     private String name;
-    @NotBlank
     @Column(unique = true,length = 150)
     private Integer aCapacity;
-    @NotBlank
     @Column(unique = true,length = 150)
     private Integer mCapacity;
-    @NotBlank
     @Column(length = 45)
-    private String nameParkingLot;
-    @NotBlank
+    private String nameParkingLoot;
+
+    public ParkingLootEntity(String name, Integer aCapacity, Integer mCapacity, String nameParkingLoot) {
+        this.name = name;
+        this.aCapacity = aCapacity;
+        this.mCapacity = mCapacity;
+        this.nameParkingLoot = nameParkingLoot;
+    }
 
     public Long getId() {
         return idParkingLoot;
-    }
-
-    public void setId(Long id) {
-        this.idParkingLoot = id;
     }
 
     public String getName() {
@@ -62,20 +64,12 @@ public class ParkingLootEntity {
         this.mCapacity = mCapacity;
     }
 
-    public String getNameParkingLot() {
-        return nameParkingLot;
+    public String getNameParkingLoot() {
+        return nameParkingLoot;
     }
 
-    public void setNameParkingLot(String nameParkingLot) {
-        this.nameParkingLot = nameParkingLot;
-    }
-
-    public Long getIdParkingLoot() {
-        return idParkingLoot;
-    }
-
-    public void setIdParkingLoot(Long idParkingLoot) {
-        this.idParkingLoot = idParkingLoot;
+    public void setNameParkingLoot(String nameParkingLoot) {
+        this.nameParkingLoot = nameParkingLoot;
     }
 
     @Override
@@ -85,7 +79,7 @@ public class ParkingLootEntity {
                 ", name='" + name + '\'' +
                 ", aCapacity=" + aCapacity +
                 ", mCapacity=" + mCapacity +
-                ", nameParkingLot='" + nameParkingLot + '\'' +
+                ", nameParkingLoot='" + nameParkingLoot + '\'' +
                 '}';
     }
 }

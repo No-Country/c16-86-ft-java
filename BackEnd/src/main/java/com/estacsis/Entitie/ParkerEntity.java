@@ -1,9 +1,6 @@
 package com.estacsis.Entitie;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class ParkerEntity {
@@ -16,6 +13,10 @@ public class ParkerEntity {
     private String dni;
     private String userParker;
     private String passwordParker;
+
+    @ManyToOne
+    @JoinColumn(name="idParkingLoot")
+    private ParkingLootEntity Parkingloot;
 
     public ParkerEntity(){}
 
