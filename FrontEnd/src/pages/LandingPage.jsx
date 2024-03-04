@@ -1,9 +1,13 @@
 import Navegador from '../components/Dashboard/Navegador'
+import Intro from '../components/Landing Page/Intro'
 
 function LandingPage() {
   return (
     <div>
-      <Navegador/>
+      <div className='w-full py-3 px-8'>
+        <Navegador/>
+      </div>
+      <Intro/>
     </div>
   )
 }
