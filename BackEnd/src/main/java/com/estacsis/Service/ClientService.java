@@ -1,7 +1,7 @@
 package com.estacsis.Service;
 
 
-import com.estacsis.Entitie.ClientEntitie;
+import com.estacsis.Entitie.ClientEntity;
 import com.estacsis.Repository.ClientRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,9 +23,9 @@ public class ClientService {
     /**
      * metodo para retornar busqueda por  "id" proporcionado en la request
      */
-    public ResponseEntity<Optional<ClientEntitie>> findById(Long idClient) {
+    public ResponseEntity<Optional<ClientEntity>> findById(Long idClient) {
 
-        Optional<ClientEntitie> client = clientRepository.findById(idClient);
+        Optional<ClientEntity> client = clientRepository.findById(idClient);
 
         //si no han proporciado id en la request
         if (idClient == null) {
@@ -46,9 +46,9 @@ public class ClientService {
      * metodo para retornar busqueda por  "id" proporcionado en la request
      */
 
-    public ResponseEntity<Optional<ClientEntitie>> findByDni(String dni) {
+    public ResponseEntity<Optional<ClientEntity>> findByDni(String dni) {
 
-        Optional<ClientEntitie> client = clientRepository.findByDni(dni);
+        Optional<ClientEntity> client = clientRepository.findByDni(dni);
 
         //si no han proporciado dni en la request
         if (dni == null) {
@@ -65,7 +65,7 @@ public class ClientService {
 
     }
 
-    public ResponseEntity createNewClient(@Valid @RequestBody ClientEntitie client) {
+    public ResponseEntity createNewClient(@Valid @RequestBody ClientEntity client) {
 
             try {
                 clientRepository.save(client);
@@ -82,7 +82,7 @@ public class ClientService {
 
 
 
-    public ResponseEntity<List<ClientEntitie>> listOfClient() {
+    public ResponseEntity<List<ClientEntity>> listOfClient() {
         return new ResponseEntity<>(clientRepository.findAll(),HttpStatus.OK);
     }
 }

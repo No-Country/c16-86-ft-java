@@ -6,7 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class ParkerEntitie {
+public class ParkerEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,9 +17,9 @@ public class ParkerEntitie {
     private String userParker;
     private String passwordParker;
 
-    public ParkerEntitie(){}
+    public ParkerEntity(){}
 
-    public ParkerEntitie(String name, String lastName, String dni, String userParker, String passwordParker){
+    public ParkerEntity(String name, String lastName, String dni, String userParker, String passwordParker){
 
         this.name = name;
         this.lastName = lastName;

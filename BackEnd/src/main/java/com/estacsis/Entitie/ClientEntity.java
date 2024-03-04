@@ -7,7 +7,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Date;
 import java.time.LocalDate;
 
 
@@ -16,7 +15,7 @@ import java.time.LocalDate;
 @Data
 @Entity
 @Table(name = "client")
-public class ClientEntitie {
+public class ClientEntity {
 //asd
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,7 +39,7 @@ public class ClientEntitie {
 
 
 
-    public ClientEntitie(String dni, String firstname, String secondname, String phone, LocalDate date) {
+    public ClientEntity(String dni, String firstname, String secondname, String phone, LocalDate date) {
         this.dni = dni;
         this.firstname = firstname;
         this.secondname = secondname;

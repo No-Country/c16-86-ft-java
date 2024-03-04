@@ -19,7 +19,7 @@ public class TicketEntitie {
 
     @ManyToOne
     @JoinColumn(name = "clientId")
-    private ClientEntitie clientEntitie;
+    private ClientEntity clientEntity;
     @Column(name = "carLicense", unique = true, nullable = false)
     private String carLicense;
     private LocalDate entryDate = LocalDate.from(LocalDateTime.now());

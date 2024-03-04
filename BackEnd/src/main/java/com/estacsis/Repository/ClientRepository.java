@@ -1,6 +1,6 @@
 package com.estacsis.Repository;
 
-import com.estacsis.Entitie.ClientEntitie;
+import com.estacsis.Entitie.ClientEntity;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -10,10 +10,10 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface ClientRepository extends JpaRepository<ClientEntitie,Long> {
+public interface ClientRepository extends JpaRepository<ClientEntity,Long> {
 
     @Query("SELECT c FROM ClientEntitie c WHERE c.dni = :dni")
-public Optional<ClientEntitie> findByDni(String dni);
+public Optional<ClientEntity> findByDni(String dni);
 
 
 
