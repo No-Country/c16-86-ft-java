@@ -48,7 +48,8 @@ function EstacionamientoProvider({children}) {
         <EstacionamientoContext.Provider
             value={{
                 estacionamiento,
-                crearEstacionamientos
+                crearEstacionamientos,
+                setEstacionamiento
             }}
         >
             {children}

@@ -18,7 +18,7 @@ function CardAuto({
 
     const [identificador,setIdentificador]=useState(id)
     const [open,setOpen]=useState(false)
-    const disponible = ESTADO !== undefined ? ESTADO : true;
+    const [disponible]=useState(ESTADO !== undefined ? ESTADO : true)
 
     return (
         <>
@@ -40,9 +40,11 @@ function CardAuto({
                 {
                     disponible === true ?
                     <ModalRegistroVehiculo
-                      isOpen={()=>setOpen(false)}
+                        idParking={identificador}
+                        isOpen={()=>setOpen(false)}
                     />:
                     <ModalSalidaVehiculo
+                        id={identificador}
                         isOpen={()=>setOpen(false)}
                     />
                 }

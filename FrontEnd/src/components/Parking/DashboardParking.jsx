@@ -17,9 +17,10 @@ function DashboardParking() {
 
   
   const [pathName,setPathName]=useState(location.pathname.split('/')[3])
+
   const [carros,setCarros]=useState({})
   const [motos,setMotos]=useState({})
-  const [parking,setParking]=useState()
+  const [parking,setParking]=useState({})
   
   const [car,setCar]=useState(false)
   const [moto,setMoto]=useState(false)
@@ -41,10 +42,8 @@ function DashboardParking() {
       setCarros(parkingLot.parkingCarros)
       setMotos(parkingLot.parkingMotos)
       setParking(parkingLot)
-    }else{
-      return
     }
-  },[])
+  },[estacionamiento])
 
   useEffect(()=>{
     if(Object.keys(carros).length !== 0){

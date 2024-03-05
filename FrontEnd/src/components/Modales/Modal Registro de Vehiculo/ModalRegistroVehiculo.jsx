@@ -1,35 +1,72 @@
-import { useState } from "react"
+import {useLocation} from "react-router-dom";
+import { useEffect, useState } from "react";
+
+import useEstacionamientos from "../../../data/hooks/useEstacionamientos";
 
 // font awesome
 import { faX } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 import InputType from "../InputType"
-import InputTypeSelect from "../InputTypeSelect"
 
-const parqueaderos = [
-    {
-        value:'423423423423d',
-        text:'Parqueadero la 33'
-    },
-    {
-        value:'42sdad3423d',
-        text:'Parqueadero Suramericana'
-    },
-    {
-        value:'42sda423d',
-        text:'Parqueadero Buenos Aires'
-    }
-]
+function ModalRegistroVehiculo({
+    isOpen,
+    idParking
+}){
+    let location = useLocation();
 
-function ModalRegistroVehiculo({isOpen}){
+    const {
+        estacionamiento,
+        setEstacionamiento
+    }=useEstacionamientos()
+
+    const [pathName,setPathName]=useState(location.pathname.split('/')[3])
+
     const [nombres,setNombres]=useState()
     const [apellidos,setApellidos]=useState()
     const [identificacion,setIdentificacion]=useState()
     const [placa,setPlaca]=useState()
 
+    useEffect(()=>{
+        const ruta = location.pathname.split('/')[3]
+        setPathName(ruta)
+    },[])
+
+    const generandoTicket =(e)=>{
+        e.preventDefault()
+
+        const parkingLot = estacionamiento.find( item => {
+            if(item.id === pathName){
+              return item
+            }
+        })
+
+        const changeEstateParking = parkingLot?.parkingCarros?.map( item => {
+            if(item.nomenclatura === idParking){
+                item.disponible = false
+                return item
+            }else{
+                return item
+            }
+        })
+
+        parkingLot.parkingCarros = changeEstateParking
+
+        const newParking = estacionamiento.map(item =>{
+            if(item.id === pathName){
+                item = parkingLot
+                return item
+            }else{
+                item
+            }
+        })
+
+        setEstacionamiento(newParking)
+    }
+
     return (
         <form
+            onSubmit={generandoTicket}
             className="max-w-2xl bg-white flex flex-col gap-5 border shadow md:px-10 px-5 md:py-10 py-5 rounded-md sm:mx-auto mx-2 mt-5"
         >
             <div className="flex flex-row justify-between">
