@@ -9,35 +9,42 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
 
+
+
+
+
 @SpringBootApplication
 
-/*
-@Configuration
-public class CorsConfig {
 
-	@Bean
-	public CorsFilter corsFilter() {
-		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-		CorsConfiguration config = new CorsConfiguration();
 
-		// Permitir solicitudes desde cualquier origen
-		config.addAllowedOrigin("*");
 
-		// Permitir solicitudes con los métodos GET, POST, PUT, DELETE, etc.
-		config.addAllowedMethod("*");
+	public class EstacsisApplication {
 
-		// Permitir incluir encabezados específicos en la solicitud
-		config.addAllowedHeader("*");
+	@Configuration
+	public class CorsConfig {
 
-		source.registerCorsConfiguration("/**", config);
-		return new CorsFilter();
-	}*/
-public class EstacsisApplication {
+		@Bean
+		public CorsFilter corsFilter() {
+			UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+			CorsConfiguration config = new CorsConfiguration();
 
-	public static void main(String[] args) {
+			// Permitir solicitudes desde cualquier origen
+			config.addAllowedOrigin("*");
 
-		SpringApplication.run(EstacsisApplication.class, args);
+			// Permitir solicitudes con los métodos GET, POST, PUT, DELETE, etc.
+			config.addAllowedMethod("*");
+
+			// Permitir incluir encabezados específicos en la solicitud
+			config.addAllowedHeader("*");
+
+			source.registerCorsConfiguration("/**", config);
+			return new CorsFilter();
+		}
+		public static void main(String[] args) {
+
+			SpringApplication.run(EstacsisApplication.class, args);
+
+		}
 
 	}
-
 }

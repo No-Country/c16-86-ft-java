@@ -2,6 +2,7 @@ com\estacsis\service\ParkingLootService.class
 com\estacsis\entity\ParkingLootEntity.class
 com\estacsis\EstacsisApplication.class
 com\estacsis\controller\ParkingLootController.class
+com\estacsis\EstacsisApplication$CorsConfig.class
 com\estacsis\entity\ParkingEntity.class
 com\estacsis\entity\TicketEntity.class
 com\estacsis\service\TicketService.class
