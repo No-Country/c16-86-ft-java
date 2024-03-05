@@ -17,8 +17,8 @@ public class TicketEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @ManyToOne
-    @JoinColumn(name = "clientId")
+    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JoinColumn(name = "idClient")
     private ClientEntity clientEntity;
     @Column(name = "carLicense", unique = true, nullable = false)
     private String carLicense;
