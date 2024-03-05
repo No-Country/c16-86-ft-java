@@ -41,7 +41,7 @@ public class TicketController {
 
     }
 
-    
+
     @PutMapping(path = "/{id}")
     public void updateTicket(
             @PathVariable("id") Long idTicket,

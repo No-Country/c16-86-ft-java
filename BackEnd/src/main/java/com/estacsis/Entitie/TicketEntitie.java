@@ -22,7 +22,8 @@ public class TicketEntitie {
     private ClientEntitie clientEntitie;
     @Column(name = "carLicense", unique = true, nullable = false)
     private String carLicense;
-    private LocalDate entryDate = LocalDate.from(LocalDateTime.now());
+    private LocalDate entryDate = LocalDate.now();
+
     private String vehicleType;
     private double amount;
     private String timeConsumed;
