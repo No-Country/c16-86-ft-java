@@ -4,6 +4,8 @@ import Servicios from '../components/Landing Page/NuestrosServicios'
 import ContactUs from '../components/Landing Page/ContactUs'
 
 import imagenBack from '../../public/pexels-pixabay-63294.jpg'
+import Rating from '../components/Landing Page/Rating'
+import Review from '../components/Landing Page/Review'
 
 function LandingPage() {
   return (
@@ -18,6 +20,7 @@ function LandingPage() {
       <Intro/>
     </div>
     <Servicios/>
+    <Review/>
     <ContactUs/>
   </div>
   )
