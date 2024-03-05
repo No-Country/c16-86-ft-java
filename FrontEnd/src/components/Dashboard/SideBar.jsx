@@ -10,9 +10,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 
 const menu = [
-    {'text':'parqueaderos','link':'/dashboard/parqueaderos','type':'parqueadero'},
-    {'text':'parkers','link':'/dashboard/parkers','type':'parker'},
-    {'text':'clientes','link':'/dashboard/usuarios','type':'usuario'},
+    {'text':'parqueaderos','link':'/dashboard/parqueaderos','type':'parqueadero','id':'asdasd324b32n4ad'},
+    {'text':'parkers','link':'/dashboard/parkers','type':'parker','id':'asdasd3adadadasd24b32n4ad'},
+    {'text':'clientes','link':'/dashboard/usuarios','type':'usuario','id':'asda88888sd3adadadasd24b32n4ad'},
 ]
 
 function SideBar() {
@@ -38,7 +38,7 @@ function SideBar() {
 
             {
                 menu?.map( item => {
-                    return <Link to={item.link}><TarjetaMenu type={item.type} text={item.text}/></Link> 
+                    return <Link key={item.id} to={item.link}><TarjetaMenu key={item.id} type={item.type} text={item.text}/></Link> 
                 })
             }
 

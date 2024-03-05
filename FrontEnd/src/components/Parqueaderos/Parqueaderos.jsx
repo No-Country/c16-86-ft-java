@@ -8,18 +8,13 @@ import BotonAgregarDashboard from "../Botones/BotonAgregarDashboard";
 import PopUp from "../PopUp/PopUp"
 import ModalParqueadero from "../Modales/Modal Crear Parqueadero/ModalParqueadero"
 
-import useAuth from "../../data/hooks/useAuth";
+
 import useEstacionamientos from '../../data/hooks/useEstacionamientos'
 
 
 function Parqueaderos() {
-
   const {
     estacionamiento
-  }=useAuth()
-
-  const {
-    crearEstacionamientos
   }=useEstacionamientos()
 
   let location = useLocation();
@@ -31,6 +26,9 @@ function Parqueaderos() {
       setPath(location.pathname)
   },[location.pathname])
 
+  useEffect(()=>{
+    console.log(estacionamiento)
+  },[estacionamiento])
   return (
     <div>
       {
@@ -46,15 +44,14 @@ function Parqueaderos() {
                 open={open}
               >
                 <ModalParqueadero
-                  callback={crearEstacionamientos}
                   isOpen={()=>setOpen(false)}
                 />
               </PopUp>
             </div>
             <div className="w-full grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-5 xl:grid-cols-3">
               {
-                estacionamiento?.map(item=>{
-                  return <Link to={`/dashboard/parqueaderos/${item.id}`}><TarjetaOpcion type="parqueadero" text={item.text}/></Link>
+                estacionamiento?.map(item =>{
+                  return <Link key={item.id} to={`/dashboard/parqueaderos/${item.id}`}><TarjetaOpcion key={item.id} type="parqueadero" text={item.text} data={item}/></Link>
                 })
               }
             </div>

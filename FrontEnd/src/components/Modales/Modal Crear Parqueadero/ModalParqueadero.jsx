@@ -5,30 +5,43 @@ import { faX } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 import InputType from "../InputType"
-import InputTypeSelect from "../InputTypeSelect"
+import generateUUID from '../../../helpers/generaID'
 
-const parqueaderos = [
-    {
-        value:'423423423423d',
-        text:'Parqueadero la 33'
-    },
-    {
-        value:'42sdad3423d',
-        text:'Parqueadero Suramericana'
-    },
-    {
-        value:'42sda423d',
-        text:'Parqueadero Buenos Aires'
-    }
-]
+
+import useEstacionamientos from "../../../data/hooks/useEstacionamientos"
 
 function ModalParqueadero({isOpen}){
-    const [nombre,setNombre]=useState()
-    const [motos,setMotos]=useState()
-    const [carros,setCarros]=useState()
 
-    const handleSubtmit =(e)=>{
+    const {
+        crearEstacionamientos
+    }=useEstacionamientos()
+
+    const [nombre,setNombre]=useState('')
+    const [motos,setMotos]=useState('')
+    const [carros,setCarros]=useState('')
+    const [tarifaMotos,setTarifaMotos]=useState('')
+    const [tarifaCarros,setTarifaCarros]=useState('')
+
+
+
+    const handleSubtmit =(e) => {
         e.preventDefault()
+        
+        if([nombre,carros,motos,tarifaMotos,tarifaCarros].includes('',0)){
+            return
+        }
+
+        const data = {
+            id:generateUUID(),
+            nombre:nombre,
+            carros:parseFloat(carros),
+            tarifaCarros:parseFloat(tarifaCarros),
+            motos:parseFloat(motos),
+            tarifaMotos:parseFloat(tarifaMotos),
+        }
+        
+        crearEstacionamientos(data)
+        isOpen()
     }
 
     return (
@@ -41,7 +54,7 @@ function ModalParqueadero({isOpen}){
                 <button 
                     onClick={isOpen}
                 >
-                            <FontAwesomeIcon icon={faX} size="xl"/>
+                    <FontAwesomeIcon icon={faX} size="xl"/>
                 </button>
             </div>
 
@@ -57,17 +70,34 @@ function ModalParqueadero({isOpen}){
 
             <div className="w-full flex flex-col sm:flex-row sm:gap-4">
                 <InputType
-                    value={motos}
-                    callback={setMotos}
+                    value={carros}
+                    callback={setCarros}
                     placeholderInput='numero de autos'
                     label='Capacidad autos'
                     typeInput='number'
                 />
                 <InputType
-                    value={carros}
-                    callback={setCarros}
+                    value={tarifaCarros}
+                    callback={setTarifaCarros}
+                    placeholderInput='tarifa/hora'
+                    label='tarifa carros'
+                    typeInput='number'
+                />
+            </div>
+
+            <div className="w-full flex flex-col sm:flex-row sm:gap-4">
+                <InputType
+                    value={motos}
+                    callback={setMotos}
                     placeholderInput='numero de motos'
                     label='Capacidad motos'
+                    typeInput='number'
+                />
+                <InputType
+                    value={tarifaMotos}
+                    callback={setTarifaMotos}
+                    placeholderInput='tarifa/hora'
+                    label='tarifa motos'
                     typeInput='number'
                 />
             </div>

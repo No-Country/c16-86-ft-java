@@ -9,9 +9,9 @@ import TarjetaMenu from '../Tarjetas/TarjetaMenu'
 import { Link,useNavigate } from "react-router-dom"
 
 const menu = [
-  {'text':'parqueaderos','link':'/dashboard/parqueaderos','type':'parqueadero'},
-  {'text':'parkers','link':'/dashboard/parkers','type':'parker'},
-  {'text':'clientes','link':'/dashboard/usuarios','type':'usuario'},
+  {'text':'parqueaderos','link':'/dashboard/parqueaderos','type':'parqueadero','id':'asdasd324b32n4ad'},
+  {'text':'parkers','link':'/dashboard/parkers','type':'parker','id':'asdasd3adadadasd24b32n4ad'},
+  {'text':'clientes','link':'/dashboard/usuarios','type':'usuario','id':'asda88888sd3adadadasd24b32n4ad'},
 ]
 
 function NavBar() {
@@ -47,7 +47,7 @@ function NavBar() {
       >
         {
           menu?.map( item => {
-            return <Link to={item.link} onClick={()=>setOpen(false)}><TarjetaMenu type={item.type} text={item.text}/></Link> 
+            return <Link key={item.id} to={item.link} onClick={()=>setOpen(false)}><TarjetaMenu key={item.id} type={item.type} text={item.text}/></Link> 
           })
         }
       </PopUpMenuHamburguesa>

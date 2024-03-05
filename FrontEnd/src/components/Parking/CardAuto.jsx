@@ -8,7 +8,15 @@ import ModalRegistroVehiculo from "../Modales/Modal Registro de Vehiculo/ModalRe
 import ModalSalidaVehiculo from "../Modales/Modal Registro de Salida/ModalSalidaVehiculo";
 import PopUp from "../PopUp/PopUp";
 
-function CardAuto({estado}) {
+function CardAuto({
+    estado,
+    nomenclatura,
+    id
+}) {
+    console.log(typeof(estado))
+    console.log(typeof(nomenclatura))
+
+    const [identificador,setIdentificador]=useState(id)
     const [open,setOpen]=useState(false)
     const disponible = estado !== undefined ? estado : true;
 
@@ -23,7 +31,7 @@ function CardAuto({estado}) {
                 </div>
                 <div className="w-full flex flex-row justify-between">
                     <p className="font-semibold self-end">Auto</p>
-                    <p className="font-semibold self-end">AZ-2</p>
+                    <p className="font-semibold self-end">{nomenclatura}</p>
                 </div>
             </div>
             <PopUp
