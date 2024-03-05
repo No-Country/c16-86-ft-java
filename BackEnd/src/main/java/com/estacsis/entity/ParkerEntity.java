@@ -3,6 +3,7 @@ package com.estacsis.entity;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "parker")
 public class ParkerEntity {
 
     @Id
@@ -15,7 +16,7 @@ public class ParkerEntity {
     private String passwordParker;
 
     @ManyToOne
-    @JoinColumn(name = "parkingLoot_id")
+    @JoinColumn(name = "idParkingLoot")
     private ParkingLootEntity parkingLoot;
 
     public ParkerEntity(){}

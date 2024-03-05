@@ -26,9 +26,4 @@ public class TicketEntity {
     private String vehicleType;
     private double amount;
     private String timeConsumed;
-
-
-
-
-
 }
