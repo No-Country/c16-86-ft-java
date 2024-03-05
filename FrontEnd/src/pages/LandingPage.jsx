@@ -1,10 +1,12 @@
 import Navegador from '../components/Dashboard/Navegador'
 import Intro from '../components/Landing Page/Intro'
+import Servicios from '../components/Landing Page/NuestrosServicios'
 
 import imagenBack from '../../public/pexels-pixabay-63294.jpg'
 
 function LandingPage() {
   return (
+  <div>   
     <div
       style={{
         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.7)),url(${imagenBack})`
@@ -14,6 +16,8 @@ function LandingPage() {
       <Navegador/>
       <Intro/>
     </div>
+    <Servicios/>
+  </div>
   )
 }
 
