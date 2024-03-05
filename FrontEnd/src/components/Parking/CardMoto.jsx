@@ -8,9 +8,18 @@ import ModalRegistroVehiculo from "../Modales/Modal Registro de Vehiculo/ModalRe
 import ModalSalidaVehiculo from "../Modales/Modal Registro de Salida/ModalSalidaVehiculo";
 import PopUp from "../PopUp/PopUp";
 
-function CardMoto({estado}) {
+function CardMoto({
+    estado,
+    nomenclatura,
+    id
+}){
+    const ESTADO = JSON.parse(estado)
+    const NOMENCLATURA = JSON.parse(nomenclatura)
+
+    const [identificador,setIdentificador]=useState(id)
     const [open,setOpen]=useState(false)
-    const disponible = estado !== undefined ? estado : true;
+
+    const disponible = ESTADO !== undefined ? ESTADO : true;
     
     return (
         <>
@@ -23,7 +32,7 @@ function CardMoto({estado}) {
                 </div>
                 <div className="w-full flex flex-row justify-between">
                     <p className="font-semibold self-end">Moto</p>
-                    <p className="font-semibold self-end">MZ-2</p>
+                    <p className="font-semibold self-end">{NOMENCLATURA}</p>
                 </div>
             </div>
             <PopUp

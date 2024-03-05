@@ -13,12 +13,12 @@ function CardAuto({
     nomenclatura,
     id
 }) {
-    console.log(typeof(estado))
-    console.log(typeof(nomenclatura))
+    const ESTADO = JSON.parse(estado)
+    const NOMENCLATURA = JSON.parse(nomenclatura)
 
     const [identificador,setIdentificador]=useState(id)
     const [open,setOpen]=useState(false)
-    const disponible = estado !== undefined ? estado : true;
+    const disponible = ESTADO !== undefined ? ESTADO : true;
 
     return (
         <>
@@ -31,7 +31,7 @@ function CardAuto({
                 </div>
                 <div className="w-full flex flex-row justify-between">
                     <p className="font-semibold self-end">Auto</p>
-                    <p className="font-semibold self-end">{nomenclatura}</p>
+                    <p className="font-semibold self-end">{NOMENCLATURA}</p>
                 </div>
             </div>
             <PopUp
