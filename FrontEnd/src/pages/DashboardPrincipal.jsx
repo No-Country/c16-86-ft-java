@@ -35,7 +35,7 @@ function DashboardPrincipal(){
             }} 
             className="w-full flex flex-col bg-no-repeat bg-cover bg-fixed"
         >
-            <div className="w-full shadow-lg cursor-pointer px-10 py-2">
+            <div className="w-full px-10 py-2">
                 <Navegador/>
             </div>
 

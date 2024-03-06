@@ -18,7 +18,11 @@ function DashboardSecundario() {
             </div>
 
             <div className="w-full overflow-scroll h-full sm:w-8/12 xl:w-9/12 bg-gray-200 rounded-lg shadow-2xl px-5 py-5 border-2 border-gray-300">
-                <Navegador/>
+                <div className="hidden sm:block">
+                    <Navegador
+                        type='dashboard'
+                    />
+                </div>
                 <Outlet/>
             </div>
             
