@@ -29,18 +29,18 @@ function DashboardPrincipal(){
     },[])
 
     return (
-        <div 
-            className="w-full flex flex-col"
+        <div
+            style={{
+                backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url(${imagen})`
+            }} 
+            className="w-full flex flex-col bg-no-repeat bg-cover bg-fixed"
         >
-            <div className="w-full bg-slate-50 border shadow-lg cursor-pointer px-10 py-2">
+            <div className="w-full shadow-lg cursor-pointer px-10 py-2">
                 <Navegador/>
             </div>
 
-            <div 
-                style={{
-                    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url(${imagen})`
-                }}
-                className="w-full bg-black h-screen xl:px-40 px-5 pt-8 xl:pt-20 bg-no-repeat bg-cover bg-fixed" 
+            <div
+                className="w-full h-screen xl:px-40 px-5 pt-8 xl:pt-20" 
             >
 
                 <div className="flex flex-col gap-5 sm:gap-10">
