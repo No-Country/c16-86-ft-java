@@ -56,18 +56,7 @@ function SideBar() {
                     <p>salir</p>
                     <FontAwesomeIcon icon={faRightToBracket} size="lg" />
                 </button>
-<<<<<<< HEAD
-            </div>
-
-            {
-                menu?.map( item => {
-                    return <Link key={item.id} to={item.link}><TarjetaMenu key={item.id} type={item.type} text={item.text}/></Link> 
-                })
-            }
-
-=======
             </Link>
->>>>>>> landing-page
         </div>
     )
 }
