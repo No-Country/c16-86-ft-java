@@ -9,11 +9,16 @@ import Parqueaderos from '../components/Parqueaderos/Parqueaderos';
 import Parkers from '../components/Parkers/Parkers';
 import Usuarios from '../components/Usuarios/Usuarios'
 import DashboardParking from '../components/Parking/DashboardParking';
+import Login from '../components/Auth/login';
 
 const router = createBrowserRouter([
     {
         path:'/',
         element:<LandingPage/>
+    },
+    {
+        path:'/login',
+        element:<Login/>
     },
     {
         path:'/main',
