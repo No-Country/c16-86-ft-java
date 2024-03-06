@@ -4,6 +4,7 @@ import {createBrowserRouter} from 'react-router-dom'
 import DashboardPrincipal from '../pages/DashboardPrincipal';
 import DashboardSecundario from '../pages/DashboardSecundario';
 import LandingPage from '../pages/LandingPage'
+import DashboardParker from '../pages/DashboardParker'
 //pages
 import Parqueaderos from '../components/Parqueaderos/Parqueaderos';
 import Parkers from '../components/Parkers/Parkers';
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
                 index:true
             }
         ]
+    },
+    {
+        path:'/dashboard-parker/:idParker',
+        element:<DashboardParker/>,
     }
 ])
 

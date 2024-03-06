@@ -39,7 +39,7 @@ function SideBar() {
                 <div className="flex flex-col gap-5">
                     {
                         menu?.map( item => {
-                            return <Link to={item.link}><TarjetaMenu type={item.type} text={item.text}/></Link> 
+                            return <Link key={item.id} to={item.link}><TarjetaMenu key={item.id}  type={item.type} text={item.text}/></Link> 
                         })
                     }
                 </div>

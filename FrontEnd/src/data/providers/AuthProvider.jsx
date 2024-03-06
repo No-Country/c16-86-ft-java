@@ -5,13 +5,14 @@ import { createContext } from "react";
 const AuthContext = createContext()
 
 function AuthProvider({children}) {
-    const [auth,setAuth]=useState('')
+    
+    const [auth,setAuth]=useState({
+        type:'parker',
+        id :'das3-ada34-dasd3'
+    })
 
-    useEffect(()=>{
+/*     useEffect(()=>{
         const authUser= async ()=>{
-            const URL_verificar_tipo_usuario=''
-
-
             const configuracion = {
                 headers:{
                     'Content-Type':'application/json'
@@ -26,7 +27,7 @@ function AuthProvider({children}) {
             }
         }
         authUser()
-    },[])
+    },[]) */
 
     
     return (

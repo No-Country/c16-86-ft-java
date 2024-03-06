@@ -19,8 +19,8 @@ function EstacionamientoProvider({children}) {
         }
 
         try {
-            const rta = await axios(URL_ESTACIONAMIENTOS,configuracion)
-            setEstacionamientos(rta)
+            const rta = await axios('https://c16-86-ft-java.onrender.com/api/v1/listofclient',configuracion)
+            console.log(rta)
         }catch(error) {
             console.log('aqui,error')
             console.log(error)

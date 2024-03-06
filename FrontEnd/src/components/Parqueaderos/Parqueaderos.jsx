@@ -33,7 +33,7 @@ function Parqueaderos() {
       setPath(location.pathname)
   },[location.pathname])
 
-  /* useEffect(()=>{
+/*   useEffect(()=>{
     const obtenerParqueaderos = async ()=>{
       try {
         const response = await obtenerEstacionamientos()
