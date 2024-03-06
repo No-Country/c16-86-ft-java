@@ -13,12 +13,12 @@ function CardAuto({
     nomenclatura,
     id
 }) {
-    const ESTADO = JSON.parse(estado)
-    const NOMENCLATURA = JSON.parse(nomenclatura)
+    const ESTADO = estado
 
-    const [identificador,setIdentificador]=useState(id)
+    const [identificador]=useState(id)
+    const [patente,setPatente]=useState(nomenclatura)
+    const [disponible,setDisponible]=useState(ESTADO !== undefined ? ESTADO : true)
     const [open,setOpen]=useState(false)
-    const [disponible]=useState(ESTADO !== undefined ? ESTADO : true)
 
     return (
         <>
@@ -31,7 +31,7 @@ function CardAuto({
                 </div>
                 <div className="w-full flex flex-row justify-between">
                     <p className="font-semibold self-end">Auto</p>
-                    <p className="font-semibold self-end">{NOMENCLATURA}</p>
+                    <p className="font-semibold self-end">{patente}</p>
                 </div>
             </div>
             <PopUp

@@ -19,22 +19,24 @@ function EstacionamientoProvider({children}) {
             tarifaMotos:parseFloat(tarifaMotos),
         } */
 
-        const parkingCarros = {}
+        const parkingCarros = []
         for (let i = 1; i < newData.carros+1; i++) {
             const nomenclatura = `${i}A`
-            parkingCarros[nomenclatura]={
+            const parking ={
                 'nomenclatura':nomenclatura,
                 'disponible':true
             }
+            parkingCarros.push(parking)
         }
 
-        const parkingMotos = {}
+        const parkingMotos = []
         for (let i = 1; i < newData.motos+1; i++) {
             const nomenclatura = `${i}M`
-            parkingMotos[nomenclatura]={
+            const parking = {
                 'nomenclatura':nomenclatura,
                 'disponible':true
             }
+            parkingMotos.push(parking)
         }
 
         newData['parkingCarros']=parkingCarros

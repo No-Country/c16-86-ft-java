@@ -7,26 +7,6 @@ import PopUp from "../PopUp/PopUp"
 import ModalParker from "../Modales/Modal Crear Parker/ModalParker"
 
 const parkers = [
-  {
-    'id':'dasda9d6a8sd7as',
-    'name':'Antonyo Navajas',
-  },
-  {
-    'id':'sd23akbks23423',
-    'name':'Marcos Perez',
-  },
-  {
-    'id':'dasda9d6a8sdasd27as',
-    'name':'Alan Castro',
-  },
-  {
-    'id':'dasada228sdasd27as',
-    'name':'Jose Quintero',
-  },
-  {
-    'id':'sdsa62323',
-    'name':'Jaime Angel',
-  }
 ]
 
 function Parkers(){
