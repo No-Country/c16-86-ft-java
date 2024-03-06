@@ -11,12 +11,14 @@ function EstacionamientoProvider({children}) {
         const newData= dataEstacionamiento;
 
 /*         const data = {
-            id:generateUUID(),
-            nombre:nombre,
-            carros:parseFloat(carros),
-            tarifaCarros:parseFloat(tarifaCarros),
-            motos:parseFloat(motos),
-            tarifaMotos:parseFloat(tarifaMotos),
+            id,
+            nombre,
+            carros,
+            tarifaCarros,
+            motos,
+            tarifaMotos,
+            parkingCarros
+            parkingMotos
         } */
 
         const parkingCarros = []
@@ -49,8 +51,8 @@ function EstacionamientoProvider({children}) {
     return (
         <EstacionamientoContext.Provider
             value={{
-                estacionamiento,
                 crearEstacionamientos,
+                estacionamiento,
                 setEstacionamiento
             }}
         >

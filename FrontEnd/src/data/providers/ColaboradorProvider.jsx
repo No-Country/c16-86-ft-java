@@ -5,48 +5,55 @@ import { createContext } from "react";
 const ColaboradorContext = createContext()
 
 function ColaboradorProvider({children}) {
-    const URL_COLABORADORES=''
-    const [colaboradores,setColaboradores]=useState('')
+    const [colaboradores,setColaboradores]=useState([])
 
-    const obtenerColaboradores = async ()=>{
+    const obtenerColaboradores = async (dataColaboradores)=>{
+        const newData= dataColaboradores;
 
+/*         const data = {
+            id,
+            nombre,
+            carros,
+            tarifaCarros,
+            motos,
+            tarifaMotos,
+            parkingCarros
+            parkingMotos
+        } */
 
-        const configuracion = {
-            headers:{
-                'Content-Type':'application/json'
+        const parkingCarros = []
+        for (let i = 1; i < newData.carros+1; i++) {
+            const nomenclatura = `${i}A`
+            const parking ={
+                'nomenclatura':nomenclatura,
+                'disponible':true
             }
+            parkingCarros.push(parking)
         }
 
-        try {
-            const {data} = await axios(URL_COLABORADORES,configuracion)
-            setColaboradores(data)
-        }catch(error) {
-            console.log(error)
-        }
-    }
-
-    const crearColaborador = async ({dataColaborador})=>{
-
-
-        const configuracion = {
-            headers:{
-                'Content-Type':'application/json'
+        const parkingMotos = []
+        for (let i = 1; i < newData.motos+1; i++) {
+            const nomenclatura = `${i}M`
+            const parking = {
+                'nomenclatura':nomenclatura,
+                'disponible':true
             }
+            parkingMotos.push(parking)
         }
 
-        try {
-            const {data} = await axios.post(URL_COLABORADORES,dataColaborador,configuracion)
-        }catch(error) {
-            console.log(error)
-        }
+        newData['parkingCarros']=parkingCarros
+        newData['parkingMotos']=parkingMotos
+
+        const newState = [newData,...estacionamiento]
+        setEstacionamiento(newState)
     }
 
     return (
         <ColaboradorContext.Provider
             value={{
-                crearColaborador,
                 obtenerColaboradores,
-                colaboradores
+                colaboradores,
+                setColaboradores
             }}
         >
             {children}
