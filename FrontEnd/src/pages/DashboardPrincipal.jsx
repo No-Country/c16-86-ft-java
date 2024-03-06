@@ -7,7 +7,7 @@ import imagen1 from '../../public/pexels-carl-newton-2280148.jpg'
 import imagen2 from '../../public/parkin1.webp'
 import imagen3 from '../../public/pexels-brett-sayles-1756957.jpg'
 
-import LogoEmpresa from '../../public/estacsis edificio.png'
+import Navegador from "../components/Dashboard/Navegador";
 
 function DashboardPrincipal(){
     const [imagen,setImage]=useState(imagen1)
@@ -29,25 +29,18 @@ function DashboardPrincipal(){
     },[])
 
     return (
-        <div 
-            className="w-full flex flex-col"
+        <div
+            style={{
+                backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url(${imagen})`
+            }} 
+            className="w-full flex flex-col bg-no-repeat bg-cover bg-fixed"
         >
-            <div className="w-full bg-slate-50 border shadow-lg cursor-pointer px-10 py-2">
-                <div className="w-full hidden sm:flex sm:flex-row text-center sm:items-end sm:gap-3">
-                    <img 
-                        src={LogoEmpresa} 
-                        alt="logo empresa" 
-                        className="w-[2.5rem]"
-                    />
-                    <h1 className="text-3xl xl:text-4xl font-bold font-sans-segoe-UI text-blue-950">Estacsis</h1>
-                </div>
+            <div className="w-full px-10 py-2">
+                <Navegador/>
             </div>
 
-            <div 
-                style={{
-                    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url(${imagen})`
-                }}
-                className="w-full bg-black h-screen xl:px-40 px-5 pt-8 xl:pt-20 bg-no-repeat bg-cover bg-fixed" 
+            <div
+                className="w-full h-screen xl:px-40 px-5 pt-8 xl:pt-20" 
             >
 
                 <div className="flex flex-col gap-5 sm:gap-10">

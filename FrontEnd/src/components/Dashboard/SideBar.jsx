@@ -5,7 +5,7 @@ import TarjetaMenu from "../Tarjetas/TarjetaMenu"
 import { Link,useNavigate } from "react-router-dom"
 
 // font awesome
-import {faLeftLong } from "@fortawesome/free-solid-svg-icons"
+import {faLeftLong , faRightToBracket} from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 
@@ -24,16 +24,39 @@ function SideBar() {
     }
 
     return (
-        <div className="w-full gap-5 px-5 flex flex-col py-10 rounded-lg shadow-2xl bg-azul-argentina border-2 border-blue-400">
+        <div className="w-full px-5 py-10 flex flex-col justify-between rounded-lg sshadow-2xl bg-azul-argentina border-2 border-blue-400">
+            <div className="flex flex-col gap-5">
+                <div
+                    className="flex-end"
+                >
+                    <button
+                        onClick={returnBack}
+                    >
+                        <FontAwesomeIcon icon={faLeftLong} size="2xl"/>
+                    </button>
+                </div>
 
-            <div
-                className="flex-end"
+                <div className="flex flex-col gap-5">
+                    {
+                        menu?.map( item => {
+                            return <Link to={item.link}><TarjetaMenu type={item.type} text={item.text}/></Link> 
+                        })
+                    }
+                </div>
+
+
+            </div>
+
+            <Link
+                to={'/'}
             >
                 <button
-                    onClick={returnBack}
+                    className='w-full bg-white flex flex-row items-center justify-center sm:gap-3 uppercase px-2 py-0 sm:px-8 sm:py-1 rounded text-black font-bold border shadow-sm'
                 >
-                    <FontAwesomeIcon icon={faLeftLong} size="2xl"/>
+                    <p>salir</p>
+                    <FontAwesomeIcon icon={faRightToBracket} size="lg" />
                 </button>
+<<<<<<< HEAD
             </div>
 
             {
@@ -42,6 +65,9 @@ function SideBar() {
                 })
             }
 
+=======
+            </Link>
+>>>>>>> landing-page
         </div>
     )
 }
