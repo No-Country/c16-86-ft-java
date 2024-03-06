@@ -6,6 +6,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 
+<<<<<<< Updated upstream
 
 
 public class EstacsisApplication {
@@ -17,3 +18,10 @@ public class EstacsisApplication {
 	}
 
 }
+=======
+	public class EstacsisApplication {
+		public static void main(String[] args) {
+			SpringApplication.run(EstacsisApplication.class, args);
+		}
+	}
+>>>>>>> Stashed changes

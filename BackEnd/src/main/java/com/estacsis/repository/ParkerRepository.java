@@ -8,4 +8,5 @@ import com.estacsis.entity.ParkerEntitie;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ParkerRepository extends JpaRepository<ParkerEntity, Long > {
+    ParkerEntity findByEmail(String inputName);
 }

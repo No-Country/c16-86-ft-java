@@ -99,4 +99,11 @@ public class AdminEntity {
     public void setParkingLoots(Set<ParkingLootEntity> parkingLoots) {
         this.parkingLoots = parkingLoots;
     }
+<<<<<<< Updated upstream
+=======
+
+    public void setIdAdmin(Long idAdmin) {
+        this.idAdmin = idAdmin;
+    }
+>>>>>>> Stashed changes
 }

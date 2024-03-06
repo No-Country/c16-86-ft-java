@@ -37,12 +37,21 @@ public class AdminService {
         return adminRepository.findAll();
     }
 
+<<<<<<< Updated upstream
     public Optional<AdminEntity> getAdminById(Long id) {
         return adminRepository.findById(id);
     }
 
     public AdminEntity updateAdmin(Long id, AdminEntity adminEntityDetails) {
         Optional<AdminEntity> optionalAdmin = adminRepository.findById(id);
+=======
+    public Optional<AdminEntity> getAdminById(Long idAdmin) {
+        return adminRepository.findById(idAdmin);
+    }
+
+    public AdminEntity updateAdmin(Long idAdmin, AdminEntity adminEntityDetails) {
+        Optional<AdminEntity> optionalAdmin = adminRepository.findById(idAdmin);
+>>>>>>> Stashed changes
         if (optionalAdmin.isPresent()) {
             AdminEntity admin = optionalAdmin.get();
             admin.setName(adminEntityDetails.getName());
@@ -51,6 +60,7 @@ public class AdminService {
             admin.setPasswordAdmin(adminEntityDetails.getPasswordAdmin());
             return adminRepository.save(admin);
         } else {
+<<<<<<< Updated upstream
             throw new RuntimeException("Admin not found with id: " + id);
         }
     }
@@ -70,11 +80,55 @@ public class AdminService {
 
     public ResponseEntity<Object> createNewParker(@Valid @RequestBody ParkerEntity newParker){
         try{
+=======
+            throw new RuntimeException("Admin not found with id: " + idAdmin);
+        }
+    }
+
+    public void deleteAdmin(Long idAdmin) {
+        adminRepository.deleteById(idAdmin);
+    }
+
+    public ResponseEntity<Object> createParkingLoot(@RequestBody ParkingLootEntity newParkingLoot) {
+        Optional<AdminEntity> adminOptional = adminRepository.findAll().stream().findFirst();
+        if (adminOptional.isPresent()){
+            AdminEntity admin = adminOptional.get();
+            newParkingLoot.setAdmin(admin);
+            parkingLootRepository.save(newParkingLoot);
+            return ResponseEntity.ok("New Parking Loot is create");
+        }else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Admin not found");
+        }
+    }
+
+    public void deleteParkingLoot(Long idParkingLoot) {
+        parkingLootRepository.deleteById(idParkingLoot);
+    }
+
+    public ResponseEntity<Object> createNewParker(@Valid @RequestBody ParkerEntity newParker){
+        Optional<AdminEntity> adminOptional = adminRepository.findAll().stream().findFirst();
+        Optional<ParkingLootEntity> parkingLootEntityOptional = parkingLootRepository.findAll().stream().findFirst();
+        if (adminOptional.isPresent() && parkingLootEntityOptional.isPresent()){
+            AdminEntity admin = adminOptional.get();
+            ParkingLootEntity parkingLoot = parkingLootEntityOptional.get();
+            newParker.setAdmin(admin);
+            newParker.setParkingLoot(parkingLoot);
+            parkerRepository.save(newParker);
+            return ResponseEntity.ok("New Parker is create");
+        }else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(" not found");
+        }
+        /*try{
+>>>>>>> Stashed changes
             parkerRepository.save(newParker);
             return ResponseEntity.ok("new parker is create");
         }catch (DataAccessException e){
             return ResponseEntity.status(HttpStatus.CONFLICT).body("null");
+<<<<<<< Updated upstream
         }
+=======
+        }*/
+>>>>>>> Stashed changes
     }
 
     public void deleteParker(Long id) {
