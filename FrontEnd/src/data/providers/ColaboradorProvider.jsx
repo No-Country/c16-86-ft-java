@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState , useEffect} from "react";
 
 import { createContext } from "react";
 
@@ -14,41 +14,29 @@ function ColaboradorProvider({children}) {
 
     const [colaboradores,setColaboradores]=useState([])
 
-/*     useEffect(()=>{
-        const isEmpty = localStorage.getItem('estacionamientos')
+    useEffect(()=>{
+        const isEmpty = localStorage.getItem('colaboradores')
         if(isEmpty === null){
-            localStorage.setItem('estacionamientos',JSON.stringify([]))
+            localStorage.setItem('colaboradores',JSON.stringify([]))
         }else{
-            const valueEstacionamientos = JSON.parse(localStorage.getItem('estacionamientos'))
-            setEstacionamiento(valueEstacionamientos)    
+            const valueEstacionamientos = JSON.parse(localStorage.getItem('colaboradores'))
+            setColaboradores(valueEstacionamientos)    
         }
     },[])
 
     useEffect(()=>{
-        localStorage.setItem('estacionamientos',JSON.stringify(estacionamiento))
-    },[estacionamiento]) */
+        localStorage.setItem('colaboradores',JSON.stringify(colaboradores))
+    },[colaboradores])
 
     const crearColaboradores = async (dataColaboradores)=>{
         const newData= dataColaboradores;
 
-        const nameParqueadero = estacionamiento.find(item=>{
-            if(item.id === newData.idParqueadero){
-                return item.nombre
-            }
-        })
+        const nameParqueadero = estacionamiento.find(item=> item.id === newData.idParqueadero)
 
-        newData['nombreParqueadero'] = nameParqueadero
+        newData['nombreParqueadero'] = nameParqueadero.nombre
         newData['user'] = `${newData.nombres}_${newData.apellidos}@userparking.com`
-        newData['password'] = `${newData.id}___WVOs12`
+        newData['password'] = `${newData.id.split('-')[1]}___${newData.id.split('-')[2]}`
         
-        /* const data = {
-            id:generateUUID(),
-            nombres,
-            apellidos,
-            identificacion,
-            idParqueadero
-        } */
-
         const newState = [newData,...colaboradores]
         setColaboradores(newState)
     }
