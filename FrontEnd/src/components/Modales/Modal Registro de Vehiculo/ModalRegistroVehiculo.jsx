@@ -13,6 +13,7 @@ function ModalRegistroVehiculo({
     isOpen,
     idParking
 }){
+    console.log(idParking)
     let location = useLocation();
 
     const {
@@ -21,6 +22,7 @@ function ModalRegistroVehiculo({
     }=useEstacionamientos()
 
     const [pathName,setPathName]=useState(location.pathname.split('/')[3])
+    const [step,setStep]=useState(1)
 
     const [nombres,setNombres]=useState()
     const [apellidos,setApellidos]=useState()
@@ -33,35 +35,6 @@ function ModalRegistroVehiculo({
     },[])
 
     const generandoTicket =(e)=>{
-        e.preventDefault()
-
-        const parkingLot = estacionamiento.find( item => {
-            if(item.id === pathName){
-              return item
-            }
-        })
-
-        const changeEstateParking = parkingLot?.parkingCarros?.map( item => {
-            if(item.nomenclatura === idParking){
-                item.disponible = false
-                return item
-            }else{
-                return item
-            }
-        })
-
-        parkingLot.parkingCarros = changeEstateParking
-
-        const newParking = estacionamiento.map(item =>{
-            if(item.id === pathName){
-                item = parkingLot
-                return item
-            }else{
-                item
-            }
-        })
-
-        setEstacionamiento(newParking)
     }
 
     return (

@@ -1,51 +1,41 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
 import { createContext } from "react";
 
 const TicketContext = createContext()
 
 function TicketProvider({children}) {
-    const URL_TICKETS=''
-    const [tickets,setTickets]=useState('')
+    const [tickets,setTickets]=useState([])
 
-    const obtenerTickets = async ()=>{
-
-
-        const configuracion = {
-            headers:{
-                'Content-Type':'application/json'
-            }
+    useEffect(()=>{
+        const isEmpty = localStorage.getItem('tickets')
+        if(isEmpty === null){
+            localStorage.setItem('tickets',JSON.stringify([]))
+        }else{
+            const valueTickets = JSON.parse(localStorage.getItem('tickets'))
+            setTickets(valueTickets)    
         }
+    },[])
 
-        try {
-            const {data} = await axios(URL_TICKETS,configuracion)
-            setTickets(data)
-        }catch(error) {
-            console.log(error)
-        }
+    useEffect(()=>{
+        localStorage.setItem('tickets',JSON.stringify(tickets))
+    },[tickets])
+
+    const obtenerTickets = ()=>{
     }
 
-    const crearTicket = async ({dataTicket})=>{
-
-
-        const configuracion = {
-            headers:{
-                'Content-Type':'application/json'
-            }
-        }
-
-        try {
-            const {data} = await axios.post(URL_TICKETS,dataTicket,configuracion)
-        }catch(error) {
-            console.log(error)
-        }
+    const crearTicketEntrada = (dataTicket)=>{
     }
+
+    const cerrarTicketSalida = ()=>{
+    }
+
     return (
         <TicketContext.Provider
             value={{
-                crearTicket,
                 obtenerTickets,
-                tickets
+                crearTicketEntrada,
+                cerrarTicketSalida
             }}
         >
             {children}

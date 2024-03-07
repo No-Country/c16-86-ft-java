@@ -19,8 +19,8 @@ function ColaboradorProvider({children}) {
         if(isEmpty === null){
             localStorage.setItem('colaboradores',JSON.stringify([]))
         }else{
-            const valueEstacionamientos = JSON.parse(localStorage.getItem('colaboradores'))
-            setColaboradores(valueEstacionamientos)    
+            const valueColaboradores = JSON.parse(localStorage.getItem('colaboradores'))
+            setColaboradores(valueColaboradores)    
         }
     },[])
 

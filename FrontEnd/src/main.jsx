@@ -7,6 +7,7 @@ import AuthProvider from './data/providers/AuthProvider.jsx'
 import ColaboradorProvider from './data/providers/ColaboradorProvider.jsx'
 import EstacionamientoProvider from './data/providers/EstacionamientoProvider.jsx'
 import TicketProvider from './data/providers/TicketProvider.jsx'
+import ClienteProvider from './data/providers/ClientesProvider.jsx'
 //react router
 import {RouterProvider} from 'react-router-dom'
 //routes
@@ -17,10 +18,12 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <EstacionamientoProvider>
       <ColaboradorProvider>
         <TicketProvider>
-          <RouterProvider
-            router={router}
-          >
-          </RouterProvider>
+          <ClienteProvider>
+            <RouterProvider
+              router={router}
+            >
+            </RouterProvider>
+          </ClienteProvider>
         </TicketProvider>
       </ColaboradorProvider>
     </EstacionamientoProvider>
