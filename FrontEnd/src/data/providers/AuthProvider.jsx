@@ -1,38 +1,34 @@
+import axios from "axios";
 import { useState,useEffect } from "react";
-
 import { createContext } from "react";
 
 const AuthContext = createContext()
 
 function AuthProvider({children}) {
-    const [auth,setAuth]=useState('')
 
-    useEffect(()=>{
-        const authUser= async ()=>{
-            const URL_verificar_tipo_usuario=''
-
-
-            const configuracion = {
-                headers:{
-                    'Content-Type':'application/json'
-                }
-            }
-
-            try {
-                const {data} = await axios(URL_verificar_tipo_usuario,configuracion)
-                setAuth(data)
-            }catch(error) {
-                console.log(error)
+    const [auth,setAuth]=useState({})
+    
+    const authUser= async (dataUser)=>{
+        const configuracion = {
+            headers:{
+                'Content-Type':'application/json'
             }
         }
-        authUser()
-    },[])
+
+        try {
+            const {data} = await axios.post(URL_LOGIN,dataUser,configuracion)
+            setAuth(data)
+        }catch(error) {
+            return error
+        }
+    }
 
     
     return (
         <AuthContext.Provider
             value={{
-                auth
+                auth,
+                authUser
             }}
         >
             {children}

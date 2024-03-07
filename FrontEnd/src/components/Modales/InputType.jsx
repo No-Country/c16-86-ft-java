@@ -16,6 +16,7 @@ function InputType({
             onChange={(e)=>callback(e.target.value)}
             disabled={disabled} 
             placeholder={placeholderInput}
+            min="0"
         />
     </div>
   )

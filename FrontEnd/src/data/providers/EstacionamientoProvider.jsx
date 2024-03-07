@@ -1,12 +1,13 @@
-import { useState } from "react";
+import axios from "axios";
 
+import { useState } from "react";
 import { createContext } from "react";
 
 const EstacionamientoContext = createContext()
 
 function EstacionamientoProvider({children}) {
     const URL_ESTACIONAMIENTOS=''
-    const [estacionamientos,setEstacionamientos]=useState('')
+    const [estacionamientos,setEstacionamientos]=useState([])
 
     const obtenerEstacionamientos = async ()=>{
 
@@ -18,9 +19,10 @@ function EstacionamientoProvider({children}) {
         }
 
         try {
-            const {data} = await axios(URL_ESTACIONAMIENTOS,configuracion)
-            setEstacionamientos(data)
+            const rta = await axios('https://c16-86-ft-java.onrender.com/api/v1/listofclient',configuracion)
+            console.log(rta)
         }catch(error) {
+            console.log('aqui,error')
             console.log(error)
         }
     }
@@ -35,16 +37,18 @@ function EstacionamientoProvider({children}) {
         }
 
         try {
-            const {data} = await axios.post(URL_ESTACIONAMIENTOS,dataEstacionamiento,configuracion)
+            const respuesta = await axios.post(URL_ESTACIONAMIENTOS,dataEstacionamiento,configuracion)
+            setEstacionamientos([respuesta,...estacionamientos])
         }catch(error) {
+            console.log('aqui,error')
             console.log(error)
         }
     }
     return (
         <EstacionamientoContext.Provider
             value={{
-                crearEstacionamientos,
                 obtenerEstacionamientos,
+                crearEstacionamientos,
                 estacionamientos
             }}
         >

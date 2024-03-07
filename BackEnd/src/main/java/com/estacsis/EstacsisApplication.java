@@ -14,11 +14,8 @@ import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
 
 
 @SpringBootApplication
-
-
-
-
 	public class EstacsisApplication {
+
 
 //	@Configuration
 //	public class CorsConfig {
@@ -47,4 +44,5 @@ import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
 		}
 
 	}
+
 
