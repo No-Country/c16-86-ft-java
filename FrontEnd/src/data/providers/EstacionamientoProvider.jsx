@@ -39,22 +39,30 @@ function EstacionamientoProvider({children}) {
         } */
 
         const parkingCarros = []
+        
         for (let i = 1; i < newData.carros+1; i++) {
             const nomenclatura = `${i}A`
+
             const parking ={
                 'nomenclatura':nomenclatura,
-                'disponible':true
+                'disponible':true,
+                'ticket':null
             }
+
             parkingCarros.push(parking)
         }
 
         const parkingMotos = []
+
         for (let i = 1; i < newData.motos+1; i++) {
             const nomenclatura = `${i}M`
+
             const parking = {
                 'nomenclatura':nomenclatura,
-                'disponible':true
+                'disponible':true,
+                'ticket':null
             }
+
             parkingMotos.push(parking)
         }
 
