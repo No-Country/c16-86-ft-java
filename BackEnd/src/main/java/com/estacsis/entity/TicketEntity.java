@@ -15,14 +15,16 @@ import java.time.LocalDateTime;
 public class TicketEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long idTicket;
 
-    @ManyToOne
-    @JoinColumn(name = "clientId")
+
+    //Relacion Muchos a Uno
+    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JoinColumn(name = "idClient")
     private ClientEntity clientEntity;
     @Column(name = "carLicense", unique = true, nullable = false)
     private String carLicense;
-    private LocalDate entryDate = LocalDate.from(LocalDateTime.now());
+    private LocalDateTime entryDate = LocalDateTime.now();
     private String vehicleType;
     private double amount;
     private String timeConsumed;

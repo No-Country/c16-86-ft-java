@@ -10,6 +10,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping({"/api/v1/tickets"})
+
 public class TicketController {
 
     @Autowired
@@ -23,25 +24,35 @@ public class TicketController {
 
     //Endpoint traer ticket por Id
     @GetMapping(path = "/{id}")
-    public Optional<TicketEntity> getById(@PathVariable("id") Integer id) {
-        return ticketService.getTicketById(id);
-    }
 
-    //Endopoint para insertar un ticket
-    @PostMapping(path = "/{add}")
-    public TicketEntity addTicket(@RequestBody TicketEntity ticket) {
-        ticketService.addTicket(ticket);
-        return ticket;
-    }
-    //Endpoint para eliminar un ticket
-    @DeleteMapping(path = "/{id}")
-    public void deleleteById(@PathVariable("id") Integer id) {
-        ticketService.deleteById(id);
+    public Optional<TicketEntity> getById(@PathVariable("id") Long idTicket) {
+        return ticketService.getTicketById(idTicket);
 
     }
 
-    
+        //Endopoint para insertar un ticket
+        @PostMapping(path = "/{add}")
+        public TicketEntity addTicket (@RequestBody TicketEntity ticket){
+            ticketService.addTicket(ticket);
+            return ticket;
+        }
 
-}
+        //Endpoint para eliminar un ticket
+        @DeleteMapping(path = "/{id}")
+        public void deleleteById (@PathVariable("id") Long idTicket){
+            ticketService.deleteById(idTicket);
+
+        }
+
+
+        @PutMapping(path = "/{id}")
+        public void updateTicket (
+                @PathVariable("id") Long idTicket,
+                @RequestParam(required = false) String carLicense){
+            ticketService.updateTicket(idTicket, carLicense);
+        }
+
+
+    }
 
 
