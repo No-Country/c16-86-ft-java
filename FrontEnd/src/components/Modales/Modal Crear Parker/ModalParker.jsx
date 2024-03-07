@@ -1,42 +1,63 @@
-import { useState } from "react"
+import { useState,useEffect } from "react"
 
 import InputType from "../InputType"
 import InputTypeSelect from "../InputTypeSelect"
+
+import generateUUID from '../../../helpers/generaID'
 
 // font awesome
 import { faX } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
-const parqueaderos = [
-    {
-        value:'423423423423d',
-        text:'Parqueadero la 33'
-    },
-    {
-        value:'42sdad3423d',
-        text:'Parqueadero Suramericana'
-    },
-    {
-        value:'42sda423d',
-        text:'Parqueadero Buenos Aires'
-    }
-]
+import useEstacionamientos from "../../../data/hooks/useEstacionamientos"
+import useColaboradores from "../../../data/hooks/useColaboradores"
 
 function ModalParker({isOpen}) {
-    const [nombres,setNombres]=useState()
-    const [apellidos,setApellidos]=useState()
-    const [identificacion,setIdentificacion]=useState()
-    const [parqueadero,setParqueadero]=useState()
+
+    const {
+        estacionamiento
+    }=useEstacionamientos()
+
+    const {
+        crearColaboradores
+      }=useColaboradores()
+
+    const [estacionamientoData,setEstacionamientoData]=useState([])
+
+    const [nombres,setNombres]=useState('')
+    const [apellidos,setApellidos]=useState('')
+    const [identificacion,setIdentificacion]=useState('')
+    const [parqueadero,setParqueadero]=useState('')
 
     const handleSubtmit =(e)=>{
         e.preventDefault()
-        console.log({
+        
+        if([nombres,apellidos,identificacion,parqueadero].includes('')){
+            return
+        }
+
+        const data = {
+            id:generateUUID(),
             nombres,
             apellidos,
             identificacion,
-            parqueadero
-        })
+            idParqueadero:parqueadero
+        }
+        
+        crearColaboradores(data)
+        isOpen()
     }
+
+    useEffect(()=>{
+        if(estacionamiento){
+          const data = estacionamiento.map(item =>{
+            const newData = {'id':item.id,'nombre':item.nombre}
+            return newData
+          })
+          console.log(data)
+          setEstacionamientoData(data)
+        }
+    },[])
 
     return (
         <form
@@ -81,7 +102,7 @@ function ModalParker({isOpen}) {
                     value={parqueadero}
                     callback={setParqueadero}
                     label='Parquadero asociado'
-                    listaOpciones={parqueaderos}
+                    listaOpciones={estacionamientoData}
                     primeraOpcion='Elige un parqueadero'
                 />
             </div>

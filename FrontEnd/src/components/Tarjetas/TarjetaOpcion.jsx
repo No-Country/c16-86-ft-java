@@ -1,15 +1,7 @@
 import { faSquareParking, faUser,faAddressCard } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
-function TarjetaOpcion({type,data}) {
-  const {
-    id,
-    nombre,
-    carros,
-    tarifaCarros,
-    motos,
-    tarifaMotos,
-  }=data;
+function TarjetaOpcion({type,children}) {
   const typeCard = {
     'parqueadero':{
       'color':'dark-cyan',
@@ -54,17 +46,7 @@ function TarjetaOpcion({type,data}) {
           />
           <h1 className="uppercase italic font-bold text-lg xl:text-xl tracking-wide">{`${typeCard[type].text}`}</h1>
         </div>
-        <div className="w-full px-5 py-1">
-          <p className="text-left font-bold text-lg uppercase">{nombre}</p>
-          <div className="flex flex-row justify-between font-semibold text-lg">
-            <p>{`Carros: ${carros}`}</p>
-            <p>{`Tarifa carros: $ ${tarifaCarros}`}</p>
-          </div>
-          <div className="flex flex-row justify-between font-semibold text-lg">
-            <p>{`Motos: ${motos}`}</p>
-            <p>{`Tarifa motos: $ ${tarifaMotos}`}</p>
-          </div>
-        </div>
+        {children}
     </div>
   )
 }

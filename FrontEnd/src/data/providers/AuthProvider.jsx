@@ -5,16 +5,25 @@ import { createContext } from "react";
 const AuthContext = createContext()
 
 function AuthProvider({children}) {
-    const [colaboradores,setColaboradores]=useState([])
-    const [registros,setRegistros]=useState([])
-    
+    const [registros]=useState({
+        'admin':{
+            'type':'admin',
+            'id':'652ed2fd24a937fb6461faa0'
+        },
+        'parker':{
+            'type':'parker',
+            'id':'a937fb6461faa0652ed2fd24'
+        }
+    })
+
+    const [auth,setAuth]=useState({})
+
     return (
         <AuthContext.Provider
             value={{
-                colaboradores,
-                setColaboradores,
                 registros,
-                setRegistros
+                auth,
+                setAuth
             }}
         >
             {children}

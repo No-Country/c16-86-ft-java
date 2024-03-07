@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { parse } from "postcss";
+import { useEffect, useState } from "react";
 import { createContext } from "react";
 
 
@@ -6,6 +7,22 @@ const EstacionamientoContext = createContext()
 
 function EstacionamientoProvider({children}) {
     const [estacionamiento,setEstacionamiento]=useState([])
+
+    useEffect(()=>{
+        const isEmpty = localStorage.getItem('estacionamientos')
+        if(isEmpty === null){
+            localStorage.setItem('estacionamientos',JSON.stringify([]))
+        }else{
+            const valueEstacionamientos = JSON.parse(localStorage.getItem('estacionamientos'))
+            setEstacionamiento(valueEstacionamientos)    
+        }
+    },[])
+
+    useEffect(()=>{
+        localStorage.setItem('estacionamientos',JSON.stringify(estacionamiento))
+    },[estacionamiento])
+
+
 
     const crearEstacionamientos = async (dataEstacionamiento)=>{
         const newData= dataEstacionamiento;

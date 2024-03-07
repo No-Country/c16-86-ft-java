@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 import TarjetaOpcion from "../Tarjetas/TarjetaOpcion"
 import BotonAgregarDashboard from '../Botones/BotonAgregarDashboard'
@@ -6,10 +6,13 @@ import BotonAgregarDashboard from '../Botones/BotonAgregarDashboard'
 import PopUp from "../PopUp/PopUp"
 import ModalParker from "../Modales/Modal Crear Parker/ModalParker"
 
-const parkers = [
-]
+import useColaboradores from '../../data/hooks/useColaboradores'
 
 function Parkers(){
+  const {
+    colaboradores,
+  }=useColaboradores()
+
   const [open,setOpen]=useState(false)
 
   return (
@@ -29,8 +32,30 @@ function Parkers(){
         </div>
       <div className="w-full grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-5 xl:grid-cols-3">
         {
-          parkers?.map(item => {
-            return <TarjetaOpcion key={item.id} type="parker" text={item.name}/>
+          colaboradores?.map(item => {
+            return (
+              <TarjetaOpcion key={item.id} type="parker">
+                <div className="w-full px-5 py-1">
+                  <p className="text-left font-bold text-lg uppercase">{`${item.nombres} ${item.apellidos}`}</p>
+                  <div className="flex flex-col text-start font-semibold text-lg border-b-2 mb-1">
+                    <p className="font-bold text-lg italic">DNI</p>
+                    <p className="text-md">{`${item.identificacion}`}</p>
+                  </div>
+                  <div className="flex flex-col text-start font-semibold text-lg border-b-2 mb-1">
+                    <p className="font-bold text-lg italic">Estacionamiento</p>
+                    <p className="text-md">{`${item.nombreParqueadero}`}</p>
+                  </div>
+                  <div className="flex flex-col text-start font-semibold text-lg border-b-2 mb-1">
+                    <p className="font-bold text-lg italic">User</p>
+                    <p className="text-md">{` ${item.user}`}</p>
+                  </div>
+                  <div className="flex flex-col text-start font-semibold text-lg mb-1">
+                    <p className="font-bold text-lg italic">Password</p>
+                    <p className="text-md">{`${item.password}`}</p>
+                  </div>
+                </div>               
+              </TarjetaOpcion>
+          )
           })
         }
       </div>

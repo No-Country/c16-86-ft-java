@@ -18,8 +18,8 @@ function InputTypeSelect({
             >
                 <option key={1} value=''>{primeraOpcion}</option>
                 {
-                    listaOpciones.map((item,i)=>{
-                        return <option key={i} value={item.value}>{item.text}</option>
+                    listaOpciones.map((item)=>{
+                        return <option key={item.id} value={item.id}>{item.nombre}</option>
                     })
                 }   
             </select>
