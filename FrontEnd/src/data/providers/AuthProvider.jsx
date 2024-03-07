@@ -6,7 +6,8 @@ const AuthContext = createContext()
 
 function AuthProvider({children}) {
 
-    const [auth,setAuth]=useState({})
+    const [auth,setAuth]=useState({
+    })
     
     const authUser= async (dataUser)=>{
         const configuracion = {

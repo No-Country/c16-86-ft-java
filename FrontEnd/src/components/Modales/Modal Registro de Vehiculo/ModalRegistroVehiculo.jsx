@@ -75,6 +75,16 @@ function ModalRegistroVehiculo({isOpen}){
                 />
             </div>
 
+            <div className="w-full flex flex-col sm:flex-row sm:gap-4">
+                <InputType
+                    value={identificacion}
+                    callback={setIdentificacion}
+                    placeholderInput='celular'
+                    label='Celular'
+                    typeInput='number'
+                />
+            </div>
+
             <button
                 className=' text-black text-lg tracking-wide font-semibold rounded-md  bg-green-400 border border-green-600'
             >
