@@ -4,6 +4,8 @@ import { createContext } from "react";
 
 const ClienteContext = createContext()
 
+import generateUUID from '../../helpers/generaID'
+
 function ClienteProvider({children}) {
     const [clientes,setClientes]=useState([])
 
@@ -21,12 +23,20 @@ function ClienteProvider({children}) {
         localStorage.setItem('clientes',JSON.stringify(clientes))
     },[clientes])
 
-    const crearCliente = ()=>{
+    const crearCliente = (dataCliente)=>{
+        const newData = dataCliente;
 
+        newData['id']= generateUUID()
+
+        const newState = [newData,...clientes]
+        setClientes(newState)
+
+        return newData.id
     }
 
-    const obtenerClienteByDNI = ()=>{
-
+    const obtenerClienteByDNI = (DNI)=>{
+        const getCliente = clientes.find(item => item.DNI === DNI)
+        return getCliente.id
     }
 
     return (

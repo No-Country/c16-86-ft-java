@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import {ClientesProvider} from '../providers/ClientesProvider'
+import {ClienteContext} from '../providers/ClientesProvider'
 
 function useClientes() {
-    return useContext(ClientesProvider)
+    return useContext(ClienteContext)
 }
 
 export default useClientes;

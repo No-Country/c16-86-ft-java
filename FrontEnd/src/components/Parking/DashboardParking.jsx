@@ -37,7 +37,9 @@ function DashboardParking() {
 
     if(parkingLot){
       setParking(parkingLot)
+      console.log(parkingLot)
     }
+    console.log('aqui3')
   },[estacionamiento])
 
   return (
@@ -60,7 +62,7 @@ function DashboardParking() {
         </div>
         <div className='w-full grid grid-cols-3 gap-2 sm:grid-cols-4 xl:grid-cols-5'>
           {
-            parking?.parkingCarros?.map( item => {
+            parking?.parkingMotos?.map( item => {
               return <CardMoto 
                 key={item.nomenclatura}
                 estado={item.disponible}

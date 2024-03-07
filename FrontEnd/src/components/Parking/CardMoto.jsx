@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
 // font awesome
 import { faMotorcycle} from "@fortawesome/free-solid-svg-icons"
@@ -13,12 +13,18 @@ function CardMoto({
     nomenclatura,
     id
 }){
-    const ESTADO = estado
 
     const [identificador]=useState(id)
     const [patente,setPatente]=useState(nomenclatura)
-    const [disponible,setDisponible]=useState(ESTADO !== undefined ? ESTADO : true)
+    const [disponible,setDisponible]=useState(estado)
     const [open,setOpen]=useState(false)
+
+    useEffect(() => {
+        // Actualizar el estado disponible cuando la prop estado cambie
+        if (estado !== undefined) {
+            setDisponible(estado);
+        }
+    },[estado]);
     
     return (
         <>
@@ -41,6 +47,8 @@ function CardMoto({
                     disponible === true ?
                     <ModalRegistroVehiculo
                       isOpen={()=>setOpen(false)}
+                      idParking={identificador}
+                      type={'moto'}
                     />:
                     <ModalSalidaVehiculo
                         isOpen={()=>setOpen(false)}
