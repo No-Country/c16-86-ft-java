@@ -18,6 +18,9 @@ public class ParkerEntity {
     @ManyToOne
     @JoinColumn(name = "idParkingLoot")
     private ParkingLootEntity parkingLoot;
+    @ManyToOne
+    @JoinColumn(name = "admin")
+    private AdminEntity admin;
 
     public ParkerEntity(){}
 
@@ -86,4 +89,23 @@ public class ParkerEntity {
         this.passwordParker = passwordParker;
     }
 
+    public void setIdParker(Long idParker) {
+        this.idParker = idParker;
+    }
+
+    public ParkingLootEntity getParkingLoot() {
+        return parkingLoot;
+    }
+
+    public void setParkingLoot(ParkingLootEntity parkingLoot) {
+        this.parkingLoot = parkingLoot;
+    }
+
+    public AdminEntity getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(AdminEntity admin) {
+        this.admin = admin;
+    }
 }
