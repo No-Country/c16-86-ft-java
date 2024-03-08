@@ -13,7 +13,7 @@ import LogoEmpresa from '../../../public/2b23363768d7fa56db8e93c03fcda55f.svg'
 const menu = [
   {'text':'estacionamientos','link':'/dashboard/parqueaderos','type':'parqueadero','id':'34lhadasd34234'},
   {'text':'empleados','link':'/dashboard/parkers','type':'parker','id':'34l2323fdfsasd34234'},
-  {'text':'clientes','link':'/dashboard/usuarios','type':'usuario','id':'54548887gg323fdfsasd34234'},
+  {'text':'registros','link':'/dashboard/registros','type':'registros','id':'54548887gg323fdfsasd34234'},
 ]
 
 function NavBar() {

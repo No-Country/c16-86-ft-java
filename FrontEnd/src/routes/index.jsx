@@ -8,7 +8,7 @@ import DashboardParker from '../pages/DashboardParker'
 //pages
 import Parqueaderos from '../components/Parqueaderos/Parqueaderos';
 import Parkers from '../components/Parkers/Parkers';
-import Usuarios from '../components/Usuarios/Usuarios'
+import Registros from '../components/Registros/Registros';
 import DashboardParking from '../components/Parking/DashboardParking';
 import Login from '../components/Auth/login';
 
@@ -45,8 +45,8 @@ const router = createBrowserRouter([
                 index:true
             },
             {
-                path:'/dashboard/usuarios',
-                element:<Usuarios/>,
+                path:'/dashboard/registros',
+                element:<Registros/>,
                 index:true
             }
         ]

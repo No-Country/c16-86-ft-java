@@ -13,7 +13,7 @@ function TarjetaMenu({type,text}) {
       'text':'empleados',
       'icon':faUser
     },
-    'usuario':{
+    'registros':{
       'color':'caribean-current',
       'text':'registros',
       'icon':faAddressCard
@@ -23,7 +23,7 @@ function TarjetaMenu({type,text}) {
     {
       'parqueadero': 'border-dark-cyan',
       'parker': 'border-dark-spring-green',
-      'usuario': 'border-caribean-current'
+      'registros': 'border-caribean-current'
     }[type] || ''
   }`;
   return (

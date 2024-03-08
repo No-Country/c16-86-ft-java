@@ -30,8 +30,6 @@ function TicketProvider({children}) {
         localStorage.setItem('tickets',JSON.stringify(tickets))
     },[tickets])
 
-    const obtenerTickets = ()=>{
-    }
 
     const crearTicketEntrada = (dataTicket) => {
         const newData = {
@@ -173,7 +171,7 @@ function TicketProvider({children}) {
     return (
         <TicketContext.Provider
             value={{
-                obtenerTickets,
+                tickets,
                 crearTicketEntrada,
                 cerrarTicketSalida
             }}
