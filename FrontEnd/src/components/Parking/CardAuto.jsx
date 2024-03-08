@@ -8,6 +8,8 @@ import ModalRegistroVehiculo from "../Modales/Modal Registro de Vehiculo/ModalRe
 import ModalSalidaVehiculo from "../Modales/Modal Registro de Salida/ModalSalidaVehiculo";
 import PopUp from "../PopUp/PopUp";
 
+import TicketSalidad from "../Modales/Modal Registro de Salida/TicketSalidad";
+
 function CardAuto({
     estado,
     nomenclatura,
@@ -19,7 +21,8 @@ function CardAuto({
     const [disponible,setDisponible]=useState(estado)
     const [open,setOpen]=useState(false)
 
-    const [openSalida,setOpenSalida]=useState(false)
+    const [infoTicketSalida,setInfoTicketSalida]=useState({})
+    const [openTicket,setOpenTicket]=useState(false)
 
     useEffect(() => {
         // Actualizar el estado disponible cuando la prop estado cambie
@@ -56,8 +59,18 @@ function CardAuto({
                         id={identificador}
                         setOpen={setOpen}
                         type={'auto'}
+                        setInfoTicketSalida={setInfoTicketSalida}
+                        setOpenTicket={setOpenTicket}
                     />
                 }
+
+
+            </PopUp>
+
+            <PopUp
+                open={openTicket}
+            >
+                <TicketSalidad setOpen={setOpenTicket}/>
             </PopUp>
         </>
     )

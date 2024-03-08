@@ -9,6 +9,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import InputType from "../InputType"
 import InputTypeSelect from "../InputTypeSelect"
 
+import PopUp from "../../PopUp/PopUp"
+
 import TicketSalidad from "./TicketSalidad"
 
 import useTickets from "../../../data/hooks/useTickets"
@@ -16,12 +18,13 @@ import useTickets from "../../../data/hooks/useTickets"
 function ModalSalidaVehiculo({
     setOpen,
     id,
-    type
+    type,
+    setInfoTicketSalida,
+    setOpenTicket,
 }){
 
     let location = useLocation();
 
-    const [next,setNext]=useState(false)
     const [pathName,setPathName]=useState(location.pathname.split('/')[3])
     const [infoTicket,setInfoTicket]=useState({})
 
@@ -40,7 +43,8 @@ function ModalSalidaVehiculo({
         
         const informacionTicket =  cerrarTicketSalida(data)
         setInfoTicket(informacionTicket)
-        setNext(true)
+        setOpen(false)
+        setOpenTicket(true)
     }
 
     useEffect(()=>{
@@ -54,7 +58,6 @@ function ModalSalidaVehiculo({
             className="max-w-2xl bg-white flex flex-col gap-5 border shadow md:px-10 px-5 md:py-10 py-5 rounded-md sm:mx-auto mt-5"
         >
             {
-                next === false ?
                 <>
                     <div className="flex flex-row justify-between">
                         <h2 className="text-xl text-center sm:text-2xl font-bold italic tracking-wider">¿Registrar salidad de vehiculo?</h2>
@@ -76,11 +79,6 @@ function ModalSalidaVehiculo({
                         </button>
                     </div>
                 </> 
-                :
-                <TicketSalidad
-                    setOpen={setOpen}
-                />
-
             }
 
 
