@@ -1,14 +1,20 @@
 package com.estacsis;
 
+import org.apache.catalina.filters.CorsFilter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
+
+
+
+
 
 @SpringBootApplication
-
-
-@ComponentScan(basePackages = {"com.estacsis.service", "com.estacsis.repository", "com.estacsis.controller", "com.estacsis.entitie"})
-public class EstacsisApplication {
+	public class EstacsisApplication {
 
 	public static void main(String[] args) {
 

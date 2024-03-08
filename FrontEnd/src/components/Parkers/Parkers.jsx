@@ -9,16 +9,30 @@ import ModalParker from "../Modales/Modal Crear Parker/ModalParker"
 import useColaboradores from '../../data/hooks/useColaboradores'
 
 function Parkers(){
+  const [open,setOpen]=useState(false)
+
   const {
-    colaboradores,
+    crearColaborador,
+    obtenerColaboradores,
+    colaboradores
   }=useColaboradores()
 
-  const [open,setOpen]=useState(false)
+    /* useEffect(()=>{
+      const obtenerColaboradores = async ()=>{
+        try {
+          const response = await obtenerColaboradores()
+          console.log(response)
+        } catch (error) {
+          console.log(error)
+        }
+      }  
+      obtenerColaboradores()
+  },[]) */
 
   return (
     <div className="flex flex-col gap-5">
         <div className="flex flex-row justify-between items-center">
-          <h1 className="font-bold italic text-xl sm:text-2xl">Parkers</h1>
+          <h1 className="font-bold italic text-xl sm:text-2xl">Empleados</h1>
           <BotonAgregarDashboard
             callback={()=>setOpen(true)}
           />
@@ -26,6 +40,7 @@ function Parkers(){
             open={open}
           >
             <ModalParker
+              crearColaborador={crearColaborador}
               isOpen={()=>setOpen(false)}
             />
           </PopUp>

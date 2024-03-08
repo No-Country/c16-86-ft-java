@@ -1,6 +1,6 @@
 import { useState,useEffect } from "react";
 
-import { Link } from "react-router-dom";
+import { Link, useFetcher } from "react-router-dom";
 import { Outlet ,useLocation} from "react-router-dom";
 
 import TarjetaOpcion from "../Tarjetas/TarjetaOpcion";
@@ -15,6 +15,12 @@ import useEstacionamientos from '../../data/hooks/useEstacionamientos'
 function Parqueaderos() {
   const {
     estacionamiento
+  }=useEstacionamientos()
+
+  const {
+    obtenerEstacionamientos,
+    crearEstacionamientos,
+    estacionamientos
   }=useEstacionamientos()
 
   let location = useLocation();
@@ -36,7 +42,7 @@ function Parqueaderos() {
         ?
         <div className="flex flex-col gap-5">
             <div className="flex flex-row justify-between items-center">
-              <h1 className="font-bold italic text-xl sm:text-2xl">Parqueaderos</h1>
+              <h1 className="font-bold italic text-xl sm:text-2xl">Estacionamientos</h1>
               <BotonAgregarDashboard
                 callback={()=>setOpen(true)}
               />
@@ -44,6 +50,7 @@ function Parqueaderos() {
                 open={open}
               >
                 <ModalParqueadero
+                  crearEstacionamientos={crearEstacionamientos}
                   isOpen={()=>setOpen(false)}
                 />
               </PopUp>

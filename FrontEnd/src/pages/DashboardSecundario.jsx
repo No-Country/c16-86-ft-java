@@ -2,7 +2,7 @@ import NavBar from "../components/Dashboard/NavBar";
 import SideBar from "../components/Dashboard/SideBar";
 import { Outlet } from "react-router";
 
-import LogoEmpresa from '../../public/estacsis edificio.png'
+import Navegador from "../components/Dashboard/Navegador";
 
 function DashboardSecundario() {
     
@@ -18,13 +18,10 @@ function DashboardSecundario() {
             </div>
 
             <div className="w-full overflow-scroll h-full sm:w-8/12 xl:w-9/12 bg-gray-200 rounded-lg shadow-2xl px-5 py-5 border-2 border-gray-300">
-                <div className="w-full hidden sm:flex sm:flex-row text-center sm:items-end sm:gap-3">
-                    <img 
-                        src={LogoEmpresa} 
-                        alt="logo empresa" 
-                        className="w-[2.5rem]"
+                <div className="hidden sm:block">
+                    <Navegador
+                        type='dashboard'
                     />
-                    <h1 className="text-3xl xl:text-4xl font-bold font-sans-segoe-UI text-blue-950">Estacsis</h1>
                 </div>
                 <Outlet/>
             </div>

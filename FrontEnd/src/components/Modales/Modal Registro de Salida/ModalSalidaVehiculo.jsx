@@ -60,7 +60,7 @@ function ModalSalidaVehiculo({
             {
                 <>
                     <div className="flex flex-row justify-between">
-                        <h2 className="text-xl text-center sm:text-2xl font-bold italic tracking-wider">¿Registrar salidad de vehiculo?</h2>
+                        <h2 className="text-xl text-center sm:text-2xl font-bold italic tracking-wider">¿Registrar salida de vehículo?</h2>
                     </div>
 
                     <div className="w-full flex flex-col sm:flex-row gap-4 sm:gap-2">

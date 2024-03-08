@@ -8,10 +8,12 @@ import TarjetaMenu from '../Tarjetas/TarjetaMenu'
 
 import { Link,useNavigate } from "react-router-dom"
 
+import LogoEmpresa from '../../../public/2b23363768d7fa56db8e93c03fcda55f.svg'
+
 const menu = [
-  {'text':'parqueaderos','link':'/dashboard/parqueaderos','type':'parqueadero','id':'asdasd324b32n4ad'},
-  {'text':'parkers','link':'/dashboard/parkers','type':'parker','id':'asdasd3adadadasd24b32n4ad'},
-  {'text':'clientes','link':'/dashboard/usuarios','type':'usuario','id':'asda88888sd3adadadasd24b32n4ad'},
+  {'text':'estacionamientos','link':'/dashboard/parqueaderos','type':'parqueadero','id':'34lhadasd34234'},
+  {'text':'empleados','link':'/dashboard/parkers','type':'parker','id':'34l2323fdfsasd34234'},
+  {'text':'clientes','link':'/dashboard/usuarios','type':'usuario','id':'54548887gg323fdfsasd34234'},
 ]
 
 function NavBar() {
@@ -45,6 +47,14 @@ function NavBar() {
         open={open}
         isOpen={()=>setOpen(false)}
       >
+        <div className='flex flex-row items-end gap-2'>
+          <img 
+            src={LogoEmpresa} 
+            alt="logo empresa" 
+            className="w-[2.5rem]"
+          />
+          <h1 className="text-3xl xl:text-4xl font-bold font-sans-segoe-UI text-white">Estacsis</h1>
+        </div>
         {
           menu?.map( item => {
             return <Link key={item.id} to={item.link} onClick={()=>setOpen(false)}><TarjetaMenu key={item.id} type={item.type} text={item.text}/></Link> 

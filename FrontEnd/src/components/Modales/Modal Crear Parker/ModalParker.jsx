@@ -29,7 +29,7 @@ function ModalParker({isOpen}) {
     const [identificacion,setIdentificacion]=useState('')
     const [parqueadero,setParqueadero]=useState('')
 
-    const handleSubtmit =(e)=>{
+    const handleSubtmit = async (e)=>{
         e.preventDefault()
         
         if([nombres,apellidos,identificacion,parqueadero].includes('')){
@@ -96,7 +96,7 @@ function ModalParker({isOpen}) {
                     callback={setIdentificacion}
                     placeholderInput='Identificacion'
                     label='Identificacion'
-                    typeInput='number'
+                    typeInput='text'
                 />
                 <InputTypeSelect
                     value={parqueadero}
