@@ -8,20 +8,14 @@ import BotonAgregarDashboard from "../Botones/BotonAgregarDashboard";
 import PopUp from "../PopUp/PopUp"
 import ModalParqueadero from "../Modales/Modal Crear Parqueadero/ModalParqueadero"
 
+
 import useEstacionamientos from '../../data/hooks/useEstacionamientos'
 
-const menu = [
-  {'text':'parqueadero la 33','id':'sdas8adadeqw34234d342'},
-  {'text':'parqueadero Buenos Aires','id':'sads8ad2cvcf33342'},
-  {'text':'parqueadero esquina dura','id':'afdfsd32343339434hjkaf'},
-]
 
 function Parqueaderos() {
-
   const {
-    obtenerEstacionamientos,
-    crearEstacionamientos,
-    estacionamientos
+    estacionamientos,
+    obtenerEstacionamientos
   }=useEstacionamientos()
 
   let location = useLocation();
@@ -34,18 +28,17 @@ function Parqueaderos() {
   },[location.pathname])
 
   useEffect(()=>{
-    const obtenerParqueaderos = async ()=>{
+    const getEstacionamientos = async ()=>{
       try {
-        const response = await obtenerEstacionamientos()
-        console.log(response)
+        const respuesta = await obtenerEstacionamientos()
+        console.log(respuesta)
       } catch (error) {
         console.log(error)
       }
-    }  
-    obtenerParqueaderos()
+    }
+
+    getEstacionamientos()
   },[])
-
-
   return (
     <div>
       {
@@ -61,15 +54,28 @@ function Parqueaderos() {
                 open={open}
               >
                 <ModalParqueadero
-                  crearEstacionamientos={crearEstacionamientos}
                   isOpen={()=>setOpen(false)}
                 />
               </PopUp>
             </div>
             <div className="w-full grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-5 xl:grid-cols-3">
               {
-                estacionamientos?.map(item=>{
-                  return <Link key={item.id} to={`/dashboard/parqueaderos/${item.id}`}><TarjetaOpcion key={item.id} type="parqueadero" text={item.text}/></Link>
+                estacionamientos?.map(item =>{
+                  return <Link key={item.id} to={`/dashboard/parqueaderos/${item.id}`}>
+                     <TarjetaOpcion key={item.id} type="parqueadero">
+                        <div className="w-full px-5 py-1">
+                          <p className="text-left font-bold text-lg uppercase">{item.nombre}</p>
+                          <div className="flex flex-row justify-between font-semibold text-lg">
+                            <p>{`Carros: ${item.carros}`}</p>
+                            <p>{`Tarifa carros: $ ${item.tarifaCarros}`}</p>
+                          </div>
+                          <div className="flex flex-row justify-between font-semibold text-lg">
+                            <p>{`Motos: ${item.motos}`}</p>
+                            <p>{`Tarifa motos: $ ${item.tarifaMotos}`}</p>
+                          </div>
+                        </div>
+                     </TarjetaOpcion>
+                    </Link>
                 })
               }
             </div>

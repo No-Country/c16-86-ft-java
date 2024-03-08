@@ -19,8 +19,8 @@ function EstacionamientoProvider({children}) {
         }
 
         try {
-            const rta = await axios('https://c16-86-ft-java.onrender.com/api/v1/listofclient',configuracion)
-            console.log(rta)
+            const rta = await axios('https://c16-86-ft-java.onrender.com/api/v1/parkingLoot/list',configuracion)
+            return rta
         }catch(error) {
             console.log('aqui,error')
             console.log(error)
@@ -47,9 +47,9 @@ function EstacionamientoProvider({children}) {
     return (
         <EstacionamientoContext.Provider
             value={{
-                obtenerEstacionamientos,
+                estacionamientos,
                 crearEstacionamientos,
-                estacionamientos
+                obtenerEstacionamientos
             }}
         >
             {children}
