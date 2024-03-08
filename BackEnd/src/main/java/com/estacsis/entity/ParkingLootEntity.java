@@ -27,6 +27,9 @@ public class ParkingLootEntity {
     @JoinColumn(name = "admin")
     private AdminEntity admin;
 
+    @OneToMany(mappedBy = "parkingLoot", cascade = CascadeType.ALL)
+    private List<ParkingEntity> parkingEntities;
+
     @Column(length = 150)
     private Integer aCapacity;
 
@@ -117,13 +120,26 @@ public class ParkingLootEntity {
         this.mTarifa = mTarifa;
     }
 
+    public List<ParkingEntity> getParkingEntities() {
+        return parkingEntities;
+    }
+
+    public void setParkingEntities(List<ParkingEntity> parkingEntities) {
+        this.parkingEntities = parkingEntities;
+    }
+
     @Override
     public String toString() {
-        return "ParkingLoot{" +
-                "id=" + idParkingLoot +
+        return "ParkingLootEntity{" +
+                "idParkingLoot=" + idParkingLoot +
+                ", parker=" + parker +
+                ", admin=" + admin +
+                ", parkingEntities=" + parkingEntities +
                 ", aCapacity=" + aCapacity +
                 ", mCapacity=" + mCapacity +
                 ", nameParkingLoot='" + nameParkingLoot + '\'' +
+                ", aTarifa=" + aTarifa +
+                ", mTarifa=" + mTarifa +
                 '}';
     }
 }

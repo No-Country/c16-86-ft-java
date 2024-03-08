@@ -11,8 +11,12 @@ public class ParkingEntity {
     @Column(name = "idParking")
     private Long idParking;
 
+    @ManyToOne
+    @JoinColumn(name = "idParkingLoot")
+    private ParkingLootEntity parkingLoot;
+
     @Column(name = "state")
-    private String state;
+    private Boolean state=true;
 
     @Column(name = "nomenclatureSection")
     private String nomenclatureSection;
@@ -25,8 +29,8 @@ public class ParkingEntity {
     }
 
     // Constructor con parámetros
-    public ParkingEntity(String state, String nomenclatureSection, String vehicleType) {
-        this.state = state;
+    public ParkingEntity(Boolean state, String nomenclatureSection, String vehicleType) {
+        this.state = true;
         this.nomenclatureSection = nomenclatureSection;
         this.vehicleType = vehicleType;
     }
@@ -40,11 +44,11 @@ public class ParkingEntity {
         this.idParking = idParking;
     }
 
-    public String getState() {
+    public Boolean getState() {
         return state;
     }
 
-    public void setState(String state) {
+    public void setState(Boolean state) {
         this.state = state;
     }
 
@@ -64,12 +68,22 @@ public class ParkingEntity {
         this.vehicleType = vehicleType;
     }
 
+    public ParkingLootEntity getParkingLoot() {
+        return parkingLoot;
+    }
+
+    public void setParkingLoot(ParkingLootEntity parkingLoot) {
+        this.parkingLoot = parkingLoot;
+    }
+
     // toString()
+
     @Override
     public String toString() {
         return "ParkingEntity{" +
                 "idParking=" + idParking +
-                ", state='" + state + '\'' +
+                ", parkingLoot=" + parkingLoot +
+                ", state=" + state +
                 ", nomenclatureSection='" + nomenclatureSection + '\'' +
                 ", vehicleType='" + vehicleType + '\'' +
                 '}';

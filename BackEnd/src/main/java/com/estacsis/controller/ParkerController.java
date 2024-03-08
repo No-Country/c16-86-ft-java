@@ -1,5 +1,6 @@
 package com.estacsis.controller;
 
+import com.estacsis.DTO.ParkerDTO;
 import com.estacsis.entity.ParkerEntity;
 import com.estacsis.service.ParkerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +18,9 @@ public class ParkerController {
 
 
     @GetMapping("/parkers")
-    public List<ParkerEntity> getListParkers(){
-        return parkerService.getParkers();
+    public ResponseEntity<List<ParkerDTO>> getAllParkers() {
+        List<ParkerDTO> parkers = parkerService.getParkersDTO();
+        return ResponseEntity.ok(parkers);
     }
     @PostMapping("/newparker")
     public ResponseEntity createParker(@RequestBody ParkerEntity parker ){

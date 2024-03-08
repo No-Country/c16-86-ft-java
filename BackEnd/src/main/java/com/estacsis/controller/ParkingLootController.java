@@ -1,5 +1,7 @@
 package com.estacsis.controller;
 
+import com.estacsis.DTO.ParkingLootDTO;
+import com.estacsis.entity.ParkingEntity;
 import com.estacsis.entity.ParkingLootEntity;
 import com.estacsis.service.ParkingLootService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/v1/parking")
+@RequestMapping("/api/v1/parkingLoot")
 public class ParkingLootController {
     private final ParkingLootService parkingLootService;
 
@@ -27,21 +29,6 @@ public class ParkingLootController {
     }
 
     // Endpoint para buscar un ParkingLoot por su ID
-    @GetMapping("/{id}")
-    public ResponseEntity<ParkingLootEntity> findParkingLootById(@PathVariable Long id) {
-        Optional<ParkingLootEntity> parkingLoot = parkingLootService.findParkingLootById(id);
-        return parkingLoot.map(entity -> ResponseEntity.ok().body(entity))
-                .orElseGet(() -> ResponseEntity.notFound().build());
-    }
-
-    // Endpoint para actualizar un ParkingLoot
-    @PutMapping("/{id}")
-    public ResponseEntity<ParkingLootEntity> updateParkingLoot(@PathVariable Long id, @RequestBody ParkingLootEntity parkingLoot) {
-        ParkingLootEntity updatedParkingLoot = parkingLootService.updateParkingLoot(id, parkingLoot);
-        return updatedParkingLoot != null ?
-                ResponseEntity.ok(updatedParkingLoot) :
-                ResponseEntity.notFound().build();
-    }
     @GetMapping("/findbyid")
     public ResponseEntity<Optional<ParkingLootEntity>> findIdParkingLoot(@RequestParam Long id) {
         Optional<ParkingLootEntity> parkingLoot = parkingLootService.findParkingLootById(id);
@@ -51,31 +38,16 @@ public class ParkingLootController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    @PostMapping("/createParkingLoot")
+    public ResponseEntity<?> createParkingLoot(@RequestParam Long idParkingLoot){
+        return parkingLootService.createParkingLoot(idParkingLoot);
+    }
+
+
     @GetMapping("/list")
-    public ResponseEntity<List<ParkingLootEntity>> getAllParkingLoots() {
-        List<ParkingLootEntity> parkingLoots = parkingLootService.getAllParkingLoots();
+    public ResponseEntity<List<ParkingLootDTO>> getAllParkingLoots() {
+        List<ParkingLootDTO> parkingLoots = parkingLootService.getAllParkingLoots();
         return ResponseEntity.ok(parkingLoots);
-    }
-
-    @PutMapping("/update/{id}")
-    public ResponseEntity<ParkingLootEntity> updateIdParkingLoot(@PathVariable Long id, @RequestBody ParkingLootEntity parkingLoot) {
-        ParkingLootEntity updatedParkingLoot = parkingLootService.updateParkingLoot(id, parkingLoot);
-        if (updatedParkingLoot != null) {
-            return ResponseEntity.ok(updatedParkingLoot);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
-
-    @PostMapping("/create")
-    public ResponseEntity<ParkingLootEntity> createParkingLoot(@RequestBody ParkingLootEntity parkingLoot) {
-        parkingLootService.createParkingLoot(parkingLoot);
-        return new ResponseEntity<>(HttpStatus.CREATED);
-    }
-
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Void> deleteIdParkingLoot(@PathVariable Long id) {
-        parkingLootService.deleteParkingLoot(id);
-        return ResponseEntity.noContent().build();
     }
 }
