@@ -3,9 +3,9 @@ package com.estacsis.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDate;
+import java.time.Duration;
 import java.time.LocalDateTime;
-
+import java.util.Date;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -24,13 +24,9 @@ public class TicketEntity {
     private ClientEntity clientEntity;
     @Column(name = "carLicense", unique = true, nullable = false)
     private String carLicense;
-    private LocalDateTime entryDate = LocalDateTime.now();
+    private LocalDateTime entryDate;
+    private LocalDateTime exitDate;
     private String vehicleType;
     private double amount;
     private String timeConsumed;
-
-
-
-
-
 }

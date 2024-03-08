@@ -3,6 +3,7 @@ package com.estacsis.controller;
 import com.estacsis.entity.TicketEntity;
 import com.estacsis.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,29 +31,30 @@ public class TicketController {
 
     }
 
-        //Endopoint para insertar un ticket
-        @PostMapping(path = "/{add}")
-        public TicketEntity addTicket (@RequestBody TicketEntity ticket){
-            ticketService.addTicket(ticket);
-            return ticket;
-        }
+    //Endopoint para insertar un ticket
+    @PostMapping(path = "/{exit}")
+    public ResponseEntity<TicketEntity> exitTicket(@RequestBody TicketEntity ticket) {
+        return ticketService.addTicket(ticket);
+    }
 
-        //Endpoint para eliminar un ticket
-        @DeleteMapping(path = "/{id}")
-        public void deleleteById (@PathVariable("id") Long idTicket){
-            ticketService.deleteById(idTicket);
-
-        }
-
-
-        @PutMapping(path = "/{id}")
-        public void updateTicket (
-                @PathVariable("id") Long idTicket,
-                @RequestParam(required = false) String carLicense){
-            ticketService.updateTicket(idTicket, carLicense);
-        }
-
+    @PostMapping(path = "/inTicket")
+    public ResponseEntity<TicketEntity> inTicket(
+            @RequestParam Long idClient, String carLicense, String vehicle_type ){
+        System.out.println("HOLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+        return ticketService.inTicket(idClient,carLicense,vehicle_type);
 
     }
 
+    //Endpoint para eliminar un ticket
+    @DeleteMapping(path = "/{id}")
+    public void deleleteById(@PathVariable("id") Long idTicket) {
+        ticketService.deleteById(idTicket);
+    }
 
+    @PutMapping(path = "/{id}")
+    public void updateTicket(
+            @PathVariable("id") Long idTicket,
+            @RequestParam(required = false) String carLicense) {
+        ticketService.updateTicket(idTicket, carLicense);
+    }
+}

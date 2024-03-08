@@ -1,5 +1,6 @@
 package com.estacsis.service;
 
+import com.estacsis.DTO.ParkerDTO;
 import com.estacsis.entity.ParkerEntity;
 import com.estacsis.repository.ParkerRepository;
 import jakarta.validation.Valid;
@@ -12,14 +13,31 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ParkerService {
     @Autowired
     private ParkerRepository parkerRepository;
 
-    public List<ParkerEntity> getParkers(){
-        return parkerRepository.findAll();
+    public List<ParkerDTO> getParkersDTO() {
+        List<ParkerEntity> parkerEntities = parkerRepository.findAll();
+        return parkerEntities.stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
+    }
+    private ParkerDTO convertToDTO(ParkerEntity parkerEntity) {
+        ParkerDTO parkerDTO = new ParkerDTO();
+        parkerDTO.setIdParker(parkerEntity.getIdParker());
+        parkerDTO.setName(parkerEntity.getName());
+        parkerDTO.setLastName(parkerEntity.getLastName());
+        parkerDTO.setDni(parkerEntity.getDni());
+        parkerDTO.setUserParker(parkerEntity.getUserParker());
+        parkerDTO.setPasswordParker(parkerEntity.getPasswordParker());
+        parkerDTO.setParkingLootId(parkerEntity.getParkingLoot().getIdParkingLoot());
+        parkerDTO.setAdminId(parkerEntity.getAdmin().getIdAdmin());
+
+        return parkerDTO;
     }
 
     public ResponseEntity<Object> createNewParker(@Valid @RequestBody ParkerEntity newParker){
