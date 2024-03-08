@@ -1,4 +1,6 @@
 import imagenBack1 from '../../../public/Estacionamiento1.jpg'
+import imagenBack2 from '../../../public/Estacionamiento4.avif'
+import imagenBack3 from '../../../public/Estacionamiento5.avif'
 
 const Card = () => {
     return (
@@ -13,7 +15,7 @@ const Card = () => {
             </div>
         </div>
         <div className='px-2 py-2 border shadow'>
-            <img src={imagenBack1} className="rounded-md" />
+            <img src={imagenBack2} className="rounded-md" />
             <div className='my-2'> 
                 <h2 className='font-semibold'>Registro de Entradas/Salidas</h2>
                 <p className='text-sm mt-1'>
@@ -22,7 +24,7 @@ const Card = () => {
             </div>
         </div>
         <div className='px-2 py-2 border shadow'>
-            <img src={imagenBack1} className="rounded-md" />
+            <img src={imagenBack3} className="rounded-md" />
             <div className='my-2'> 
                 <h2 className='font-semibold'>Acceso a Empleados</h2>
                 <p className='text-sm mt-1'>
