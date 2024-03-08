@@ -8,6 +8,8 @@ import ModalRegistroVehiculo from "../Modales/Modal Registro de Vehiculo/ModalRe
 import ModalSalidaVehiculo from "../Modales/Modal Registro de Salida/ModalSalidaVehiculo";
 import PopUp from "../PopUp/PopUp";
 
+import TicketSalidad from "../Modales/Modal Registro de Salida/TicketSalidad";
+
 function CardMoto({
     estado,
     nomenclatura,
@@ -18,6 +20,9 @@ function CardMoto({
     const [patente,setPatente]=useState(nomenclatura)
     const [disponible,setDisponible]=useState(estado)
     const [open,setOpen]=useState(false)
+
+    const [infoTicketSalida,setInfoTicketSalida]=useState({})
+    const [openTicket,setOpenTicket]=useState(false)
 
     useEffect(() => {
         // Actualizar el estado disponible cuando la prop estado cambie
@@ -56,8 +61,18 @@ function CardMoto({
                         id={identificador}
                         setOpen={setOpen}
                         type={'moto'}
+                        setInfoTicketSalida={setInfoTicketSalida}
+                        setOpenTicket={setOpenTicket}
                     />
                 }
+            </PopUp>
+
+            <PopUp
+                open={openTicket}
+            >
+                <div className="max-w-2xl bg-white flex flex-col gap-5 border shadow md:px-10 px-5 md:py-10 py-5 rounded-md sm:mx-auto mt-5">
+                    <TicketSalidad setOpen={setOpenTicket}/>
+                </div>
             </PopUp>
         </>
     )
