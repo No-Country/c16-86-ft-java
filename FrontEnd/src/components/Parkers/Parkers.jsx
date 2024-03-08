@@ -56,7 +56,7 @@ function Parkers(){
   return (
     <div className="flex flex-col gap-5">
         <div className="flex flex-row justify-between items-center">
-          <h1 className="font-bold italic text-xl sm:text-2xl">Parkers</h1>
+          <h1 className="font-bold italic text-xl sm:text-2xl">Empleados</h1>
           <BotonAgregarDashboard
             callback={()=>setOpen(true)}
           />

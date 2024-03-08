@@ -7,11 +7,11 @@ function ContactUs() {
             <div className='sm:w-1/2'>
                 <div className="pb-5 xl:py-10 sm:py-5 sm:gap-2 flex flex-col xl:gap-4">
                     <h1 className="xl:text-6xl lg:text-5xl text-4xl font-semibold">Empieza tu</h1>
-                    <h1 className="xl:text-6xl lg:text-5xl text-4xl font-semibold">Revolucion con</h1>
-                    <h1 className="xl:text-6xl lg:text-5xl text-4xl font-semibold">Nuestro software</h1>
+                    <h1 className="xl:text-6xl lg:text-5xl text-4xl font-semibold">revolución con</h1>
+                    <h1 className="xl:text-6xl lg:text-5xl text-4xl font-semibold">nuestro software</h1>
                 </div>
                 <button
-                    className="py-2 px-8 text-2xl font-bold uppercase bg-slate-50 rounded-md border border-black"
+                    className="py-2 px-8 text-2xl font-bold uppercase bg-slate-200 rounded-md border border-black"
                 >
                     contáctanos
                 </button>
@@ -21,7 +21,7 @@ function ContactUs() {
                 <img 
                     src={contactus} 
                     alt=""
-                    className='rounded' 
+                    className='rounded-xl' 
                 />
             </div>
         </div>

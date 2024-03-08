@@ -5,17 +5,17 @@ function TarjetaMenu({type,text}) {
   const typeCard = {
     'parqueadero':{
       'color':'dark-cyan',
-      'text':'parqueadero',
+      'text':'estacionamientos',
       'icon':faSquareParking
     },
     'parker':{
       'color':'dark-spring-green',
-      'text':'parker',
+      'text':'empleados',
       'icon':faUser
     },
     'usuario':{
       'color':'caribean-current',
-      'text':'usuario',
+      'text':'registros',
       'icon':faAddressCard
     }
   }
