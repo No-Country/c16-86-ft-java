@@ -12,7 +12,6 @@ function ModalRegistroVehiculo({
     idParking,
     type
 }){
-    console.log(idParking)
     let location = useLocation();
 
     const {

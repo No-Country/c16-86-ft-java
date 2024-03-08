@@ -19,6 +19,8 @@ function CardAuto({
     const [disponible,setDisponible]=useState(estado)
     const [open,setOpen]=useState(false)
 
+    const [openSalida,setOpenSalida]=useState(false)
+
     useEffect(() => {
         // Actualizar el estado disponible cuando la prop estado cambie
         if (estado !== undefined) {
@@ -52,7 +54,8 @@ function CardAuto({
                     />:
                     <ModalSalidaVehiculo
                         id={identificador}
-                        isOpen={()=>setOpen(false)}
+                        setOpen={setOpen}
+                        type={'auto'}
                     />
                 }
             </PopUp>

@@ -80,50 +80,77 @@ function TicketProvider({children}) {
         setTickets([newData, ...tickets]);
     };
 
-/*     const crearTicketEntrada = (dataTicket)=>{
-        const newData = dataTicket;
-        newData['id'] = generateUUID();
-        newData['fechaIngreso'] = new Date();
+    const cerrarTicketSalida = (dataSalida)=>{
+        let idTicket
+        let tarifaCarro
+        let tarifaMoto
+        let infoTicket
 
-
-
-        const cambiandoEstadoParking = estacionamiento?.map( item =>{
-            if(item.id === newData.idEstacionamiento){
-                if(newData.typeVehiculo === 'auto'){
-                    item.parkingCarros.map(item => {
-                        if(item.nomenclatura === newData.idParking){
-                            item.disponible = false
-                            item.ticket = newData.id
-                            return item
-                        }
-                        return item
-                    })
+        const newData = {
+            ...dataSalida
+        };
+    
+        const cambiandoEstadoParking = estacionamiento.map(item => {
+            if (item.id === newData.idEstacionamiento) {
+                tarifaCarro = item.tarifaCarros;
+                tarifaMoto = item.tarifaMotos;
+                if (newData.typeVehiculo === 'auto') {
+                    return {
+                        ...item,
+                        parkingCarros: item.parkingCarros.map(parking => {
+                            if (parking.nomenclatura === newData.idParking) {
+                                idTicket = parking.ticket
+                                return {
+                                    ...parking,
+                                    disponible: true,
+                                    ticket:null
+                                };
+                            }
+                            return parking;
+                        })
+                    };
+                } else if (newData.typeVehiculo === 'moto') {
+                    return {
+                        ...item,
+                        parkingMotos: item.parkingMotos.map(parking => {
+                            if (parking.nomenclatura === newData.idParking) {
+                                idTicket = parking.ticket
+                                return {
+                                    ...parking,
+                                    disponible: true,
+                                    ticket:null
+                                };
+                            }
+                            return parking;
+                        })
+                    };
                 }
-                
-                if(newData.typeVehiculo === 'moto'){
-                    item.parkingMotos.map(item => {
-                        if(item.nomenclatura === newData.idParking){
-                            item.disponible = false
-                            item.ticket = newData.id
-                            return item
-                        }
-                        return item
-                    })
-                }
-
-                return item;
             }
             return item;
+        });
+
+        const cerrarTicket = tickets.map(item =>{
+            if(item.id === idTicket){
+                item['fechaSalida'] = new Date()
+                const diferenciaEnMilisegundos = new Date() - item['fechaIngreso']
+                const diferenciaEnHoras = diferenciaEnMilisegundos / 3600000;
+                item['tiempoConsumido'] = diferenciaEnHoras
+
+                if(item.typeVehiculo === 'carro'){
+                    item['cantidad'] = item['tiempoConsumido'] * tarifaCarro
+                }else if(item.typeVehiculo === 'moto'){
+                    item['cantidad'] = item['tiempoConsumido'] * tarifaMoto
+                }
+
+                infoTicket = item
+                return item
+            }
+
+            return item
         })
-
-
-
-        setEstacionamiento(cambiandoEstadoParking)
-        setTickets([newData,...tickets])
-    } */
-
-    const cerrarTicketSalida = ()=>{
-
+    
+        setEstacionamiento(cambiandoEstadoParking);
+        setTickets(cerrarTicket);
     }
 
     return (

@@ -5,7 +5,7 @@ import { faX } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 
-function TicketSalidad({isOpen}) {
+function TicketSalidad({setOpen}) {
   return (
     <div className="bg-white w-full flex flex-col gap-0 sm:gap-2">
         <div className="border-t-2 border-b-2 border-black text-center">
@@ -58,7 +58,7 @@ function TicketSalidad({isOpen}) {
 
         <button
             className="w-full  rounded-md  shadow-sm font-semibold text-lg mt-2 bg-white border-2 border-amber-500" 
-            onClick={isOpen}
+            onClick={()=>setOpen(false)}
         >
             Cerrar
         </button>

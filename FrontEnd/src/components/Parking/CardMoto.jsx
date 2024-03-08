@@ -25,6 +25,8 @@ function CardMoto({
             setDisponible(estado);
         }
     },[estado]);
+
+    
     
     return (
         <>
@@ -51,7 +53,9 @@ function CardMoto({
                       type={'moto'}
                     />:
                     <ModalSalidaVehiculo
-                        isOpen={()=>setOpen(false)}
+                        id={identificador}
+                        setOpen={setOpen}
+                        type={'moto'}
                     />
                 }
             </PopUp>
