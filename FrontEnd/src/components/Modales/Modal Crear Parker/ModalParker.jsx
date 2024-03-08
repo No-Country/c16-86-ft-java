@@ -11,6 +11,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 import useEstacionamientos from "../../../data/hooks/useEstacionamientos"
 import useColaboradores from "../../../data/hooks/useColaboradores"
+import useAuth from '../../../data/hooks/useAuth'
 
 function ModalParker({isOpen}) {
 
@@ -20,7 +21,12 @@ function ModalParker({isOpen}) {
 
     const {
         crearColaboradores
-      }=useColaboradores()
+    }=useColaboradores()
+
+    const {
+        registros,
+        setRegistros
+    }=useAuth()
 
     const [estacionamientoData,setEstacionamientoData]=useState([])
 
@@ -45,6 +51,17 @@ function ModalParker({isOpen}) {
         }
         
         crearColaboradores(data)
+        
+        const infoEstacionamiento = estacionamientoData.find( item =>{
+            if(item.id === data.idParqueadero){
+                return item
+            }
+        })
+
+        data['infoEstacionamiento'] = infoEstacionamiento
+
+        setRegistros()
+
         isOpen()
     }
 

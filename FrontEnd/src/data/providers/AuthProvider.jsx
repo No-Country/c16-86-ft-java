@@ -2,18 +2,18 @@ import axios from "axios";
 import { useState,useEffect } from "react";
 import { createContext } from "react";
 
+
 const AuthContext = createContext()
 
 function AuthProvider({children}) {
-    const [registros]=useState({
+
+    const [registros,setRegistros]=useState({
         'admin':{
             'type':'admin',
-            'id':'652ed2fd24a937fb6461faa0'
+            'id':'652ed2fd24a937fb6461faa0',
+            'email':'admincorreo@gmail.com'
         },
-        'parker':{
-            'type':'parker',
-            'id':'a937fb6461faa0652ed2fd24'
-        }
+        'parker':[]
     })
 
     const [auth,setAuth]=useState({})
@@ -23,7 +23,8 @@ function AuthProvider({children}) {
             value={{
                 registros,
                 auth,
-                setAuth
+                setAuth,
+                setRegistros
             }}
         >
             {children}
