@@ -30,29 +30,34 @@ public class TicketController {
 
     }
 
-        //Endopoint para insertar un ticket
-        @PostMapping(path = "/{add}")
-        public TicketEntity addTicket (@RequestBody TicketEntity ticket){
-            ticketService.addTicket(ticket);
-            return ticket;
-        }
+    //Endopoint para insertar un ticket
+    @PostMapping(path = "/{add}")
+    public TicketEntity addTicket(@RequestBody TicketEntity ticket) {
+        // Realizar cálculos necesarios para generar el pago
+        ticket.generarPago(ticket.getEntryDate(), ticket.getExitDate());
 
-        //Endpoint para eliminar un ticket
-        @DeleteMapping(path = "/{id}")
-        public void deleleteById (@PathVariable("id") Long idTicket){
-            ticketService.deleteById(idTicket);
+        // Agregar el ticket utilizando el servicio
+        ticketService.addTicket(ticket);
 
-        }
+        return ticket;
+    }
 
-
-        @PutMapping(path = "/{id}")
-        public void updateTicket (
-                @PathVariable("id") Long idTicket,
-                @RequestParam(required = false) String carLicense){
-            ticketService.updateTicket(idTicket, carLicense);
-        }
-
+    //Endpoint para eliminar un ticket
+    @DeleteMapping(path = "/{id}")
+    public void deleleteById(@PathVariable("id") Long idTicket) {
+        ticketService.deleteById(idTicket);
 
     }
+
+
+    @PutMapping(path = "/{id}")
+    public void updateTicket(
+            @PathVariable("id") Long idTicket,
+            @RequestParam(required = false) String carLicense) {
+        ticketService.updateTicket(idTicket, carLicense);
+    }
+
+
+}
 
 

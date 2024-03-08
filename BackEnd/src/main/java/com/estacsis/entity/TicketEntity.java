@@ -3,8 +3,9 @@ package com.estacsis.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDate;
+import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 
 @AllArgsConstructor
@@ -24,13 +25,26 @@ public class TicketEntity {
     private ClientEntity clientEntity;
     @Column(name = "carLicense", unique = true, nullable = false)
     private String carLicense;
-    private LocalDateTime entryDate = LocalDateTime.now();
+    private LocalDateTime entryDate;
+    private LocalDateTime exitDate;
     private String vehicleType;
     private double amount;
     private String timeConsumed;
 
+    double COSTO_POR_HORA = 10.0;
+
+    public void generarPago (LocalDateTime entryDate, LocalDateTime exitDate ) {
+
+//        LocalDateTime entryDate = LocalDateTime.of(2024, 3, 8, 10, 0);
+//        LocalDateTime exitDate = LocalDateTime.of(2024, 3, 9, 10, 0);
+
+        Duration duration = Duration.between(entryDate, exitDate);
+        long hours = duration.toHours(); // Obtener el número de horas de estacionamiento
+
+        double costoTotal = hours * COSTO_POR_HORA; // Calcular el costo total
+
+        System.out.println("Costo total del estacionamiento: $" + costoTotal);
 
 
-
-
+    }
 }

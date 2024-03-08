@@ -5,6 +5,8 @@ import com.estacsis.entity.TicketEntity;
 import com.estacsis.repository.TicketRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +17,7 @@ import java.util.Optional;
 public class TicketService {
     @Autowired
     TicketRepository ticketRepository;
+    TicketEntity ticketEntity;
 
     public List<TicketEntity> getAllTickets() {
         try {
@@ -40,8 +43,11 @@ public class TicketService {
         }
     }
 
-    public void addTicket(TicketEntity ticketEntity) {
-        ticketRepository.save(ticketEntity);
+    public ResponseEntity<Objects> addTicket(TicketEntity ticketEntity) {
+        TicketEntity newTicket = new TicketEntity();
+        newTicket.generarPago(ticketEntity.getEntryDate(),ticketEntity.getExitDate());
+        ticketRepository.save(newTicket);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     public void deleteById(Long idTicket) {
@@ -62,6 +68,12 @@ public class TicketService {
 
         if (carLicense != null && carLicense.length() > 0 && !Objects.equals(ticketEntity.getCarLicense(), carLicense))
             ticketEntity.setCarLicense(carLicense);
+
+
+
     }
+
+
+
 
 }
