@@ -44,7 +44,7 @@ function DataCliente({isOpen,setIdCliente}) {
         }
 
         const ID_CLIENTE = crearCliente(data)
-        setIdCliente(ID_CLIENTE)
+        setIdCliente(data)
     }
 
     const getCliente =(e)=>{

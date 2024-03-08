@@ -20,7 +20,6 @@ function EstacionamientoProvider({children}) {
 
     useEffect(()=>{
         localStorage.setItem('estacionamientos',JSON.stringify(estacionamiento))
-        console.log('aqui2')
     },[estacionamiento])
 
 

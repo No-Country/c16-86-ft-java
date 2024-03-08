@@ -42,7 +42,7 @@ function ModalSalidaVehiculo({
         }
         
         const informacionTicket =  cerrarTicketSalida(data)
-        setInfoTicket(informacionTicket)
+        setInfoTicketSalida(informacionTicket)
         setOpen(false)
         setOpenTicket(true)
     }

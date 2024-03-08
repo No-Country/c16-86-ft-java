@@ -35,13 +35,19 @@ function ClienteProvider({children}) {
     }
 
     const obtenerClienteByDNI = (DNI)=>{
-        const getCliente = clientes.find(item => item.DNI === DNI)
-        return getCliente.id
+        const getCliente = clientes?.find(item => item.DNI === DNI)
+        return getCliente
+    }
+
+    const obtenerCliente = (id) => {
+        const infoClientes = clientes?.find(item => item.DNI === id)
+        return infoClientes
     }
 
     return (
         <ClienteContext.Provider
             value={{
+                obtenerCliente,
                 crearCliente,
                 obtenerClienteByDNI
             }}

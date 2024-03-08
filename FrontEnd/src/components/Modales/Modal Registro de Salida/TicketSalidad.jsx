@@ -5,12 +5,14 @@ import { faX } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 
-function TicketSalidad({setOpen}) {
+function TicketSalidad({setOpen,infoTicketSalida}) {
 
     const registrarSalida = (e)=>{
         e.preventDefault()
         setOpen(false)
     }
+
+    console.log(infoTicketSalida)
 
     return (
         <div className="bg-white w-full flex flex-col gap-0 sm:gap-2">

@@ -3,7 +3,6 @@ import { useState,useEffect } from "react";
 import { createContext } from "react";
 
 import useEstacionamientos from '../hooks/useEstacionamientos'
-import useClientes from "../hooks/useCliente";
 
 import generateUUID from "../../helpers/generaID";
 
@@ -81,6 +80,13 @@ function TicketProvider({children}) {
     };
 
     const cerrarTicketSalida = (dataSalida)=>{
+        /* const data = {
+            idCliente,
+            idEstacionamiento:pathName,
+            idParking,
+            typeVehiculo:type,
+            placa
+        } */
         let idTicket
         let tarifaCarro
         let tarifaMoto
@@ -151,6 +157,14 @@ function TicketProvider({children}) {
     
         setEstacionamiento(cambiandoEstadoParking);
         setTickets(cerrarTicket);
+
+
+
+       return infoTicket
+
+
+
+
     }
 
     return (
