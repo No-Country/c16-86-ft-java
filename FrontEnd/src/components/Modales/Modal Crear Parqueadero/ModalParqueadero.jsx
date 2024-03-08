@@ -22,18 +22,30 @@ const parqueaderos = [
     }
 ]
 
-function ModalParqueadero({isOpen}){
-    const [nombre,setNombre]=useState()
-    const [motos,setMotos]=useState()
-    const [carros,setCarros]=useState()
+function ModalParqueadero({isOpen,crearEstacionamientos}){
+    const [nombre,setNombre]=useState('')
+    const [motos,setMotos]=useState(0)
+    const [carros,setCarros]=useState(0)
 
-    const handleSubtmit =(e)=>{
+    const handleSubtmit = async (e)=>{
         e.preventDefault()
-        console.log({
-            nombre,
-            motos,
-            carros
-        })
+        if([nombre,motos,carros].includes('',0)){
+            console.log('llena todos los campos')
+            return
+        }
+
+        const data = {
+
+        }
+
+        try {
+            await crearEstacionamientos(data)
+            console.log('exito creando parqueadero')
+            isOpen()
+        } catch (error) {
+            console.log('error creando parqueadero')
+            console.log(error)
+        }
     }
 
     return (

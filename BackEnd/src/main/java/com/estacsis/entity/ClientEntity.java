@@ -38,7 +38,6 @@ public class ClientEntity {
     public LocalDate high;
 
 
-
     public ClientEntity(String dni, String firstname, String secondname, String phone, LocalDate date) {
         this.dni = dni;
         this.firstname = firstname;
