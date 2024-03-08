@@ -71,7 +71,7 @@ function CardMoto({
                 open={openTicket}
             >
                 <div className="max-w-2xl bg-white flex flex-col gap-5 border shadow md:px-10 px-5 md:py-10 py-5 rounded-md sm:mx-auto mt-5">
-                    <TicketSalidad setOpen={setOpenTicket}/>
+                <TicketSalidad setOpen={setOpenTicket} infoTicketSalida={infoTicketSalida}/>
                 </div>
             </PopUp>
         </>

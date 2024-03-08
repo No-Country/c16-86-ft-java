@@ -32,9 +32,6 @@ function Parqueaderos() {
       setPath(location.pathname)
   },[location.pathname])
 
-  useEffect(()=>{
-    console.log(estacionamiento)
-  },[estacionamiento])
   return (
     <div>
       {

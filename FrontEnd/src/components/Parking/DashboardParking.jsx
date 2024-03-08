@@ -37,9 +37,7 @@ function DashboardParking() {
 
     if(parkingLot){
       setParking(parkingLot)
-      console.log(parkingLot)
     }
-    console.log('aqui3')
   },[estacionamiento])
 
   return (

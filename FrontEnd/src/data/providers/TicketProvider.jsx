@@ -142,10 +142,12 @@ function TicketProvider({children}) {
                 const diferenciaEnHoras = diferenciaEnMilisegundos / 3600000;
                 item['tiempoConsumido'] = diferenciaEnHoras
 
-                if(item.typeVehiculo === 'carro'){
-                    item['cantidad'] = item['tiempoConsumido'] * tarifaCarro
-                }else if(item.typeVehiculo === 'moto'){
-                    item['cantidad'] = item['tiempoConsumido'] * tarifaMoto
+                if(item.typeVehiculo === 'auto'){
+                    item['cantidad'] = diferenciaEnHoras * tarifaCarro
+                }
+                
+                if(item.typeVehiculo === 'moto'){
+                    item['cantidad'] = diferenciaEnHoras * tarifaMoto
                 }
 
                 infoTicket = item
@@ -158,12 +160,13 @@ function TicketProvider({children}) {
         setEstacionamiento(cambiandoEstadoParking);
         setTickets(cerrarTicket);
 
-
+        if(newData.typeVehiculo === 'auto'){
+            infoTicket['tarifa'] = tarifaCarro
+        }else if(newData.typeVehiculo === 'moto'){
+            infoTicket['tarifa'] = tarifaMoto
+        }
 
        return infoTicket
-
-
-
 
     }
 
