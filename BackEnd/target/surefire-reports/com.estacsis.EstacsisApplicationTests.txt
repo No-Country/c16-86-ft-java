@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.estacsis.EstacsisApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.363 s -- in com.estacsis.EstacsisApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 21.82 s -- in com.estacsis.EstacsisApplicationTests
