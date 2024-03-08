@@ -66,20 +66,31 @@ public class ParkingLootService {
         return null; // Devolver null si el objeto no existe
     }
 
-    public ResponseEntity<?> createParkingLoot (Long id){
+    public ResponseEntity<?> createParkingLoot(Long id) {
         Optional<ParkingLootEntity> parkingLootEntity = parkingLootRepository.findById(id);
-        List<ParkingEntity> listCapacity = new ArrayList<>();
-        for (int i = 0; i < parkingLootEntity.get().getaCapacity(); i++) {
-            ParkingEntity parkingEntity = new ParkingEntity(true, "A" + i+1, "Car");
-            listCapacity.add(parkingEntity);
+
+        if (parkingLootEntity.isPresent()) {
+            List<ParkingEntity> listCapacity = new ArrayList<>();
+
+            for (int i = 0; i < parkingLootEntity.get().getaCapacity(); i++) {
+                ParkingEntity parkingEntity = new ParkingEntity(true, "A" + (i + 1), "Car");
+                parkingEntity.setParkingLoot(parkingLootEntity.get()); // Establecer la relación
+                listCapacity.add(parkingEntity);
+            }
+
+            for (int i = 0; i < parkingLootEntity.get().getmCapacity(); i++) {
+                ParkingEntity parkingEntity = new ParkingEntity(true, "M" + (i + 1), "Motorcycle");
+                parkingEntity.setParkingLoot(parkingLootEntity.get()); // Establecer la relación
+                listCapacity.add(parkingEntity);
+            }
+
+            parkingLootEntity.get().setParkingEntities(listCapacity);
+            parkingLootRepository.save(parkingLootEntity.get());
+
+            return new ResponseEntity<>(HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        for (int i = 0; i < parkingLootEntity.get().getmCapacity(); i++) {
-            ParkingEntity parkingEntity = new ParkingEntity(true, "M" + i+1, "Motorcycle");
-            listCapacity.add(parkingEntity);
-        }
-        parkingLootEntity.get().setParkingEntities(listCapacity);
-        parkingLootRepository.save(parkingLootEntity.get());
-        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     public void deleteParkingLoot(Long id) {

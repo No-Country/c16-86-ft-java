@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor
@@ -20,8 +21,8 @@ public class ParkingLootEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idParkingLoot;
 
-    @OneToMany(mappedBy = "parkingLoot", fetch = FetchType.EAGER)
-    private List<ParkerEntity> parker;
+    @OneToMany(mappedBy = "parkingLoot", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<ParkerEntity> parker = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "admin")

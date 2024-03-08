@@ -1,5 +1,6 @@
 package com.estacsis.controller;
 
+import com.estacsis.DTO.ParkingLootDTO;
 import com.estacsis.entity.ParkingEntity;
 import com.estacsis.service.ParkingService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,12 @@ public class ParkingController {
 
     @Autowired
     private ParkingService parkingService;
+
+//    @GetMapping("/list")
+//    public ResponseEntity<List<ParkingDTO>> getAllParking(@RequestParam Long idParkingLoot) {
+//        List<ParkingLootDTO> parking = parkingService.getAllParking();
+//        return ResponseEntity.ok(parking);
+//    }
 
     @GetMapping("/all")
     public ResponseEntity<List<ParkingEntity>> getAllParking() {
