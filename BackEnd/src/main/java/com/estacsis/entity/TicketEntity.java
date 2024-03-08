@@ -21,15 +21,20 @@ public class TicketEntity {
 
     //Relacion Muchos a Uno
     @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinColumn(name = "idClient")
+    @JoinColumn(name = "id_client")
     private ClientEntity clientEntity;
-    @Column(name = "carLicense", unique = true, nullable = false)
+    @Column(name = "car_license", unique = true, nullable = false)
     private String carLicense;
+    @Column(name = "entry_date")
     private LocalDateTime entryDate;
+    @Column(name = "exit_date")
     private LocalDateTime exitDate;
+    @Column(name = "vehicle_type")
     private String vehicleType;
+    @Column(name = "amount")
     private double amount;
-    private String timeConsumed;
+    @Column(name = "time_consumed")
+    private double timeConsumed;
 
 
 

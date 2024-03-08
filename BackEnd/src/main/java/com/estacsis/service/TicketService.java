@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.Duration;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
@@ -50,17 +51,21 @@ public class TicketService {
     }
 
     public ResponseEntity<TicketEntity> addTicket(TicketEntity ticketEntity) {
-        TicketEntity newTicket = new TicketEntity();
+
         double COSTO_POR_HORA = 10.0;
-//        LocalDateTime entryDate = LocalDateTime.of(2024, 3, 8, 10, 0);
-//        LocalDateTime exitDate = LocalDateTime.of(2024, 3, 9, 10, 0);
+
 
         Duration duration = Duration.between(ticketEntity.getEntryDate(), LocalDateTime.now());
-        long hours = duration.toHours(); // Obtener el número de horas de estacionamiento
+        System.out.println(duration.toMinutes());
+        double hours = duration.toMinutes()/60; // Obtener el número de horas de estacionamiento
 
-        double costoTotal = hours * COSTO_POR_HORA; // Calcular el costo total
-
+        double costoTotal = duration.toMinutes()/60.0 * 20; // Calcular el costo total
+        System.out.println(costoTotal);
+        ticketEntity.setTimeConsumed(hours);
+        ticketEntity.setExitDate(LocalDateTime.now());
         ticketEntity.setAmount(costoTotal);
+
+
 
         ticketRepository.save(ticketEntity);
         return new ResponseEntity<>(ticketEntity, HttpStatus.OK);
@@ -76,18 +81,17 @@ public class TicketService {
         }
 
 
-
     }
 
-    public ResponseEntity<TicketEntity>inTicket(Long idClient,String carLicense, String vehicle_type ){
-            TicketEntity ticketEntity = new TicketEntity();
-            Optional <ClientEntity>  clientEntity = clientRepository.findById(idClient);
-            ticketEntity.setIdTicket(clientEntity.get().getIdClient());
-            ticketEntity.setCarLicense(carLicense);
-            ticketEntity.setEntryDate(LocalDateTime.now());
-            ticketEntity.setVehicleType(vehicle_type);
-            ticketRepository.save(ticketEntity);
-            return new ResponseEntity<>(ticketEntity, HttpStatus.OK);
+    public ResponseEntity<TicketEntity> inTicket(Long idClient, String carLicense, String vehicleType) {
+        TicketEntity ticketEntity = new TicketEntity();
+        Optional<ClientEntity> clientEntity = clientRepository.findById(idClient);
+        ticketEntity.setClientEntity(clientEntity.get());
+        ticketEntity.setCarLicense(carLicense);
+        ticketEntity.setEntryDate(LocalDateTime.now());
+        ticketEntity.setVehicleType(vehicleType);
+        ticketRepository.save(ticketEntity);
+        return new ResponseEntity<>(ticketEntity, HttpStatus.OK);
     }
 
     @Transactional

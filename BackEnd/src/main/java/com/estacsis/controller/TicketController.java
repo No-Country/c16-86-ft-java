@@ -41,9 +41,9 @@ public class TicketController {
 
     @PostMapping(path = "/inTicket")
     public ResponseEntity<TicketEntity> inTicket(
-            @RequestParam Long idClient, String carLicense, String vehicle_type ){
+            @RequestParam Long idClient, String carLicense, String vehicleType ){
         System.out.println("HOLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-        return ticketService.inTicket(idClient,carLicense,vehicle_type);
+        return ticketService.inTicket(idClient,carLicense,vehicleType);
 
     }
 
