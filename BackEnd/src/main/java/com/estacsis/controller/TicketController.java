@@ -3,6 +3,7 @@ package com.estacsis.controller;
 import com.estacsis.entity.TicketEntity;
 import com.estacsis.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,15 +32,19 @@ public class TicketController {
     }
 
     //Endopoint para insertar un ticket
-    @PostMapping(path = "/{add}")
-    public TicketEntity addTicket(@RequestBody TicketEntity ticket) {
-        // Realizar cálculos necesarios para generar el pago
-        ticket.generarPago(ticket.getEntryDate(), ticket.getExitDate());
+    @PostMapping(path = "/{exit}")
+    public ResponseEntity<TicketEntity> exitTicket(@RequestBody TicketEntity ticket) {
+        return ticketService.addTicket(ticket);
 
-        // Agregar el ticket utilizando el servicio
-        ticketService.addTicket(ticket);
 
-        return ticket;
+    }
+
+    @PostMapping(path = "/inTicket")
+    public ResponseEntity<TicketEntity> inTicket(
+            @RequestParam Long idClient, String carLicense, String vehicle_type ){
+        System.out.println("HOLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+        return ticketService.inTicket(idClient,carLicense,vehicle_type);
+
     }
 
     //Endpoint para eliminar un ticket
