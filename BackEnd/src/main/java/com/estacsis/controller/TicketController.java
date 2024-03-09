@@ -1,60 +1,97 @@
 package com.estacsis.controller;
 
+import com.estacsis.entity.ClientEntity;
 import com.estacsis.entity.TicketEntity;
-import com.estacsis.service.TicketService;
+import com.estacsis.repository.ClientRepository;
+import com.estacsis.repository.TicketRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.stereotype.Service;
 
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
-@RestController
-@RequestMapping({"/api/v1/tickets"})
-
+@Service
 public class TicketController {
-
     @Autowired
-    private TicketService ticketService;
+    TicketRepository ticketRepository;
+    @Autowired
+    ClientRepository clientRepository;
 
-    //Endpoint Traer todos los tickets
-    @GetMapping(path = {"/all"})
-    public List<TicketEntity> getAll() {
-        return ticketService.getAllTickets();
+
+    public List<TicketEntity> getAllTickets() {
+        try {
+            return ticketRepository.findAll();
+        } catch (Exception e) {
+            e.printStackTrace();
+
+            throw new RuntimeException
+                    ("Failed to retrieve all tickets. Reason: "
+                            + e.getMessage());
+        }
     }
 
-    //Endpoint traer ticket por Id
-    @GetMapping(path = "/{id}")
+    public Optional<TicketEntity> getTicketById(Long idTicket) {
+        try {
+            return ticketRepository.findById(idTicket);
+        } catch (Exception e) {
+            e.printStackTrace();
 
-    public Optional<TicketEntity> getById(@PathVariable("id") Long idTicket) {
-        return ticketService.getTicketById(idTicket);
-
+            throw new RuntimeException
+                    ("Failed to retrieve the ticket by ID. Reason: " + e.getMessage());
+        }
     }
 
-    //Endopoint para insertar un ticket
-    @PostMapping(path = "/{exit}")
-    public ResponseEntity<TicketEntity> exitTicket(@RequestBody TicketEntity ticket) {
-        return ticketService.addTicket(ticket);
+    public ResponseEntity<TicketEntity> addTicket(TicketEntity ticketEntity) {
+
+        double COSTO_POR_HORA = 10.0;
+
+
+        Duration duration = Duration.between(ticketEntity.getEntryDate(), LocalDateTime.now());
+        System.out.println(duration.toMinutes());
+        double hours = duration.toMinutes()/60; // Obtener el número de horas de estacionamiento
+
+        double costoTotal = duration.toMinutes()/60.0 * 20; // Calcular el costo total
+        System.out.println(costoTotal);
+        ticketEntity.setTimeConsumed(hours);
+        ticketEntity.setExitDate(LocalDateTime.now());
+        ticketEntity.setAmount(costoTotal);
+        ticketRepository.save(ticketEntity);
+        return new ResponseEntity<>(ticketEntity, HttpStatus.OK);
     }
 
-    @PostMapping(path = "/inTicket")
-    public ResponseEntity<TicketEntity> inTicket(
-            @RequestParam Long idClient, String carLicense, String vehicle_type ){
-        System.out.println("HOLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-        return ticketService.inTicket(idClient,carLicense,vehicle_type);
-
+    public void deleteById(Long idTicket) {
+        boolean exists = ticketRepository.existsById(idTicket);
+        if (!exists) {
+            throw new IllegalStateException("ticket with id:" + idTicket + " does not exist");
+        } else {
+            ticketRepository.deleteById(idTicket);
+            System.out.println("Deleted success!");
+        }
+    }
+    public ResponseEntity<TicketEntity> inTicket(Long idClient, String carLicense, String vehicleType) {
+        TicketEntity ticketEntity = new TicketEntity();
+        Optional<ClientEntity> clientEntity = clientRepository.findById(idClient);
+        ticketEntity.setClientEntity(clientEntity.get());
+        ticketEntity.setCarLicense(carLicense);
+        ticketEntity.setEntryDate(LocalDateTime.now());
+        ticketEntity.setVehicleType(vehicleType);
+        ticketRepository.save(ticketEntity);
+        return new ResponseEntity<>(ticketEntity, HttpStatus.OK);
     }
 
-    //Endpoint para eliminar un ticket
-    @DeleteMapping(path = "/{id}")
-    public void deleleteById(@PathVariable("id") Long idTicket) {
-        ticketService.deleteById(idTicket);
-    }
+    @Transactional
+    public void updateTicket(Long idTicket, String carLicense) {
+        TicketEntity ticketEntity = ticketRepository.findById(idTicket).orElseThrow(() -> new IllegalStateException
+                ("Ticket with id " + idTicket + "does not exist"));
 
-    @PutMapping(path = "/{id}")
-    public void updateTicket(
-            @PathVariable("id") Long idTicket,
-            @RequestParam(required = false) String carLicense) {
-        ticketService.updateTicket(idTicket, carLicense);
+        if (carLicense != null && carLicense.length() > 0 && !Objects.equals(ticketEntity.getCarLicense(), carLicense))
+            ticketEntity.setCarLicense(carLicense);
     }
 }
