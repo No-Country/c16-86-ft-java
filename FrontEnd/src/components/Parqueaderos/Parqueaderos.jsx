@@ -1,6 +1,6 @@
 import { useState,useEffect } from "react";
 
-import { Link, useFetcher } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Outlet ,useLocation} from "react-router-dom";
 
 import TarjetaOpcion from "../Tarjetas/TarjetaOpcion";
@@ -12,11 +12,12 @@ import ModalParqueadero from "../Modales/Modal Crear Parqueadero/ModalParqueader
 import useEstacionamientos from '../../data/hooks/useEstacionamientos'
 
 
-function Parqueaderos() {
+function Parqueaderos(){
+
   const {
     estacionamientos,
     obtenerEstacionamientos
-  }=useEstacionamientos()
+  } = useEstacionamientos()
 
   let location = useLocation();
 
@@ -26,6 +27,7 @@ function Parqueaderos() {
   useEffect(()=>{
       setPath(location.pathname)
   },[location.pathname])
+
 
   useEffect(()=>{
     const getEstacionamientos = async ()=>{
@@ -39,6 +41,8 @@ function Parqueaderos() {
 
     getEstacionamientos()
   },[])
+
+
   return (
     <div>
       {

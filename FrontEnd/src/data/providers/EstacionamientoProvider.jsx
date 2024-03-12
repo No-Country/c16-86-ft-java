@@ -20,6 +20,7 @@ function EstacionamientoProvider({children}) {
 
         try {
             const rta = await axios('https://c16-86-ft-java.onrender.com/api/v1/parkingLoot/list',configuracion)
+            setEstacionamientos([rta,...estacionamientos])
             return rta
         }catch(error) {
             console.log('aqui,error')
@@ -44,6 +45,7 @@ function EstacionamientoProvider({children}) {
             console.log(error)
         }
     }
+    
     return (
         <EstacionamientoContext.Provider
             value={{
