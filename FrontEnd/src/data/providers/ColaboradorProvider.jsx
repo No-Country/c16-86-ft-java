@@ -20,8 +20,8 @@ function ColaboradorProvider({children}) {
         }
 
         try {
-            const rta = await axios(URL_COLABORADORES,configuracion)
-            setColaboradores(rta)
+            const {data} = await axios(URL_COLABORADORES,configuracion)
+            setColaboradores(data)
         }catch(error) {
             console.log(error)
         }
@@ -37,8 +37,8 @@ function ColaboradorProvider({children}) {
         }
 
         try {
-            const rta = await axios.post(URL_COLABORADORES,dataColaborador,configuracion)
-            setColaboradores([rta,...colaboradores])
+            const {data} = await axios.post(URL_COLABORADORES,dataColaborador,configuracion)
+            setColaboradores([data,...colaboradores])
         }catch(error) {
             console.log('aqui,error')
             console.log(error)

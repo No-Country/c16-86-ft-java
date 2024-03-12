@@ -7,22 +7,19 @@ import InputTypeSelect from "../InputTypeSelect"
 import { faX } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
-const parqueaderos = [
-    {
-        value:'423423423423d',
-        text:'Parqueadero la 33'
-    },
-    {
-        value:'42sdad3423d',
-        text:'Parqueadero Suramericana'
-    },
-    {
-        value:'42sda423d',
-        text:'Parqueadero Buenos Aires'
-    }
-]
+import useColaboradores from "../../../data/hooks/useColaboradores"
+import useEstacionamientos from '../../../data/hooks/useEstacionamientos'
 
-function ModalParker({isOpen,crearColaborador}) {
+function ModalParker({isOpen}) {
+
+    const {
+        estacionamientos
+    } = useEstacionamientos()
+
+    const {
+        crearColaborador
+    } = useColaboradores()
+
     const [nombres,setNombres]=useState('')
     const [apellidos,setApellidos]=useState('')
     const [identificacion,setIdentificacion]=useState('')
@@ -49,6 +46,8 @@ function ModalParker({isOpen,crearColaborador}) {
             console.log(error)
         }
     }
+
+
 
     return (
         <form
@@ -93,7 +92,7 @@ function ModalParker({isOpen,crearColaborador}) {
                     value={parqueadero}
                     callback={setParqueadero}
                     label='Parquadero asociado'
-                    listaOpciones={parqueaderos}
+                    listaOpciones={estacionamientos}
                     primeraOpcion='Elige un parqueadero'
                 />
             </div>

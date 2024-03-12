@@ -36,7 +36,6 @@ function Parkers(){
   const [open,setOpen]=useState(false)
 
   const {
-    crearColaborador,
     obtenerColaboradores,
     colaboradores
   }=useColaboradores()
@@ -64,7 +63,6 @@ function Parkers(){
             open={open}
           >
             <ModalParker
-              crearColaborador={crearColaborador}
               isOpen={()=>setOpen(false)}
             />
           </PopUp>
