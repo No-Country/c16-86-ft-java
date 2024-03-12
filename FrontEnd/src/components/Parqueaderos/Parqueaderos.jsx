@@ -42,7 +42,6 @@ function Parqueaderos(){
     getEstacionamientos()
   },[])
 
-
   return (
     <div>
       {
@@ -65,21 +64,23 @@ function Parqueaderos(){
             <div className="w-full grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-5 xl:grid-cols-3">
               {
                 estacionamientos?.map(item =>{
-                  return <Link key={item.id} to={`/dashboard/parqueaderos/${item.id}`}>
-                     <TarjetaOpcion key={item.id} type="parqueadero">
-                        <div className="w-full px-5 py-1">
-                          <p className="text-left font-bold text-lg uppercase">{item.nombre}</p>
-                          <div className="flex flex-row justify-between font-semibold text-lg">
-                            <p>{`Carros: ${item.carros}`}</p>
-                            <p>{`Tarifa carros: $ ${item.tarifaCarros}`}</p>
+                  if(item.length > 0){
+                    return <Link key={item.id} to={`/dashboard/parqueaderos/${item.id}`}>
+                      <TarjetaOpcion key={item.id} type="parqueadero">
+                          <div className="w-full px-5 py-1">
+                            <p className="text-left font-bold text-lg uppercase">{item.nombre}</p>
+                            <div className="flex flex-row justify-between font-semibold text-lg">
+                              <p>{`Carros: ${item.carros}`}</p>
+                              <p>{`Tarifa carros: $ ${item.tarifaCarros}`}</p>
+                            </div>
+                            <div className="flex flex-row justify-between font-semibold text-lg">
+                              <p>{`Motos: ${item.motos}`}</p>
+                              <p>{`Tarifa motos: $ ${item.tarifaMotos}`}</p>
+                            </div>
                           </div>
-                          <div className="flex flex-row justify-between font-semibold text-lg">
-                            <p>{`Motos: ${item.motos}`}</p>
-                            <p>{`Tarifa motos: $ ${item.tarifaMotos}`}</p>
-                          </div>
-                        </div>
-                     </TarjetaOpcion>
-                    </Link>
+                      </TarjetaOpcion>
+                      </Link>
+                  }
                 })
               }
             </div>

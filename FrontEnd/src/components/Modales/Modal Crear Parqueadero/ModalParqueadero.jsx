@@ -14,13 +14,13 @@ function ModalParqueadero({isOpen}){
 
     const {
         crearEstacionamientos
-    }=useEstacionamientos()
+    } = useEstacionamientos()
 
-    const [nombre,setNombre]=useState('')
-    const [motos,setMotos]=useState('')
-    const [carros,setCarros]=useState('')
-    const [tarifaMotos,setTarifaMotos]=useState('')
-    const [tarifaCarros,setTarifaCarros]=useState('')
+    const [nombre,setNombre] = useState('')
+    const [motos,setMotos] = useState('')
+    const [carros,setCarros] = useState('')
+    const [tarifaMotos,setTarifaMotos] = useState('')
+    const [tarifaCarros,setTarifaCarros] = useState('')
 
 
 
