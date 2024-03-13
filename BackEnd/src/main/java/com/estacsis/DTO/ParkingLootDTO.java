@@ -12,6 +12,8 @@ public class ParkingLootDTO {
     private Long idParkingLoot;
     private Integer aCapacity;
     private Integer mCapacity;
+    private Double aTarifa;
+    private Double mTarifa;
     private String nameParkingLoot;
     private Long idAdmin; // Id de Admin
     private List<Long> parkerIds; // Lista de IDs de Parker
@@ -24,6 +26,8 @@ public class ParkingLootDTO {
         this.aCapacity=parkingLoot.getaCapacity();
         this.mCapacity=parkingLoot.getmCapacity();
         this.nameParkingLoot=parkingLoot.getNameParkingLoot();
+        this.aTarifa=parkingLoot.getaTarifa();
+        this.mTarifa=parkingLoot.getmTarifa();
         AdminEntity admin = parkingLoot.getAdmin();
         if (admin != null) {
             this.idAdmin = admin.getIdAdmin();
@@ -84,6 +88,22 @@ public class ParkingLootDTO {
 
     public void setParkerIds(List<Long> parkerIds) {
         this.parkerIds = parkerIds;
+    }
+
+    public Double getaTarifa() {
+        return aTarifa;
+    }
+
+    public void setaTarifa(Double aTarifa) {
+        this.aTarifa = aTarifa;
+    }
+
+    public Double getmTarifa() {
+        return mTarifa;
+    }
+
+    public void setmTarifa(Double mTarifa) {
+        this.mTarifa = mTarifa;
     }
 }
 

@@ -35,6 +35,8 @@ public class ParkingLootService {
             parkingLootDTO.setmCapacity(parkingLoot.getmCapacity());
             parkingLootDTO.setNameParkingLoot(parkingLoot.getNameParkingLoot());
             parkingLootDTO.setIdAdmin(parkingLoot.getAdmin().getIdAdmin());
+            parkingLootDTO.setaTarifa(parkingLootDTO.getaTarifa());
+            parkingLootDTO.setmTarifa(parkingLootDTO.getmTarifa());
             List<Long> parkerIds = parkingLoot.getParker().stream()
                     .map(ParkerEntity::getIdParker)
                     .collect(Collectors.toList());

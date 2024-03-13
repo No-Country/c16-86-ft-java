@@ -1,10 +1,12 @@
 package com.estacsis.entity;
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
+import jakarta.persistence.*;
+import lombok.*;
+
+import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.Date;
+
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,91 +18,21 @@ public class TicketEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idTicket;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "idClient")
+
+    //Relacion Muchos a Uno
+    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_client")
     private ClientEntity clientEntity;
-
-    @Column(name = "carLicense")
+    @Column(name = "car_license", unique = true, nullable = false)
     private String carLicense;
-
-    @Column(name = "entryDate")
+    @Column(name = "entry_date")
     private LocalDateTime entryDate;
-
-    @Column(name = "exitDate")
+    @Column(name = "exit_date")
     private LocalDateTime exitDate;
-
-    @Column(name = "vehicleType")
+    @Column(name = "vehicle_type")
     private String vehicleType;
-
     @Column(name = "amount")
     private double amount;
-
-    @Column(name = "timeConsumed")
+    @Column(name = "time_consumed")
     private double timeConsumed;
-
-    // Getters y setters
-
-    public Long getIdTicket() {
-        return idTicket;
-    }
-
-    public void setIdTicket(Long idTicket) {
-        this.idTicket = idTicket;
-    }
-
-    public ClientEntity getClientEntity() {
-        return clientEntity;
-    }
-
-    public void setClientEntity(ClientEntity clientEntity) {
-        this.clientEntity = clientEntity;
-    }
-
-    public String getCarLicense() {
-        return carLicense;
-    }
-
-    public void setCarLicense(String carLicense) {
-        this.carLicense = carLicense;
-    }
-
-    public LocalDateTime getEntryDate() {
-        return entryDate;
-    }
-
-    public void setEntryDate(LocalDateTime entryDate) {
-        this.entryDate = entryDate;
-    }
-
-    public LocalDateTime getExitDate() {
-        return exitDate;
-    }
-
-    public void setExitDate(LocalDateTime exitDate) {
-        this.exitDate = exitDate;
-    }
-
-    public String getVehicleType() {
-        return vehicleType;
-    }
-
-    public void setVehicleType(String vehicleType) {
-        this.vehicleType = vehicleType;
-    }
-
-    public double getAmount() {
-        return amount;
-    }
-
-    public void setAmount(double amount) {
-        this.amount = amount;
-    }
-
-    public double getTimeConsumed() {
-        return timeConsumed;
-    }
-
-    public void setTimeConsumed(double timeConsumed) {
-        this.timeConsumed = timeConsumed;
-    }
 }
