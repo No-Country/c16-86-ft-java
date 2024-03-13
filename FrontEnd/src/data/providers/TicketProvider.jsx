@@ -41,6 +41,8 @@ function TicketProvider({children}) {
             console.log(error)
         }
     }
+
+    
     return (
         <TicketContext.Provider
             value={{

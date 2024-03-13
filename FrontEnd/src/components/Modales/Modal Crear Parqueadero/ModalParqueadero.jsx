@@ -13,6 +13,7 @@ import useEstacionamientos from "../../../data/hooks/useEstacionamientos"
 function ModalParqueadero({isOpen}){
 
     const {
+        obtenerEstacionamientos,
         crearEstacionamientos
     } = useEstacionamientos()
 
@@ -24,7 +25,7 @@ function ModalParqueadero({isOpen}){
 
 
 
-    const handleSubtmit =(e) => {
+    const handleSubtmit = async (e)  => {
         e.preventDefault()
         
         if([nombre,carros,motos,tarifaMotos,tarifaCarros].includes('',0)){
@@ -32,15 +33,23 @@ function ModalParqueadero({isOpen}){
         }
 
         const data = {
-            id:generateUUID(),
-            nombre:nombre,
-            carros:parseFloat(carros),
-            tarifaCarros:parseFloat(tarifaCarros),
-            motos:parseFloat(motos),
-            tarifaMotos:parseFloat(tarifaMotos),
+            'aCapacity':parseFloat(carros),
+            'mCapacity':parseFloat(motos),
+            'nameParkingLoot':nombre,
+            'aTarifa':parseFloat(tarifaCarros),
+            'mTarifa':parseFloat(tarifaMotos),
         }
+
+        /* {
+            "aCapacity": "10",
+            "mCapacity": "5",
+            "nameParkingLoot": "BSAS",
+            "aTarifa": 1.5,
+            "mTarifa": 0.75
+        } */
         
-        crearEstacionamientos(data)
+        await crearEstacionamientos({dataEstacionamiento:data})
+        await obtenerEstacionamientos()
         isOpen()
     }
 
@@ -81,7 +90,7 @@ function ModalParqueadero({isOpen}){
                     callback={setTarifaCarros}
                     placeholderInput='tarifa/hora'
                     label='tarifa carros'
-                    typeInput='number'
+                    typeInput='text'
                 />
             </div>
 
@@ -98,7 +107,7 @@ function ModalParqueadero({isOpen}){
                     callback={setTarifaMotos}
                     placeholderInput='tarifa/hora'
                     label='tarifa motos'
-                    typeInput='number'
+                    typeInput='text'
                 />
             </div>
 

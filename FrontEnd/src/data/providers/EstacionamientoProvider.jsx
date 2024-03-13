@@ -20,7 +20,7 @@ function EstacionamientoProvider({children}) {
 
         try {
             const {data} = await axios('https://c16-86-ft-java.onrender.com/api/v1/parkingLoot/list',configuracion)
-            setEstacionamientos([data])
+            setEstacionamientos(data)
             return data
         }catch(error) {
             console.log('aqui,error')
@@ -37,9 +37,10 @@ function EstacionamientoProvider({children}) {
             }
         }
 
+        console.log(dataEstacionamiento)
+
         try {
-            const respuesta = await axios.post(URL_ESTACIONAMIENTOS,dataEstacionamiento,configuracion)
-            setEstacionamientos([respuesta,...estacionamientos])
+            const rta = await axios.post('https://c16-86-ft-java.onrender.com/api/v1/admin/createParkingLoot',dataEstacionamiento,configuracion)
         }catch(error) {
             console.log('aqui,error')
             console.log(error)
