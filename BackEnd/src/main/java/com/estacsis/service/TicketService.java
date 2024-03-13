@@ -51,22 +51,14 @@ public class TicketService {
     }
 
     public ResponseEntity<TicketEntity> addTicket(TicketEntity ticketEntity) {
-
-        double COSTO_POR_HORA = 10.0;
-
-
         Duration duration = Duration.between(ticketEntity.getEntryDate(), LocalDateTime.now());
         System.out.println(duration.toMinutes());
         double hours = duration.toMinutes()/60; // Obtener el número de horas de estacionamiento
-
         double costoTotal = duration.toMinutes()/60.0 * 20; // Calcular el costo total
         System.out.println(costoTotal);
         ticketEntity.setTimeConsumed(hours);
         ticketEntity.setExitDate(LocalDateTime.now());
         ticketEntity.setAmount(costoTotal);
-
-
-
         ticketRepository.save(ticketEntity);
         return new ResponseEntity<>(ticketEntity, HttpStatus.OK);
     }
