@@ -19,7 +19,7 @@ function InputTypeSelect({
                 <option key={1} value=''>{primeraOpcion}</option>
                 {
                     listaOpciones.map((item,i)=>{
-                        return <option key={i} value={item.value}>{item.text}</option>
+                        return <option key={i} value={item.idParkingLoot}>{item.nameParkingLoot}</option>
                     })
                 }   
             </select>

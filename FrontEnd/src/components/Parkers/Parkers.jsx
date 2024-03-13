@@ -40,17 +40,17 @@ function Parkers(){
     colaboradores
   }=useColaboradores()
 
-    /* useEffect(()=>{
-      const obtenerColaboradores = async ()=>{
-        try {
-          const response = await obtenerColaboradores()
-          console.log(response)
-        } catch (error) {
-          console.log(error)
-        }
-      }  
-      obtenerColaboradores()
-  },[]) */
+  useEffect(()=>{
+    const getColaboradores = async ()=>{
+      try {
+        await obtenerColaboradores()
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+    getColaboradores()
+  },[])
 
   return (
     <div className="flex flex-col gap-5">
@@ -70,7 +70,29 @@ function Parkers(){
       <div className="w-full grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-5 xl:grid-cols-3">
         {
           colaboradores?.map(item => {
-            return <TarjetaOpcion key={item.id} type="parker" text={item.name}/>
+            return (
+              <TarjetaOpcion key={item.idParker} type="parker">
+                <div className="w-full px-5 py-1">
+                  <p className="text-left font-bold text-lg uppercase">{`${item.name} ${item.lastName}`}</p>
+                  <div className="flex flex-col text-start font-semibold text-lg border-b-2 mb-1">
+                    <p className="font-bold text-lg italic">DNI</p>
+                    <p className="text-md">{`${item.dni}`}</p>
+                  </div>
+{/*                   <div className="flex flex-col text-start font-semibold text-lg border-b-2 mb-1">
+                    <p className="font-bold text-lg italic">Estacionamiento</p>
+                    <p className="text-md">{`${item.nombreParqueadero}`}</p>
+                  </div> */}
+                  <div className="flex flex-col text-start font-semibold text-lg border-b-2 mb-1">
+                    <p className="font-bold text-lg italic">User</p>
+                    <p className="text-md">{` ${item.userParker}`}</p>
+                  </div>
+                  <div className="flex flex-col text-start font-semibold text-lg mb-1">
+                    <p className="font-bold text-lg italic">Password</p>
+                    <p className="text-md">{`${item.passwordParker}`}</p>
+                  </div>
+                </div>               
+              </TarjetaOpcion>
+            )
           })
         }
       </div>

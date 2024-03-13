@@ -1,13 +1,12 @@
 import axios from "axios";
 
-import { useState } from "react";
+import { useState , useEffect} from "react";
 
 import { createContext } from "react";
 
 const ColaboradorContext = createContext()
 
 function ColaboradorProvider({children}) {
-    const URL_COLABORADORES=''
     const [colaboradores,setColaboradores]=useState([])
 
     const obtenerColaboradores = async ()=>{
@@ -20,7 +19,7 @@ function ColaboradorProvider({children}) {
         }
 
         try {
-            const {data} = await axios(URL_COLABORADORES,configuracion)
+            const {data} = await axios('https://c16-86-ft-java.onrender.com/api/v1/parkers',configuracion)
             setColaboradores(data)
         }catch(error) {
             console.log(error)
@@ -36,9 +35,11 @@ function ColaboradorProvider({children}) {
             }
         }
 
+        console.log(dataColaborador)
+
         try {
-            const {data} = await axios.post(URL_COLABORADORES,dataColaborador,configuracion)
-            setColaboradores([data,...colaboradores])
+            const {data} = await axios.post('https://c16-86-ft-java.onrender.com/api/v1/admin/createParker',dataColaborador,configuracion)
+            return data
         }catch(error) {
             console.log('aqui,error')
             console.log(error)

@@ -10,6 +10,38 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import useColaboradores from "../../../data/hooks/useColaboradores"
 import useEstacionamientos from '../../../data/hooks/useEstacionamientos'
 
+function generarCorreoElectronico(nombre, apellido) {
+    // Convertir nombre y apellido a minúsculas y eliminar espacios
+    var nombreSinEspacios = nombre.toLowerCase().trim();
+    var apellidoSinEspacios = apellido.toLowerCase().trim();
+    
+    // Determinar qué parte usar según la longitud de nombre y apellido
+    var usuario;
+    if (nombreSinEspacios.length <= apellidoSinEspacios.length) {
+        usuario = nombreSinEspacios;
+    } else {
+        usuario = apellidoSinEspacios;
+    }
+    
+    // Crear el dominio ficticio
+    var dominio = '@userparker.com';
+    
+    // Concatenar usuario y dominio para formar el correo electrónico
+    var correoElectronico = usuario + dominio;
+    
+    return correoElectronico;
+}
+
+function generarContraseña() {
+    var caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-_';
+    var contraseña = '';
+    for (var i = 0; i < 10; i++) {
+        var caracterAleatorio = caracteres.charAt(Math.floor(Math.random() * caracteres.length));
+        contraseña += caracterAleatorio;
+    }
+    return contraseña;
+}
+
 function ModalParker({isOpen}) {
 
     const {
@@ -17,7 +49,8 @@ function ModalParker({isOpen}) {
     } = useEstacionamientos()
 
     const {
-        crearColaborador
+        crearColaborador,
+        obtenerColaboradores
     } = useColaboradores()
 
     const [nombres,setNombres]=useState('')
@@ -34,12 +67,25 @@ function ModalParker({isOpen}) {
         }
 
         const data = {
-
+            'name':nombres,
+            'lastName':apellidos,
+            'dni':identificacion,
+            'userParker':generarCorreoElectronico(nombres,apellidos),
+            'passwordParker':generarContraseña(),
+            "parkingLootId":parqueadero 
         }
 
+        /* {
+            "name": "Luciana",
+            "lastName": "Mazur",
+            "dni": "33265987",
+            "userParker": "luc@mar.com",
+            "passwordParker": "SanaMoria22"
+        } */
+
         try {
-            await crearColaborador(data)
-            console.log('exito creando parqueadero')
+            await crearColaborador({dataColaborador:data})
+            await obtenerColaboradores()
             isOpen()
         } catch (error) {
             console.log('error creando parqueadero')
